@@ -1,20 +1,20 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-const MainRouter = React.lazy(() => import('./MainRouter'));
+import React, { Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+const MainRouter = React.lazy(() => import("./MainRouter"));
 
 const RootRouter = () => {
   return (
     <BrowserRouter>
-      <Switch>
+      <Routes>
         <Route
-          path='/'
-          render={() => (
+          path="/"
+          element={
             <Suspense fallback={<div>Loading...</div>}>
               <MainRouter />
             </Suspense>
-          )}
+          }
         />
-      </Switch>
+      </Routes>
     </BrowserRouter>
   );
 };

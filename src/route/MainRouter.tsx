@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import {
   LoginContainer,
   MainContainer,
@@ -14,15 +14,15 @@ const MainRouter = () => {
   return (
     <>
       <HeaderContainer />
-      <Switch>
+      <Routes>
         <CheckToken>
-          <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/" component={MainContainer} />
-          <Route exact path="/total" component={StatisticsContainer} />
-          <Route exact path="/schedule" component={ScheduleContainer} />
-          <Route exact path="/applicant" component={ApplicantContainer} />
+          <Route path="/login" element={<LoginContainer />} />
+          <Route path="/" element={<MainContainer />} />
+          <Route path="/total" element={<StatisticsContainer />} />
+          <Route path="/schedule" element={<ScheduleContainer />} />
+          <Route path="/applicant" element={<ApplicantContainer />} />
         </CheckToken>
-      </Switch>
+      </Routes>
     </>
   );
 };

@@ -6,8 +6,6 @@ import { getAccessToken } from '../../utils/token';
 import { signinRequest } from '../../models/dto/request/signinRequest';
 import { refreshResponse, signinResponse } from '../../models/dto/response/signinResponse';
 
-const a = 1;
-
 const instance = (api: 'main' | 'excel') =>
   axios.create({
     timeout: 10000,

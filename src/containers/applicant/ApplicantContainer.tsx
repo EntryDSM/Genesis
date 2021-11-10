@@ -2,15 +2,15 @@ import React, { FC, Suspense } from "react";
 import { useApplicant } from "../../hooks/applicant";
 import { useSignIn } from "../../hooks/signin";
 import { useAuth } from "../../hooks/auth";
-import { useHistory } from "react-router";
+import { useLocation } from "react-router-dom";
 import { useStatistics } from "src/hooks/statistics";
 import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
 
 const Applicant = React.lazy(() => import("../../components/applicant"));
 
 const ApplicantContainer: FC = () => {
+  const location = useLocation();
   const applicantState = useApplicant();
-  const history = useHistory();
   const statisticsState = useStatistics();
   const authState = useAuth();
   const signinState = useSignIn();
@@ -43,7 +43,7 @@ const ApplicantContainer: FC = () => {
 
   React.useEffect(() => {
     if (authState.state.isLogin) statisticsState.setState.getStatistics();
-  }, [authState.state.isLogin, history.location.pathname]);
+  }, [authState.state.isLogin, location.pathname]);
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>

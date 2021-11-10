@@ -1,16 +1,16 @@
 import React, { FC } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as S from "../style";
 import { logo } from "../../../assets/header";
 import { display_icon, hide_icon } from "../../../assets/login";
-import { useSignIn } from "src/hooks/signin";
-import { useAuth } from "src/hooks/auth";
+import { useSignIn } from "../../../hooks/signin";
+import { useAuth } from "../../../hooks/auth";
 import { SIGNIN } from "../../../data/modules/redux/action/signin";
 
 const LoginContent: FC = () => {
   const [isPasswordShown, setIsPasswordShown] = React.useState<boolean>(false);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const { state, setState } = useSignIn();
   const authState = useAuth();
 
@@ -22,7 +22,7 @@ const LoginContent: FC = () => {
 
   React.useEffect(() => {
     if (authState.state.isLogin) {
-      history.push("/");
+      navigate("/");
     }
   }, [authState.state.isLogin]);
 

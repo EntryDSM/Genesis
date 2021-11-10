@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { error } from "../../../models/error";
 import { close_modal } from "../../../assets/applicants";
 import { display_icon, hide_icon } from "../../../assets/login";
@@ -32,7 +32,7 @@ const DeleteTable: FC<Props> = ({
 }) => {
   const [isPasswordShown, setIsPasswordShown] = React.useState<boolean>(false);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     checkPassword({ password });
@@ -60,7 +60,7 @@ const DeleteTable: FC<Props> = ({
   const handleClickDeleteTable = () => {
     if (disable === true) {
       deleteApplicantTable();
-      history.push("/");
+      navigate("/");
     }
     return false;
   };

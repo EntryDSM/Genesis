@@ -4,7 +4,7 @@ import MainContent from "./content";
 import Progress from "./progress";
 import { processType } from "../../data/modules/redux/reducer/schedule/interface";
 import { scheduleType } from "../../data/modules/redux/reducer/schedule/scheduleConstance";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   status: scheduleType;
@@ -13,10 +13,10 @@ interface Props {
 }
 
 const Main: FC<Props> = ({ status, process, date }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const mainButtonClickHandler = () => {
-    history.push("/schedule");
+    navigate("/schedule");
   };
 
   return (

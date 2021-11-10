@@ -1,6 +1,6 @@
 import React, { FC, Suspense } from "react";
 import { useAuth } from "../../hooks/auth";
-import { useHistory } from "react-router";
+import { useLocation } from "react-router-dom";
 import { useSignIn } from "../../hooks/signin";
 import { useSchedule } from "../../hooks/schedule";
 import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
@@ -8,10 +8,10 @@ import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
 const Schedule = React.lazy(() => import("../../components/schedule"));
 
 const ScheduleContainer: FC = () => {
+  const location = useLocation();
   const scheduleState = useSchedule();
   const authState = useAuth();
   const signinState = useSignIn();
-  const history = useHistory();
 
   const refreshToken = () => {
     signinState.setState.refreshToken(scheduleState.setState.getStatus);
@@ -41,7 +41,7 @@ const ScheduleContainer: FC = () => {
 
   React.useEffect(() => {
     if (authState.state.isLogin) scheduleState.setState.getStatus();
-  }, [authState.state.isLogin, history.location.pathname]);
+  }, [authState.state.isLogin, location.pathname]);
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>

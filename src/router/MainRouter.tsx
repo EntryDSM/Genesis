@@ -14,15 +14,15 @@ const MainRouter = () => {
   return (
     <>
       <HeaderContainer />
-      <Routes>
-        <CheckToken>
+      <CheckToken>
+        <Routes>
           <Route path="/login" element={<LoginContainer />} />
           <Route path="/" element={<MainContainer />} />
           <Route path="/total" element={<StatisticsContainer />} />
           <Route path="/schedule" element={<ScheduleContainer />} />
           <Route path="/applicant" element={<ApplicantContainer />} />
-        </CheckToken>
-      </Routes>
+        </Routes>
+      </CheckToken>
     </>
   );
 };

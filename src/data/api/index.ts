@@ -41,7 +41,7 @@ export const refreshTokenApi = async () => {
       {},
       {
         headers: {
-          'x-refresh-token': localStorage.getItem('refresh_token'),
+          'x-refresh-token': localStorage.getItem('refresh_token') as string,
         },
       },
     );

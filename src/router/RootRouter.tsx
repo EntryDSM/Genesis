@@ -7,7 +7,7 @@ const RootRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/*"
           element={
             <Suspense fallback={<div>Loading...</div>}>
               <MainRouter />

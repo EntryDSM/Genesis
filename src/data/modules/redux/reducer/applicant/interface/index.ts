@@ -1,5 +1,5 @@
-import { error } from "../../../../../../models/error";
-import { ApplicantListItem } from "../../../../../api/apiTypes";
+import { error } from "src/models/error";
+import { ApplicantListItem } from "src/data/api/apiTypes";
 
 export interface ApplicantState {
  getApplicantsListStatus: 0 | 200| 400 | 401 | 403 | 404;

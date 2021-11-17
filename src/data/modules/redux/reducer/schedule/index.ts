@@ -1,5 +1,5 @@
 import IScheduleState from './interface';
-import { IS_END, IS_START, PROCESS, STATUS, scheduleActionType } from '../../action/schedule';
+import { IS_END, IS_START, PROCESS, STATUS, scheduleActionType } from 'src/data/modules/redux/action/schedule';
 import scheduleConstance, { NOT_APPLICATION_PERIOD, scheduleType } from './scheduleConstance';
 import {
   GET_STATUS_FAILURE, 

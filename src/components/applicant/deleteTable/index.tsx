@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router";
-import { error } from "../../../models/error";
-import { close_modal } from "../../../assets/applicants";
-import { display_icon, hide_icon } from "../../../assets/login";
+import { error } from "src/models/error";
+import { close_modal } from "src/assets/applicants";
+import { display_icon, hide_icon } from "src/assets/login";
 import {
   GetApplicantsListResponse,
   CheckPasswordRequest,
-} from "../../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   disable: boolean;

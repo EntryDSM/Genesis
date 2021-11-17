@@ -3,7 +3,7 @@ import * as S from "../style";
 import {
   CommonScoreDistribution,
   SpecialScoreDistribution,
-} from "../../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   commonScore: CommonScoreDistribution;

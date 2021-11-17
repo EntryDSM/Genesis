@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
-import { select_off, select_on } from "../../../../../assets/schedule";
-import { processTimeType } from "../../../../../data/modules/redux/reducer/schedule/interface";
+import { select_off, select_on } from "src/assets/schedule";
+import { processTimeType } from "src/data/modules/redux/reducer/schedule/interface";
 import { END_DATE } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
 
 interface Props {

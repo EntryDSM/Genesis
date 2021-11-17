@@ -1,5 +1,5 @@
 import { ApplicantState } from "./interface";
-import { applicantActionType } from '../../action/applicant';
+import { applicantActionType } from 'src/data/modules/redux/action/applicant';
 import { 
   SET_FILTER,
   GET_APPLICANT_INFO_SUCCESS,

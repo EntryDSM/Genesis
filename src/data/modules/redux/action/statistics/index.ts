@@ -1,4 +1,4 @@
-import { error } from '../../../../../models/error';
+import { error } from 'src/models/error';
 import { 
   GET_STATISTICS, 
   GET_STATISTICS_SUCCESS, 
@@ -7,7 +7,7 @@ import {
 import { 
   CommonScoreDistribution, 
   SpecialScoreDistribution 
-} from "../../../../api/apiTypes";
+} from "src/data/api/apiTypes";
 
 export const getStatisticsSuccess = (payload: {
   total_applicant_count: number;

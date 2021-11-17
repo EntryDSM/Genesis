@@ -1,8 +1,8 @@
 import React, { FC, Suspense } from "react";
-import { useAuth } from "../../hooks/auth";
+import { useAuth } from "src/hooks/auth";
 import { useLocation } from "react-router-dom";
-import { useSignIn } from "../../hooks/signin";
-import { useSchedule } from "../../hooks/schedule";
+import { useSignIn } from "src/hooks/signin";
+import { useSchedule } from "src/hooks/schedule";
 import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
 
 const Schedule = React.lazy(() => import("../../components/schedule"));

@@ -9,7 +9,7 @@ import {
   SECOND_ANNOUNCEMENT,
   START_DATE,
   scheduleType,
-} from "../../../data/modules/redux/reducer/schedule/scheduleConstance";
+} from "src/data/modules/redux/reducer/schedule/scheduleConstance";
 interface Props {
   status: scheduleType;
   date: string;

@@ -1,8 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { SIGNIN } from '../../action/signin';
-import { refreshTokenApi, signinApi } from '../../../../../data/api';
-import { IS_LOGIN } from '../../action/auth';
-import { REFRESH_TOKEN } from '../../action/signin/interface';
+import { SIGNIN } from 'src/data/modules/redux/action/signin';
+import { refreshTokenApi, signinApi } from 'src/data/api';
+import { IS_LOGIN } from 'src/data/modules/redux/action/auth';
+import { REFRESH_TOKEN } from 'src/data/modules/redux/action/signin/interface';
 
 export const refreshTokenSaga = function* (action: any) {
   const FAILURE = `${REFRESH_TOKEN}_FAILURE`;

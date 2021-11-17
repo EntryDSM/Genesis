@@ -1,7 +1,7 @@
 import { takeLatest } from 'redux-saga/effects';
-import createRequestSaga from '../../../../../utils/saga/createRequestSaga';
-import { getApplicantsListApi, getApplicantInfoApi, updateApplicantStatusApi, updateApplicantSubmitStatusApi, checkPasswordApi, deleteApplicantTableApi } from '../../../../api/index';
-import { GET_APPLICANTS_LIST, GET_APPLICANT_INFO, UPDATE_APPLICANT_STATUS, UPDATE_APPLICANT_SUBMIT_STATUS, CHECK_PASSWORD, DELETE_APPLICANT_TABLE } from '../../../../modules/redux/action/applicant/interface';
+import createRequestSaga from 'src/utils/saga/createRequestSaga';
+import { getApplicantsListApi, getApplicantInfoApi, updateApplicantStatusApi, updateApplicantSubmitStatusApi, checkPasswordApi, deleteApplicantTableApi } from 'src/data/api/index';
+import { GET_APPLICANTS_LIST, GET_APPLICANT_INFO, UPDATE_APPLICANT_STATUS, UPDATE_APPLICANT_SUBMIT_STATUS, CHECK_PASSWORD, DELETE_APPLICANT_TABLE } from 'src/data/modules/redux/action/applicant/interface';
 
 export const getApplicantListSaga = createRequestSaga(GET_APPLICANTS_LIST, getApplicantsListApi);
 export const getApplicantInfoSaga = createRequestSaga(GET_APPLICANT_INFO, getApplicantInfoApi);

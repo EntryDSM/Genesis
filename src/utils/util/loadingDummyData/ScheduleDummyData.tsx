@@ -1,5 +1,5 @@
 import React from "react";
-import { processType } from "../../../data/modules/redux/reducer/schedule/interface";
+import { processType } from "src/data/modules/redux/reducer/schedule/interface";
 
 const scheduleDummyData: processType = {
   title: <p>로딩중...</p>,

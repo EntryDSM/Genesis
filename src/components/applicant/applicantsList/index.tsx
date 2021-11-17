@@ -6,7 +6,7 @@ import {
   GetApplicantsListResponse,
   GetApplicantInfoResponse,
   GetApplicantInfoPayload,
-} from "../../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   isContainerWidth: boolean;

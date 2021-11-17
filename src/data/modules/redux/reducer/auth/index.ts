@@ -1,5 +1,5 @@
 import IAuthState from './interface';
-import { ACCESS_TOKEN, authActionType, IS_LOGIN } from '../../action/auth';
+import { ACCESS_TOKEN, authActionType, IS_LOGIN } from 'src/data/modules/redux/action/auth';
 
 const initState: IAuthState = {
   isLogin: localStorage.getItem('access_token') ? true : false,

@@ -1,11 +1,11 @@
 import React, { FC, Suspense } from "react";
-import ScheduleDummyData from "../../utils/util/loadingDummyData/ScheduleDummyData";
+import ScheduleDummyData from "src/utils/util/loadingDummyData/ScheduleDummyData";
 import { useLocation } from "react-router-dom";
 import { useStatistics } from "src/hooks/statistics";
-import { useSchedule } from "../../hooks/schedule";
-import { useAuth } from "../../hooks/auth";
-import { useSignIn } from "../../hooks/signin";
-import { useFooter } from "../../hooks/default";
+import { useSchedule } from "src/hooks/schedule";
+import { useAuth } from "src/hooks/auth";
+import { useSignIn } from "src/hooks/signin";
+import { useFooter } from "src/hooks/default";
 import {
   APPLICATION_PERIOD,
   BEFORE_FIRST_ANNOUNCE,
@@ -77,7 +77,7 @@ const MainContainer: FC = () => {
   }, [signinState.state.error]);
 
   React.useEffect(() => {
-    const errorStatus = statisticsState.state.error.status;
+    const errorStatus = scheduleState.state.error.status;
     if (errorStatus === 401 || errorStatus === 403) {
       refreshToken();
     }

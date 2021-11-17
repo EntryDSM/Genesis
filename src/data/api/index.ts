@@ -1,20 +1,9 @@
-import axios from 'axios';
 import uri from './uri';
 import * as T from './apiTypes';
 import { getRequest } from './default/default';
-import { getAccessToken } from '../../utils/token';
-import { signinRequest } from '../../models/dto/request/signinRequest';
-import { refreshResponse, signinResponse } from '../../models/dto/response/signinResponse';
-
-// const getRequest = () =>
-//   axios.create({
-//     timeout: 10000,
-//     baseURL: 'https://rolls.entrydsm.hs.kr/',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     withCredentials: true,
-//   });
+import { getAccessToken } from 'src/utils/token';
+import { signinRequest } from 'src/models/dto/request/signinRequest';
+import { refreshResponse, signinResponse } from 'src/models/dto/response/signinResponse';
 
 const authorization = (token: string) => ({
   Authorization: `Bearer ${token}`,
@@ -25,8 +14,8 @@ export const signinApi = async (body: signinRequest) => {
   try {
     const request = getRequest();
     const response = await request.post<signinResponse>(uri.signin, body);
-    localStorage.setItem('access_token', response.data.accessToken);
-    localStorage.setItem('refresh_token', response.data.refreshToken);
+    localStorage.setItem('access_token', response.data.access_token);
+    localStorage.setItem('refresh_token', response.data.refresh_token);
     return response.data;
   } catch (error) {
     throw error;

@@ -5,7 +5,7 @@ import { CommonGraph, MeisterGraph, SocialGraph } from "./CompetitionGraphs";
 import {
   CommonScoreDistribution,
   SpecialScoreDistribution,
-} from "../../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   commonScore: CommonScoreDistribution;

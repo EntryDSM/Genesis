@@ -1,5 +1,5 @@
 import { IStatisticsState } from "./interface";
-import { statisticsActionType } from '../../action/statistics';
+import { statisticsActionType } from 'src/data/modules/redux/action/statistics';
 import { GET_STATISTICS_SUCCESS, GET_STATISTICS_FAILURE } from "../../action/statistics/interface";
 
 const initialState: IStatisticsState = {

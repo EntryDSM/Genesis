@@ -1,6 +1,6 @@
 import { processTimeType, scheduleUpdateTypes } from '../../reducer/schedule/interface';
-import { error } from "../../../../../models/error";
-import { scheduleType } from '../../reducer/schedule/scheduleConstance';
+import { error } from "src/models/error";
+import { scheduleType } from 'src/data/modules/redux/reducer/schedule/scheduleConstance';
 import {
   IS_END,
   IS_START,

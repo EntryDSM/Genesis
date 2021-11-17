@@ -1,5 +1,5 @@
 import { scheduleType } from '../scheduleConstance';
-import { error } from "../../../../../../models/error";
+import { error } from "src/models/error";
 
 export interface IScheduleState {
   status: scheduleType;

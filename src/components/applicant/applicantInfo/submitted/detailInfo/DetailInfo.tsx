@@ -5,7 +5,7 @@ import GeneralDetailInfo from "./GeneralDetailInfo";
 import {
   ApplicantPersonalData,
   ApplicantEvaluation,
-} from "../../../../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   isQUALIFICATION_EXAM: boolean;

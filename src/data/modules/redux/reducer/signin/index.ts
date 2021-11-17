@@ -7,7 +7,7 @@ import {
     SIGNIN_FAILURE,
     SIGNIN_SUCCESS,
     RESET,
-  } from '../../action/signin';
+  } from 'src/data/modules/redux/action/signin';
   import ISignInState from './interface';
   
   const initState: ISignInState = {

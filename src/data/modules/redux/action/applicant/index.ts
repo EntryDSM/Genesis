@@ -28,8 +28,8 @@ import {
   UpdateApplicantStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   CheckPasswordRequest
- } from "../../../../api/apiTypes"; 
-import { error } from "../../../../../models/error";
+ } from "src/data/api/apiTypes"; 
+import { error } from "src/models/error";
 import { createAction } from 'typesafe-actions';
 
 export const setFilter = createAction(SET_FILTER)<GetApplicantsListPayload>();

@@ -5,4 +5,5 @@ export interface signinResponse {
 
 export interface refreshResponse {
   access_token: string;
+  refresh_token: string;
 }

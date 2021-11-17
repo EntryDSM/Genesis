@@ -1,7 +1,7 @@
 import { takeLatest } from 'redux-saga/effects';
-import createRequestSaga from '../../../../../utils/saga/createRequestSaga';
-import { getStatisticsApi } from '../../../../api/index';
-import { GET_STATISTICS } from "../../action/statistics/interface";
+import createRequestSaga from 'src/utils/saga/createRequestSaga';
+import { getStatisticsApi } from 'src/data/api/index';
+import { GET_STATISTICS } from "src/data/modules/redux/action/statistics/interface";
 
 export const getStatisticsSaga = createRequestSaga(GET_STATISTICS, getStatisticsApi);
 

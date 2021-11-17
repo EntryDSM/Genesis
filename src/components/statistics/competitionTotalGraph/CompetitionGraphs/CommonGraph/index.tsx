@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
-import { CommonScoreDistribution } from "../../../../../data/api/apiTypes";
+import { CommonScoreDistribution } from "src/data/api/apiTypes";
 
 interface Props {
   commonScore: CommonScoreDistribution;

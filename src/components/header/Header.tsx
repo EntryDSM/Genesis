@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { logo } from "../../assets/header";
-import { Button } from "../common";
-import { error } from "../../models/error";
+import { logo } from "src/assets/header";
+import { Button } from "src/components/common";
+import { error } from "src/models/error";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface Props {

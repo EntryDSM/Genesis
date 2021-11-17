@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { useAuth } from "../../hooks/auth";
-import Header from "../../components/header/Header";
+import { useAuth } from "src/hooks/auth";
+import Header from "src/components/header/Header";
 
 const HeaderContainer: FC = () => {
   const authState = useAuth();

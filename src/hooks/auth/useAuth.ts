@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useSelectState } from '../default';
-import { setAccessToken, setIsLogin } from '../../data/modules/redux/action/auth';
+import { setAccessToken, setIsLogin } from 'src/data/modules/redux/action/auth';
 
 const useAuth = () => {
   const dispatch = useDispatch();

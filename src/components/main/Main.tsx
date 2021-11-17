@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import * as S from "./style";
 import MainContent from "./content";
 import Progress from "./progress";
-import { processType } from "../../data/modules/redux/reducer/schedule/interface";
-import { scheduleType } from "../../data/modules/redux/reducer/schedule/scheduleConstance";
+import { processType } from "src/data/modules/redux/reducer/schedule/interface";
+import { scheduleType } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
 import { useNavigate } from "react-router-dom";
 
 interface Props {

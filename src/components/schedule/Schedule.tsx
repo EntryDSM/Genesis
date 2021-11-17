@@ -5,18 +5,18 @@ import {
   interview_icon,
   presentation_regiester_icon,
   presentation_icon,
-} from "../../assets/schedule";
+} from "src/assets/schedule";
 import { Button } from "../common";
 import {
   FIRST_ANNOUNCEMENT,
   INTERVIEW,
   SECOND_ANNOUNCEMENT,
   START_DATE,
-} from "../../data/modules/redux/reducer/schedule/scheduleConstance";
+} from "src/data/modules/redux/reducer/schedule/scheduleConstance";
 import {
   processTimeType,
   scheduleUpdateTypes,
-} from "../../data/modules/redux/reducer/schedule/interface";
+} from "src/data/modules/redux/reducer/schedule/interface";
 import ScheduleContent from "./content";
 
 interface Props {

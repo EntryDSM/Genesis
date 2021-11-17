@@ -1,4 +1,4 @@
-import { signinRequest } from '../../../../../models/dto/request/signinRequest';
+import { signinRequest } from 'src/models/dto/request/signinRequest';
 import { error } from 'src/models/error';
 import {
   ERROR,

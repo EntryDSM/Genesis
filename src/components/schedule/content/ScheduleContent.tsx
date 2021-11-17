@@ -11,8 +11,8 @@ import {
   scheduleType,
   SECOND_ANNOUNCEMENT,
   START_DATE,
-} from "../../../data/modules/redux/reducer/schedule/scheduleConstance";
-import { processTimeType } from "../../../data/modules/redux/reducer/schedule/interface";
+} from "src/data/modules/redux/reducer/schedule/scheduleConstance";
+import { processTimeType } from "src/data/modules/redux/reducer/schedule/interface";
 
 interface Props {
   scheduleImg: string;

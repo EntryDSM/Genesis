@@ -14,7 +14,7 @@ import {
   UpdateApplicantStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   CheckPasswordRequest,
-} from "../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;

@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
-import { details_arrow } from "../../../../../assets/applicants";
-import { Checkbox, Button } from "../../../../common";
+import { details_arrow } from "src/assets/applicants";
+import { Checkbox, Button } from "src/components/common";
 import {
   GetApplicantInfoPayload,
   UpdateApplicantStatusPayload,
   UpdateApplicantSubmitStatusPayload,
-} from "../../../../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   isContainerWidth: boolean;

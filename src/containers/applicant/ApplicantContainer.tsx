@@ -1,7 +1,7 @@
 import React, { FC, Suspense } from "react";
-import { useApplicant } from "../../hooks/applicant";
-import { useSignIn } from "../../hooks/signin";
-import { useAuth } from "../../hooks/auth";
+import { useApplicant } from "src/hooks/applicant";
+import { useSignIn } from "src/hooks/signin";
+import { useAuth } from "src/hooks/auth";
 import { useLocation } from "react-router-dom";
 import { useStatistics } from "src/hooks/statistics";
 import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";

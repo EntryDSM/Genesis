@@ -22,9 +22,9 @@ import {
   setInterviewDate,
   setSecondDate,
   setSchedule,
-} from '../../data/modules/redux/action/schedule';
-import { scheduleUpdateTypes, processType } from '../../data/modules/redux/reducer/schedule/interface';
-import { scheduleType } from '../../data/modules/redux/reducer/schedule/scheduleConstance';
+} from 'src/data/modules/redux/action/schedule';
+import { scheduleUpdateTypes, processType } from 'src/data/modules/redux/reducer/schedule/interface';
+import { scheduleType } from 'src/data/modules/redux/reducer/schedule/scheduleConstance';
 
 const useSchedule = () => {
   const dispatch = useDispatch();

@@ -9,14 +9,14 @@ import {
   setPassword,
   checkPassword,
   deleteApplicantTable
- } from '../../data/modules/redux/action/applicant';
+ } from 'src/data/modules/redux/action/applicant';
 import { 
   GetApplicantsListPayload, 
   GetApplicantInfoPayload,
   UpdateApplicantStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   CheckPasswordRequest
-} from "../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 const useApplicant = () => {
   const dispatch = useDispatch();

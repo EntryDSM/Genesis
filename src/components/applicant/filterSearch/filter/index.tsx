@@ -1,15 +1,15 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { Button } from "../../../common";
-import { Checkbox } from "../../../common";
+import { Button } from "src/components/common";
+import { Checkbox } from "src/components/common";
 import { useSchedule } from "src/hooks/schedule";
-import { APPLICATION_PERIOD } from "../../../../data/modules/redux/reducer/schedule/scheduleConstance";
-import { downloadExcel } from "../../../../utils/download";
+import { APPLICATION_PERIOD } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
+import { downloadExcel } from "src/utils/download";
 import {
   downloadApplicantsListExcel,
   downloadAdmissionExcel,
-} from "../../../../data/api/index";
-import { GetApplicantsListPayload } from "../../../../data/api/apiTypes";
+} from "src/data/api/index";
+import { GetApplicantsListPayload } from "src/data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;

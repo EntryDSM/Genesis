@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { selected } from "../../assets/applicants";
+import { selected } from "src/assets/applicants";
 
 const CheckboxWrapper = styled.div`
   width: 13.8px;

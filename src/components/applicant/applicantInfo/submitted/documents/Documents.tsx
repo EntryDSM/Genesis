@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import * as S from "./style";
-import { ApplicantEvaluation } from "../../../../../data/api/apiTypes";
+import { ApplicantEvaluation } from "src/data/api/apiTypes";
 
 interface Props {
   applicantEvaluation: ApplicantEvaluation;

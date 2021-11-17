@@ -4,8 +4,8 @@ import * as S from "./style";
 import {
   ApplicantPersonalData,
   ApplicantEvaluation,
-} from "../../../../../data/api/apiTypes";
-import { phoneWithHyphen } from "../../../../../utils/checkType";
+} from "src/data/api/apiTypes";
+import { phoneWithHyphen } from "src/utils/checkType";
 
 interface Props {
   applicantPersonalData: ApplicantPersonalData;

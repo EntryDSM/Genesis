@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { useHistory } from "react-router-dom";
-import { details_arrow } from "../../../../../assets/applicants";
-import { Checkbox, Button } from "../../../../common";
+import { useNavigate } from "react-router-dom";
+import { details_arrow } from "src/assets/applicants";
+import { Checkbox, Button } from "src/components/common";
 import {
   GetApplicantInfoPayload,
   UpdateApplicantStatusPayload,
   UpdateApplicantSubmitStatusPayload,
-} from "../../../../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   isContainerWidth: boolean;
@@ -30,7 +30,7 @@ const ApplicantStatuses: FC<Props> = ({
   updateApplicantSubmitStatus,
   setIsContainerWidth,
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleClickDetailArrow = () => {
     setIsContainerWidth(!isContainerWidth);
@@ -44,7 +44,7 @@ const ApplicantStatuses: FC<Props> = ({
       await updateApplicantStatus({ receipt_code, is_printed_arrived });
     }
     if (updateApplicantStatus) {
-      setTimeout(() => history.go(0), 300);
+      setTimeout(() => navigate(1), 300);
     }
   };
 
@@ -53,7 +53,7 @@ const ApplicantStatuses: FC<Props> = ({
       await updateApplicantSubmitStatus({ receipt_code });
     }
     if (updateApplicantSubmitStatus) {
-      setTimeout(() => history.go(0), 300);
+      setTimeout(() => navigate(0), 300);
     }
   };
 

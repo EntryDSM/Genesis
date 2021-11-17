@@ -1,20 +1,9 @@
-import axios from 'axios';
 import uri from './uri';
-import { BaseURL } from './baseURL';
 import * as T from './apiTypes';
-import { getAccessToken } from '../../utils/token';
-import { signinRequest } from '../../models/dto/request/signinRequest';
-import { refreshResponse, signinResponse } from '../../models/dto/response/signinResponse';
-
-const instance = (api: 'main' | 'excel') =>
-  axios.create({
-    timeout: 10000,
-    baseURL: `${BaseURL[api]}`,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    withCredentials: true,
-  });
+import { getRequest } from './default/default';
+import { getAccessToken } from 'src/utils/token';
+import { signinRequest } from 'src/models/dto/request/signinRequest';
+import { refreshResponse, signinResponse } from 'src/models/dto/response/signinResponse';
 
 const authorization = (token: string) => ({
   Authorization: `Bearer ${token}`,
@@ -23,7 +12,7 @@ const authorization = (token: string) => ({
 
 export const signinApi = async (body: signinRequest) => {
   try {
-    const request = instance('main');
+    const request = getRequest();
     const response = await request.post<signinResponse>(uri.signin, body);
     localStorage.setItem('access_token', response.data.access_token);
     localStorage.setItem('refresh_token', response.data.refresh_token);
@@ -35,32 +24,32 @@ export const signinApi = async (body: signinRequest) => {
 
 export const refreshTokenApi = async () => {
   try {
-    const request = instance('main');
-    const { data } = await request.put<refreshResponse>(
+    const request = getRequest();
+    const response: any = await request.put<refreshResponse>(
       uri.signin,
       {},
       {
         headers: {
-          'x-refresh-token': localStorage.getItem('refresh_token'),
+          'x-refresh-token': localStorage.getItem('refresh_token') as string,
         },
       },
     );
-    localStorage.setItem('access_token', data.access_token);
-    return data;
+    localStorage.setItem('access_token', response.access_token);
+    return response;
   } catch (error) {
     throw error;
   }
 };
 
 export const getScheduleApi = async () => {
-  const response = await instance('main').get<T.GetSchedulesResponse>(uri.schedules);
+  const response = await getRequest().get<T.GetSchedulesResponse>(uri.schedules);
 
   return response;
 }
 
 export const updateScheduleApi = async (access_token: string, payload: T.UpdateScheduleStatusPayload) => {
   try {
-    const request = instance('main');
+    const request = getRequest();
 
     await request.patch(uri.schedules , payload, {
     headers: authorization(getAccessToken()),
@@ -71,7 +60,7 @@ export const updateScheduleApi = async (access_token: string, payload: T.UpdateS
 }
 
 export const getStatisticsApi = async (access_token: string) => {
-  const response = await instance('main').get<T.GetEachStatisticsResponse>(
+  const response = await getRequest().get<T.GetEachStatisticsResponse>(
    uri.total ,
     {
       headers: authorization(getAccessToken()),
@@ -82,7 +71,7 @@ export const getStatisticsApi = async (access_token: string) => {
 };
 
 export const getApplicantsListApi = async (access_token: string, payload: T.GetApplicantsListPayload) => {
-  const response = await instance('main').get<T.GetApplicantsListResponse>(
+  const response = await getRequest().get<T.GetApplicantsListResponse>(
    uri.applicants,
     {
       headers: authorization(getAccessToken()),
@@ -95,7 +84,7 @@ export const getApplicantsListApi = async (access_token: string, payload: T.GetA
 
 export const getApplicantInfoApi = async (access_token: string, payload: T.GetApplicantInfoPayload) => {
   try {
-    const request = instance('main');
+    const request = getRequest();
     return await request.get(uri.applicant+`/${payload.receipt_code}`, {
       headers: authorization(getAccessToken()),
     })
@@ -106,7 +95,7 @@ export const getApplicantInfoApi = async (access_token: string, payload: T.GetAp
 
 export const updateApplicantStatusApi = async (access_token: string, payload: T.UpdateApplicantStatusPayload) => {
   try {
-    const request = instance('main');
+    const request = getRequest();
 
     await request.patch(uri.applicant+`/${payload.receipt_code}`, null, {
     headers: authorization(getAccessToken()),
@@ -119,7 +108,7 @@ export const updateApplicantStatusApi = async (access_token: string, payload: T.
 
 export const updateApplicantSubmitStatusApi = async (access_token: string, payload: T.UpdateApplicantSubmitStatusPayload) => {
   try {
-    const request = instance('main');
+    const request = getRequest();
 
     await request.patch(uri.applicant_status+`/${payload.receipt_code}`, null, {
     headers: authorization(getAccessToken()),
@@ -131,7 +120,7 @@ export const updateApplicantSubmitStatusApi = async (access_token: string, paylo
 
 export const checkPasswordApi = async (access_token: string, payload: T.CheckPasswordRequest) => {
   try {
-    const request = instance('main');
+    const request = getRequest();
     await request.get(uri.signin, {
       headers: authorization(getAccessToken()),
       params: payload,
@@ -143,7 +132,7 @@ export const checkPasswordApi = async (access_token: string, payload: T.CheckPas
 
 export const deleteApplicantTableApi = async (access_token: string) => {
   try {
-    const request = instance('main');
+    const request = getRequest();
     await request.delete(uri.delete_table, {
       headers: authorization(getAccessToken()),
     });
@@ -153,7 +142,7 @@ export const deleteApplicantTableApi = async (access_token: string) => {
 }
 
 export const downloadApplicantsListExcel = async () => {
-  const response = await instance('excel').get(uri.applicants_print , {
+  const response = await getRequest().get(uri.applicants_print , {
     headers: authorization(getAccessToken()),
     responseType: 'blob',
   });
@@ -162,7 +151,7 @@ export const downloadApplicantsListExcel = async () => {
 };
 
 export const downloadAdmissionExcel = async () => {
-  const response = await instance('excel').get(uri.ticket_print, {
+  const response = await getRequest().get(uri.ticket_print, {
     headers: authorization(getAccessToken()),
     responseType: 'blob',
   });

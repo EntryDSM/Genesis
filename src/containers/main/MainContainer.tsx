@@ -1,11 +1,11 @@
 import React, { FC, Suspense } from "react";
-import ScheduleDummyData from "../../utils/util/loadingDummyData/ScheduleDummyData";
-import { useHistory } from "react-router";
+import ScheduleDummyData from "src/utils/util/loadingDummyData/ScheduleDummyData";
+import { useLocation } from "react-router-dom";
 import { useStatistics } from "src/hooks/statistics";
-import { useSchedule } from "../../hooks/schedule";
-import { useAuth } from "../../hooks/auth";
-import { useSignIn } from "../../hooks/signin";
-import { useFooter } from "../../hooks/default";
+import { useSchedule } from "src/hooks/schedule";
+import { useAuth } from "src/hooks/auth";
+import { useSignIn } from "src/hooks/signin";
+import { useFooter } from "src/hooks/default";
 import {
   APPLICATION_PERIOD,
   BEFORE_FIRST_ANNOUNCE,
@@ -24,12 +24,12 @@ import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
 const Main = React.lazy(() => import("../../components/main"));
 
 const MainContainer: FC = () => {
+  const location = useLocation();
   const Footer = useFooter();
   const scheduleState = useSchedule();
   const statisticsState = useStatistics();
   const authState = useAuth();
   const signinState = useSignIn();
-  const history = useHistory();
   const getNowProcess = (status: string) => {
     if (!scheduleState.state.processes[status]) return ScheduleDummyData;
     return scheduleState.state.processes[status];
@@ -77,7 +77,7 @@ const MainContainer: FC = () => {
   }, [signinState.state.error]);
 
   React.useEffect(() => {
-    const errorStatus = statisticsState.state.error.status;
+    const errorStatus = scheduleState.state.error.status;
     if (errorStatus === 401 || errorStatus === 403) {
       refreshToken();
     }
@@ -85,7 +85,7 @@ const MainContainer: FC = () => {
 
   React.useEffect(() => {
     if (authState.state.isLogin) statisticsState.setState.getStatistics();
-  }, [authState.state.isLogin, history.location.pathname]);
+  }, [authState.state.isLogin, location.pathname]);
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>

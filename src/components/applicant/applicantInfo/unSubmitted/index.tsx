@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { details_arrow } from "../../../../assets/applicants";
-import { phoneWithHyphen } from "../../../../utils/checkType";
+import { details_arrow } from "src/assets/applicants";
+import { phoneWithHyphen } from "src/utils/checkType";
 
 interface Props {
   isContainerWidth: boolean;

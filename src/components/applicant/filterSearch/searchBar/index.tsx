@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { GetApplicantsListPayload } from "../../../../data/api/apiTypes";
+import { GetApplicantsListPayload } from "src/data/api/apiTypes";
 
 interface Props {
   searchProgressImg: string;

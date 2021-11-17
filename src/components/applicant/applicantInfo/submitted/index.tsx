@@ -12,8 +12,8 @@ import {
   UpdateApplicantStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   GetApplicantInfoPayload,
-} from "../../../../data/api/apiTypes";
-import { returnEducationalType } from "../../../../utils/checkType";
+} from "src/data/api/apiTypes";
+import { returnEducationalType } from "src/utils/checkType";
 
 interface Props {
   isContainerWidth: boolean;

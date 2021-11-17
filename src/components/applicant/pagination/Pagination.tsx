@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { shift_left_icon, shift_right_icon } from "../../../assets/applicants";
-import { getIndexList } from "../../../utils/pagination";
+import { shift_left_icon, shift_right_icon } from "src/assets/applicants";
+import { getIndexList } from "src/utils/pagination";
 import {
   GetApplicantsListPayload,
   GetApplicantsListResponse,
-} from "../../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   applicantsList: GetApplicantsListResponse;

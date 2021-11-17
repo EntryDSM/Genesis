@@ -1,17 +1,17 @@
 import React, { FC, Suspense } from "react";
-import { useHistory } from "react-router";
+import { useLocation } from "react-router";
 import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
-import { useAuth } from "../../hooks/auth";
-import { useSignIn } from "../../hooks/signin";
-import { useStatistics } from "../../hooks/statistics";
+import { useAuth } from "src/hooks/auth";
+import { useSignIn } from "src/hooks/signin";
+import { useStatistics } from "src/hooks/statistics";
 
 const Statistics = React.lazy(() => import("../../components/statistics"));
 
 const StatisticsContainer: FC = () => {
+  const location = useLocation();
   const statisticsState = useStatistics();
   const authState = useAuth();
   const signinState = useSignIn();
-  const history = useHistory();
   const {
     common_score,
     meister_score,
@@ -49,7 +49,7 @@ const StatisticsContainer: FC = () => {
 
   React.useEffect(() => {
     if (authState.state.isLogin) statisticsState.setState.getStatistics();
-  }, [authState.state.isLogin, history.location.pathname]);
+  }, [authState.state.isLogin, location.pathname]);
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>

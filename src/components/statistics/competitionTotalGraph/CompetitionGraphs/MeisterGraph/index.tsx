@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
-import { SpecialScoreDistribution } from "../../../../../data/api/apiTypes";
+import { SpecialScoreDistribution } from "src/data/api/apiTypes";
 
 interface Props {
   meisterScore: SpecialScoreDistribution;

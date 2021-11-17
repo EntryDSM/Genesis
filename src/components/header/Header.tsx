@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { logo } from "../../assets/header";
-import { Button } from "../common";
-import { error } from "../../models/error";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { logo } from "src/assets/header";
+import { Button } from "src/components/common";
+import { error } from "src/models/error";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface Props {
   isLogin: boolean;
@@ -14,13 +14,13 @@ interface Props {
 
 const Header: FC<Props> = (props) => {
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
     props.setIsLogin(false);
     props.setAccessToken("");
     localStorage.removeItem("access_token");
-    history.push("/login");
+    navigate("/login");
   };
 
   const headerItemsBox = () => {

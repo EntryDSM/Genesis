@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { list_progressbar, search_icon } from "../../../assets/applicants";
+import { list_progressbar, search_icon } from "src/assets/applicants";
 import SearchBar from "./searchBar";
 import Filter from "./filter";
 import FilterSearchWrapper from "./style";
-import { GetApplicantsListPayload } from "../../../data/api/apiTypes";
+import { GetApplicantsListPayload } from "src/data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;

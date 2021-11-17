@@ -1,14 +1,11 @@
 import React, { FC } from "react";
 import * as S from "../style";
-import { Checkbox } from "../../../common";
-import {
-  returnRegion,
-  returnApplicationType,
-} from "../../../../utils/checkType";
+import { Checkbox } from "src/components/common";
+import { returnRegion, returnApplicationType } from "src/utils/checkType";
 import {
   ApplicantListItem,
   GetApplicantInfoResponse,
-} from "../../../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   currnetApplicantInfo: GetApplicantInfoResponse;

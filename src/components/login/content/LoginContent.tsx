@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "../style";
-import { logo } from "../../../assets/header";
-import { display_icon, hide_icon } from "../../../assets/login";
-import { useSignIn } from "../../../hooks/signin";
-import { useAuth } from "../../../hooks/auth";
-import { SIGNIN } from "../../../data/modules/redux/action/signin";
+import { logo } from "src/assets/header";
+import { display_icon, hide_icon } from "src/assets/login";
+import { useSignIn } from "src/hooks/signin";
+import { useAuth } from "src/hooks/auth";
+import { SIGNIN } from "src/data/modules/redux/action/signin";
 
 const LoginContent: FC = () => {
   const [isPasswordShown, setIsPasswordShown] = React.useState<boolean>(false);

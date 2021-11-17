@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { ApplicantPersonalData } from "../../../../../data/api/apiTypes";
+import { ApplicantPersonalData } from "src/data/api/apiTypes";
 import {
   returnApplicationType,
   returnApplicationRemark,
   returnEducationalType,
-} from "../../../../../utils/checkType";
+} from "src/utils/checkType";
 
 interface Props {
   applicantPersonalData: ApplicantPersonalData;

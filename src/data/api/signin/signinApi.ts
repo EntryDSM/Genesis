@@ -7,8 +7,8 @@ export const signinApi = async (body: signinRequest) => {
     try {
       const request = getRequest();
       const response = await request.post<signinResponse>(uri.signin, body);
-      localStorage.setItem('access_token', response.data.accessToken);
-      localStorage.setItem('refresh_token', response.data.refreshToken);
+      localStorage.setItem('access_token', response.data.access_token);
+      localStorage.setItem('refresh_token', response.data.refresh_token);
       return response.data;
     } catch (error) {
       throw error;

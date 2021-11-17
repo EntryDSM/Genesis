@@ -6,7 +6,7 @@ import CompetitionTotalGraph from "./competitionTotalGraph";
 import {
   CommonScoreDistribution,
   SpecialScoreDistribution,
-} from "../../data/api/apiTypes";
+} from "src/data/api/apiTypes";
 
 interface Props {
   commonScore: CommonScoreDistribution;

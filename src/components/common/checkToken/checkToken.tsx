@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAccessToken } from "../../../utils/token";
+import { getAccessToken } from "src/utils/token";
 
 interface Props {
   children: any;

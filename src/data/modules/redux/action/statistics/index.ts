@@ -5,17 +5,13 @@ import {
   GET_STATISTICS_FAILURE 
 } from "./interface";
 import { 
-  CommonScoreDistribution, 
-  SpecialScoreDistribution 
+  GetCountStatisticsResponse, 
+  GetScoreStatisticsResponse, 
 } from "src/data/api/apiTypes";
 
 export const getStatisticsSuccess = (payload: {
-  total_applicant_count: number;
-  total_competition_rate: number;
-  total_submitted_applicant_count: number;
-  common_score: CommonScoreDistribution;
-  meister_score: SpecialScoreDistribution;
-  social_score: SpecialScoreDistribution;
+  score:GetScoreStatisticsResponse,
+  count:GetCountStatisticsResponse
 }) => ({
   type: GET_STATISTICS_SUCCESS,
   payload,

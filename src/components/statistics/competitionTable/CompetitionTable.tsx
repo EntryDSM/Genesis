@@ -1,267 +1,137 @@
-import React, { FC } from "react";
+import React, { Component, FC } from "react";
 import * as S from "../style";
 import {
   CommonScoreDistribution,
+  GetCountStatisticsResponse,
+  GetScoreStatisticsResponse,
   SpecialScoreDistribution,
 } from "src/data/api/apiTypes";
 
 interface Props {
-  commonScore: CommonScoreDistribution;
+  /* commonScore: CommonScoreDistribution;
   meisterScore: SpecialScoreDistribution;
   socialScore: SpecialScoreDistribution;
-  totalApplicantCount: number;
+  totalApplicantCount: number; */
+  score:GetScoreStatisticsResponse,
 }
 
-const CompetitionTable: FC<Props> = ({
-  commonScore,
-  meisterScore,
-  socialScore,
-  totalApplicantCount,
-}) => {
+const CompetitionTable: FC<Props> = (
+  {
+    
+    score
+  }
+) => {
+  const CommonScoreList = ({ type, score1, score2 }) => {
+    return (
+      <tr>
+        <td className="common_score-left">{type}</td>
+        <td>{score1}</td>
+        <td>{score2}</td>
+      </tr>
+    );
+  };
+  const MeisterScoreList = ({ type, score1, score2, score3, score4 }) => {
+    return (
+      <tr>
+        <td className="meister_score-left">{type}</td>
+        <td>{score1}</td>
+        <td>{score2}</td>
+        <td>{score3}</td>
+        <td>{score4}</td>
+      </tr>
+    );
+  };
   return (
     <S.CompetitionTableWrapper>
       <table className="common_score-table">
         <tbody>
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left table-border-top"
-            ></td>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-right table-border-top table-applicant_title"
-            >
-              일반전형
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              158 ~ 170
-            </td>
-            <td rowSpan={2} className="table-border-right">
-              {commonScore["158-170"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              145 ~ 157
-            </td>
-            <td rowSpan={2} className="table-border-right">
-              {commonScore["145-157"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              132 ~ 144
-            </td>
-            <td rowSpan={2} className="table-border-right">
-              {commonScore["132-144"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              119 ~ 131
-            </td>
-            <td rowSpan={2} className="table-border-right">
-              {commonScore["119-131"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              106 ~ 118
-            </td>
-            <td rowSpan={2} className="table-border-right">
-              {commonScore["106-118"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              93 ~ 105
-            </td>
-            <td rowSpan={2} className="table-border-right">
-              {commonScore["93-105"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              80 ~ 92
-            </td>
-            <td rowSpan={2} className="table-border-right">
-              {commonScore["80-92"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left table-border-bottom"
-            >
-              79점 이하
-            </td>
-            <td rowSpan={2} className="table-border-right table-border-bottom">
-              {commonScore["-79"] || "0"}
-            </td>
-          </tr>
+          <th style={{ fontSize: "15px" }} className="common_score-left">
+            일반 전형
+          </th>
+          <th>대전</th>
+          <th>전국</th>
+          <CommonScoreList type="158~170" score1={score[0]["158-170"]} score2={score[1]["158-170"]} />
+          <CommonScoreList type="145~157" score1={score[0]["145-157"]} score2={score[1]["145-157"]} />
+          <CommonScoreList type="132~144" score1={score[0]["132-144"]} score2={score[1]["132-144"]} />
+          <CommonScoreList type="119~131" score1={score[0]["119-131"]} score2={score[1]["119-131"]} />
+          <CommonScoreList type="106~118" score1={score[0]["106-118"]} score2={score[1]["106-118"]} />
+          <CommonScoreList type="93~105" score1={score[0]["93-105"]} score2={score[1]["93-105"]} />
+          <CommonScoreList type="80~92" score1={score[0]["80-92"]} score2={score[1]["80-92"]} />
+          <CommonScoreList type="79점 이하" score1={score[0]["-79"]} score2={score[0]["-79"]} />
         </tbody>
       </table>
       <table className="meister_score-table">
         <tbody>
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left table-border-top"
-            ></td>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-top table-applicant_title"
-            >
-              마이스터
-            </td>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-right table-border-top table-applicant_title"
-            >
-              사회통합
-            </td>
+          <th className="meister_score-left" rowSpan={2}>
+            
+          </th>
+          <th colSpan={2}>마이스터</th>
+          <th colSpan={2}>사회통합</th>
+          <tr className="meister_score-top">
+            <td>대전</td>
+            <td>전국</td>
+            <td>대전</td>
+            <td>전국</td>
           </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              98 ~ 110
-            </td>
-            <td rowSpan={2}>{meisterScore["98-110"] || "0"}</td>
-            <td rowSpan={2} className="table-border-right">
-              {socialScore["98-110"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              85 ~ 97
-            </td>
-            <td rowSpan={2}>{meisterScore["85-97"] || "0"}</td>
-            <td rowSpan={2} className="table-border-right">
-              {socialScore["85-97"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              72 ~ 84
-            </td>
-            <td rowSpan={2}>{meisterScore["72-84"] || "0"}</td>
-            <td rowSpan={2} className="table-border-right">
-              {socialScore["72-84"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              59 ~ 71
-            </td>
-            <td rowSpan={2}>{meisterScore["59-71"] || "0"}</td>
-            <td rowSpan={2} className="table-border-right">
-              {socialScore["59-71"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              46 ~ 58
-            </td>
-            <td rowSpan={2}>{meisterScore["46-58"] || "0"}</td>
-            <td rowSpan={2} className="table-border-right">
-              {socialScore["46-58"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              33 ~ 45
-            </td>
-            <td rowSpan={2}>{meisterScore["33-45"] || "0"}</td>
-            <td rowSpan={2} className="table-border-right">
-              {socialScore["33-45"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left"
-            >
-              20 ~ 32
-            </td>
-            <td rowSpan={2}>{meisterScore["20-32"] || "0"}</td>
-            <td rowSpan={2} className="table-border-right">
-              {socialScore["20-32"] || "0"}
-            </td>
-          </tr>
-          <tr />
-          <tr>
-            <td
-              rowSpan={2}
-              className="table-color_background table-border-left table-border-bottom"
-            >
-              19점 이하
-            </td>
-            <td rowSpan={2} className="table-border-bottom">
-              {meisterScore["-19"] || "0"}
-            </td>
-            <td rowSpan={2} className="table-border-right table-border-bottom">
-              {socialScore["-19"] || "0"}
-            </td>
-          </tr>
-          <tr />
+          <MeisterScoreList
+            type="98~110"
+            score1={score[2]["98-110"]}
+            score2={score[3]["98-110"]}
+            score3={score[4]["98-110"]}
+            score4={score[5]["98-110"]}
+          />
+          <MeisterScoreList
+            type="85~79"
+            score1={score[2]["85-97"]}
+            score2={score[3]["85-97"]}
+            score3={score[4]["85-97"]}
+            score4={score[5]["85-97"]}
+          />
+          <MeisterScoreList
+            type="72~84"
+            score1={score[2]["72-84"]}
+            score2={score[3]["72-84"]}
+            score3={score[4]["72-84"]}
+            score4={score[5]["72-84"]}
+          />
+          <MeisterScoreList
+            type="59~71"
+            score1={score[2]["59-71"]}
+            score2={score[3]["59-71"]}
+            score3={score[4]["59-71"]}
+            score4={score[5]["59-71"]}
+          />
+          <MeisterScoreList
+            type="46~58"
+            score1={score[2]["46-58"]}
+            score2={score[3]["46-58"]}
+            score3={score[4]["46-58"]}
+            score4={score[5]["46-58"]}
+          />
+          <MeisterScoreList
+            type="33~45"
+            score1={score[2]["33-45"]}
+            score2={score[3]["33-45"]}
+            score3={score[4]["33-45"]}
+            score4={score[5]["33-45"]}
+          />
+          <MeisterScoreList
+            type="20~32"
+            score1={score[2]["20-32"]}
+            score2={score[3]["20-32"]}
+            score3={score[4]["20-32"]}
+            score4={score[5]["20-32"]}
+          />
+          <MeisterScoreList
+            type="19점 이하"
+            score1={score[2]["-19"]}
+            score2={score[3]["-19"]}
+            score3={score[4]["-19"]}
+            score4={score[5]["-19"]}
+          />
         </tbody>
       </table>
-      <S.TotalScore>총계: {totalApplicantCount}명</S.TotalScore>
+      {/* <S.TotalScore>총계: {1}명</S.TotalScore> */}
     </S.CompetitionTableWrapper>
   );
 };

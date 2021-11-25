@@ -1,42 +1,51 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
-import { CommonScoreDistribution } from "src/data/api/apiTypes";
+import { CommonScoreDistribution, GetCountStatisticsResponse, GetScoreStatisticsResponse } from "src/data/api/apiTypes";
 
 interface Props {
-  commonScore: CommonScoreDistribution;
+  count:GetCountStatisticsResponse;
 }
 
-const CommonGraph: FC<Props> = ({ commonScore }) => {
-  const [isWidthOfCommonGraphBar, setIsWidthOfCommonGraphBar] =
+const CommonGraph: FC<Props> = ({ count }) => {
+  const daejeonscore =/*  count[0].count */ 77
+  const commonscore = count[1].count
+  const [isWidthOfDaejeonGraphBar, setIsWidthOfDaejeonGraphBar] =
+    React.useState<any>("");
+    const [isWidthOfCommonGraphBar, setIsWidthOfCommonGraphBar] =
     React.useState<any>("");
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
 
   React.useEffect(() => {
-    setIsWidthOfCommonGraphBar(commonScore.common_count);
+    setIsWidthOfCommonGraphBar(commonscore/* commonScore.common_count */);
+    setIsWidthOfDaejeonGraphBar(daejeonscore);
     setIsAppearGraphOpa(true);
-  }, [commonScore]);
+  }, []);
 
-  const graphBarContent = () => {
-    if (isWidthOfCommonGraphBar >= 1) {
+  const graphBarContent = (count, isWidthOfGraphBar) => {
+    if (isWidthOfGraphBar >= 0) {
       return (
-        <S.GraphBarContentText>{isWidthOfCommonGraphBar}</S.GraphBarContentText>
+        <S.GraphBarContentText isWidthOfGraphBar={isWidthOfGraphBar}>{count}{/* {isWidthOfCommonGraphBar} */}</S.GraphBarContentText>
       );
     }
   };
 
   return (
     <S.GraphWrapper>
-      <S.GraphTitle>일반</S.GraphTitle>
       <S.GraphChart>
-        {isAppearGraphOpa && (
-          <S.CommonGraphBar isWidthOfCommonGraphBar={isWidthOfCommonGraphBar}>
-            {graphBarContent()}
+      {isAppearGraphOpa && (
+          <S.CommonGraphBar isWidthOfCommonGraphBar={isWidthOfDaejeonGraphBar} daejeon={true}>  
+            {graphBarContent(daejeonscore,isWidthOfDaejeonGraphBar)}
           </S.CommonGraphBar>
         )}
-        <S.GraphCompetitionRate>
-          {commonScore.common_competition_rate}:1
-        </S.GraphCompetitionRate>
+        {isAppearGraphOpa && (
+          <S.CommonGraphBar isWidthOfCommonGraphBar={isWidthOfCommonGraphBar} daejeon={false}>  
+            {graphBarContent(commonscore,isWidthOfCommonGraphBar)}
+          </S.CommonGraphBar>
+        )}
+        {/* <S.GraphCompetitionRate>
+          {commonScore.common_competition_rate}
+        </S.GraphCompetitionRate> */}
       </S.GraphChart>
     </S.GraphWrapper>
   );

@@ -4,44 +4,63 @@ import { GraphRateItems } from "./CompetitionGraphs/GraphRateItems";
 import { CommonGraph, MeisterGraph, SocialGraph } from "./CompetitionGraphs";
 import {
   CommonScoreDistribution,
+  GetCountStatisticsResponse,
+  GetScoreStatisticsResponse,
   SpecialScoreDistribution,
 } from "src/data/api/apiTypes";
 
 interface Props {
-  commonScore: CommonScoreDistribution;
+  /* commonScore: CommonScoreDistribution;
   meisterScore: SpecialScoreDistribution;
   socialScore: SpecialScoreDistribution;
   totalApplicantCount: number;
-  totalCompetitionRate: number;
+  totalCompetitionRate: number; */
+  count:GetCountStatisticsResponse;
 }
 
-const CompetitionTotalGraph: FC<Props> = ({
-  commonScore,
+const CompetitionTotalGraph: FC<Props> = (
+  {
+    /* commonScore,
   meisterScore,
   socialScore,
   totalApplicantCount,
-  totalCompetitionRate,
-}) => {
+  totalCompetitionRate, */
+  count
+  }
+) => {
   return (
     <S.CompetitionTotalGraphWrapper>
-      <S.CompetitionFreshmanTotal>
-        <span>총계:</span>
-        <S.TotalApplicantScore>{totalApplicantCount}명</S.TotalApplicantScore>
-        <span>경쟁률:</span>
-        <S.TotalCompetitionRate>
-          {totalCompetitionRate}:1
-        </S.TotalCompetitionRate>
-      </S.CompetitionFreshmanTotal>
-      <S.CompetitionGraphContainer>
-        <CommonGraph commonScore={commonScore} />
-        <MeisterGraph meisterScore={meisterScore} />
-        <SocialGraph socialScore={socialScore} />
-      </S.CompetitionGraphContainer>
       <S.GraphRateBar>
-        {GraphRateItems.map((item) => (
-          <S.GraphItemBox>{item.content}</S.GraphItemBox>
-        ))}
+        <S.EachGraphRateBarWrapper>
+          <span>90</span>
+          <div />
+        </S.EachGraphRateBarWrapper>
+        <S.EachGraphRateBarWrapper>
+          <span>60</span>
+          <div />
+        </S.EachGraphRateBarWrapper>
+        <S.EachGraphRateBarWrapper>
+          <span>30</span>
+          <div />
+        </S.EachGraphRateBarWrapper>
+        <S.EachGraphRateBarWrapper>
+          <span>0</span>
+          <div />
+        </S.EachGraphRateBarWrapper>
       </S.GraphRateBar>
+      <S.CompetitionGraphContainer>
+        <div className="graph-wrapper">
+          
+          <CommonGraph count={count} />
+        <MeisterGraph count={count} />
+        <SocialGraph count={count} />
+        </div>
+        <div className="graph-region">
+          <span>일반</span>
+          <span>마이스터</span>
+          <span>사회통합</span>
+        </div>
+      </S.CompetitionGraphContainer>
     </S.CompetitionTotalGraphWrapper>
   );
 };

@@ -1,46 +1,53 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
-import { SpecialScoreDistribution } from "src/data/api/apiTypes";
+import { GetCountStatisticsResponse, GetScoreStatisticsResponse, SpecialScoreDistribution } from "src/data/api/apiTypes";
 
 interface Props {
-  meisterScore: SpecialScoreDistribution;
+/*   meisterScore: SpecialScoreDistribution;
+ */
+count:GetCountStatisticsResponse;
 }
 
-const MeisterGraph: FC<Props> = ({ meisterScore }) => {
-  const [isWidthOfMeisterGraphBar, setIsWidthOfMeisterGraphBar] =
-    React.useState<any>();
+const MeisterGraph: FC<Props> = ({ count }) => {
+  const daejeonscore = count[2].count
+  const commonscore = count[3].count
+  const [isWidthOfDaejeonGraphBar, setIsWidthOfDaejeonGraphBar] =
+    React.useState<any>("");
+    const [isWidthOfCommonGraphBar, setIsWidthOfCommonGraphBar] =
+    React.useState<any>("");
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
 
   React.useEffect(() => {
-    setIsWidthOfMeisterGraphBar(meisterScore.special_count);
+    setIsWidthOfCommonGraphBar(commonscore/* commonScore.common_count */);
+    setIsWidthOfDaejeonGraphBar(daejeonscore);
     setIsAppearGraphOpa(true);
-  }, [meisterScore]);
+  }, []);
 
-  const graphBarContent = () => {
-    if (isWidthOfMeisterGraphBar >= 1) {
+  const graphBarContent = (count, isWidthOfGraphBar) => {
+    if (isWidthOfGraphBar >= 0) {
       return (
-        <S.GraphBarContentText>
-          {isWidthOfMeisterGraphBar}
-        </S.GraphBarContentText>
+        <S.GraphBarContentText isWidthOfGraphBar={isWidthOfGraphBar}>{count}{/* {isWidthOfCommonGraphBar} */}</S.GraphBarContentText>
       );
     }
   };
 
   return (
     <S.GraphWrapper>
-      <S.GraphTitle>마이스터</S.GraphTitle>
       <S.GraphChart>
-        {isAppearGraphOpa && (
-          <S.MeisterGraphBar
-            isWidthOfMeisterGraphBar={isWidthOfMeisterGraphBar}
-          >
-            {graphBarContent()}
+      {isAppearGraphOpa && (
+          <S.MeisterGraphBar isWidthOfMeisterGraphBar={isWidthOfDaejeonGraphBar} daejeon={true}>  
+            {graphBarContent(daejeonscore,isWidthOfDaejeonGraphBar)}
           </S.MeisterGraphBar>
         )}
-        <S.GraphCompetitionRate>
-          {meisterScore.special_competition_rate}:1
-        </S.GraphCompetitionRate>
+        {isAppearGraphOpa && (
+          <S.MeisterGraphBar isWidthOfMeisterGraphBar={isWidthOfCommonGraphBar} daejeon={false}>  
+            {graphBarContent(commonscore,isWidthOfCommonGraphBar)}
+          </S.MeisterGraphBar>
+        )}
+        {/* <S.GraphCompetitionRate>
+          {commonScore.common_competition_rate}
+        </S.GraphCompetitionRate> */}
       </S.GraphChart>
     </S.GraphWrapper>
   );

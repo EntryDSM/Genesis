@@ -60,14 +60,23 @@ export const updateScheduleApi = async (access_token: string, payload: T.UpdateS
 }
 
 export const getStatisticsApi = async (access_token: string) => {
-  const response = await getRequest().get<T.GetEachStatisticsResponse>(
-   uri.total ,
-    {
-      headers: authorization(getAccessToken()),
-    },
-  );
-
-  return response;
+  const response1 = await getRequest().get<T.GetCountStatisticsResponse>(
+    uri.total+'/count' ,
+     {
+       headers: authorization(getAccessToken()),
+     },
+   );
+     console.log(response1)
+     const response2 = await getRequest().get<T.GetScoreStatisticsResponse>(
+      uri.total+'/score' ,
+       {
+         headers: authorization(getAccessToken()),
+       },
+     );
+       console.log(response2)
+       console.log({count:response1.data,score:response2.data})
+       const result:T.StaticDistribution = {count:response1.data,score:response2.data}; 
+  return result;
 };
 
 export const getApplicantsListApi = async (access_token: string, payload: T.GetApplicantsListPayload) => {

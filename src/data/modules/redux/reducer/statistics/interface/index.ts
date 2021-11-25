@@ -1,6 +1,8 @@
 import { error } from 'src/models/error';
 import {
     CommonScoreDistribution, 
+    GetCountStatisticsResponse, 
+    GetScoreStatisticsResponse, 
     SpecialScoreDistribution 
 } from '../../../../../api/apiTypes';
 
@@ -11,10 +13,6 @@ export interface IStatisticsState {
 }
 
 export interface statisticsType {
-  total_applicant_count: number;
-  total_competition_rate: number;
-  total_submitted_applicant_count: number;
-  common_score: CommonScoreDistribution;
-  meister_score: SpecialScoreDistribution;
-  social_score: SpecialScoreDistribution;
+  count:GetCountStatisticsResponse,
+  score:GetScoreStatisticsResponse
 }

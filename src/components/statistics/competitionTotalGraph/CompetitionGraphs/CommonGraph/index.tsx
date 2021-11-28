@@ -7,7 +7,7 @@ interface Props {
 }
 
 const CommonGraph: FC<Props> = ({ count }) => {
-  const daejeonscore =/*  count[0].count */ 77
+  const daejeonscore = count[0].count
   const commonscore = count[1].count
   const [isWidthOfDaejeonGraphBar, setIsWidthOfDaejeonGraphBar] =
     React.useState<any>("");

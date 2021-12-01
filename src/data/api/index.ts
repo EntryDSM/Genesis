@@ -66,15 +66,12 @@ export const getStatisticsApi = async (access_token: string) => {
        headers: authorization(getAccessToken()),
      },
    );
-     console.log(response1)
      const response2 = await getRequest().get<T.GetScoreStatisticsResponse>(
       uri.total+'/score' ,
        {
          headers: authorization(getAccessToken()),
        },
      );
-       console.log(response2)
-       console.log({count:response1.data,score:response2.data})
        const result:T.StaticDistribution = {count:response1.data,score:response2.data}; 
   return result;
 };

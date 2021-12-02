@@ -2,30 +2,43 @@ import React, { FC } from "react";
 
 import QualificationexamDetailInfo from "./QualificationexamDetailInfo";
 import GeneralDetailInfo from "./GeneralDetailInfo";
-import {
-  ApplicantPersonalData,
-  ApplicantEvaluation,
-} from "src/data/api/apiTypes";
 
 interface Props {
   isQUALIFICATION_EXAM: boolean;
-  applicantPersonalData: ApplicantPersonalData;
-  applicantEvaluation: ApplicantEvaluation;
+  applicantCommonInformation: {
+    name: string;
+    school_name: string;
+    email: string;
+    telephone_number: string;
+    school_tel?: string;
+    parent_tel: string;
+  };
+  applicantEvaluation: {
+    volunteer_time: number;
+    conversion_score: number;
+    day_absence_count: number;
+    lecture_absence_count: number;
+    early_leave_count: number;
+    lateness_count: number;
+    self_introduce: string;
+    study_plan: string;
+    average_score: number;
+  };
 }
 
 const DetailInfo: FC<Props> = ({
   isQUALIFICATION_EXAM,
-  applicantPersonalData,
+  applicantCommonInformation,
   applicantEvaluation,
 }) => {
   return isQUALIFICATION_EXAM ? (
     <QualificationexamDetailInfo
-      applicantPersonalData={applicantPersonalData}
+      applicantCommonInformation={applicantCommonInformation}
       applicantEvaluation={applicantEvaluation}
     />
   ) : (
     <GeneralDetailInfo
-      applicantPersonalData={applicantPersonalData}
+      applicantCommonInformation={applicantCommonInformation}
       applicantEvaluation={applicantEvaluation}
     />
   );

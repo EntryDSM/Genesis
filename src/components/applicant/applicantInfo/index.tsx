@@ -32,28 +32,22 @@ const ApplicantInfo: FC<Props> = ({
   setIsContainerWidth,
   getApplicantInfo,
 }) => {
-  const filterResponse = applicantsList.applicants_information_responses.filter(
-    (i) => {
-      return (
-        i.name ===
-        currnetApplicantInfo?.submitted_applicant?.personal_data?.name
-      );
-    }
-  );
-  if (currnetApplicantInfo.submitted_applicant) {
+  const filterResponse = applicantsList.applicants.filter((i) => {
+    return i.name === currnetApplicantInfo?.common_information?.name;
+  });
+  if (currnetApplicantInfo.more_information) {
     return (
       <>
-        {applicantsList.applicants_information_responses &&
+        {applicantsList.applicants &&
           filterResponse.map((info) => (
             <Submitted
               isContainerWidth={isContainerWidth}
-              applicantPersonalData={
-                currnetApplicantInfo.submitted_applicant.personal_data
+              applicantCommonInformation={
+                currnetApplicantInfo.common_information
               }
-              applicantEvaluation={
-                currnetApplicantInfo.submitted_applicant.evaluation
-              }
-              applicantStatus={currnetApplicantInfo.submitted_applicant.status}
+              applicantMoreInformation={currnetApplicantInfo.more_information}
+              applicantEvaluation={currnetApplicantInfo.evaluation}
+              applicantStatus={currnetApplicantInfo.status}
               applicantListItem={info}
               updateApplicantStatusStatus={updateApplicantStatusStatus}
               updateApplicantStatus={updateApplicantStatus}
@@ -65,12 +59,11 @@ const ApplicantInfo: FC<Props> = ({
           ))}
       </>
     );
-  }
-  if (currnetApplicantInfo.not_submitted_applicant) {
+  } else {
     return (
       <UnSubmitted
         isContainerWidth={isContainerWidth}
-        not_submitted_applicant={currnetApplicantInfo.not_submitted_applicant}
+        applicantCommonInfomation={currnetApplicantInfo.common_information}
         setIsContainerWidth={setIsContainerWidth}
       />
     );

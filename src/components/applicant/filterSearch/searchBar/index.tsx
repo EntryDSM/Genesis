@@ -10,7 +10,7 @@ interface Props {
 
 const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
   const categoryList = [
-    { content: "전화번호", id: "telephone" },
+    { content: "학교이름", id: "school_name" },
     { content: "이름", id: "name" },
     { content: "접수번호", id: "receipt_code" },
   ];

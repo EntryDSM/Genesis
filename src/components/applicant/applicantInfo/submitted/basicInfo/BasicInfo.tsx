@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { ApplicantPersonalData } from "src/data/api/apiTypes";
 import {
   returnApplicationType,
   returnApplicationRemark,
@@ -8,21 +7,33 @@ import {
 } from "src/utils/checkType";
 
 interface Props {
-  applicantPersonalData: ApplicantPersonalData;
+  applicantMoreInformation: {
+    photo_url: string;
+    birthday: string;
+    education_status: string;
+    application_type: string;
+    application_remark: string;
+    address: string;
+    detail_address: string;
+    head_count: string;
+  };
+  applicantCommonInformation: {
+    name: string;
+    school_name: string;
+  };
 }
 
 const BasicInfo: FC<Props> = ({
-  applicantPersonalData: {
+  applicantMoreInformation: {
     photo_url,
-    name,
-    birth_date,
-    school_name,
-    educational_status,
+    birthday,
+    education_status,
     application_type,
+    application_remark,
     address,
     detail_address,
-    application_remark,
   },
+  applicantCommonInformation: { name, school_name },
 }) => {
   const checkApplicationType = React.useCallback(() => {
     return returnApplicationType(application_type);
@@ -31,15 +42,15 @@ const BasicInfo: FC<Props> = ({
     return returnApplicationRemark(application_remark);
   }, [application_remark]);
   const checkEducationalType = React.useCallback(() => {
-    return returnEducationalType(educational_status);
-  }, [educational_status]);
+    return returnEducationalType(education_status);
+  }, [education_status]);
 
   return (
     <S.Wrapper>
       <S.IDPicture src={photo_url} alt="ID Photo" />
       <ul>
         <S.InfoLine isOneLine={true}>
-          <h3>{name}</h3> <p>{birth_date}</p>
+          <h3>{name}</h3> <p>{birthday}</p>
         </S.InfoLine>
         <S.InfoLine isOneLine={false}>
           {(school_name ? school_name + " " : "") +

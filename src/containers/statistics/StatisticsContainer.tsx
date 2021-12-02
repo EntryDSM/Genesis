@@ -12,10 +12,6 @@ const StatisticsContainer: FC = () => {
   const statisticsState = useStatistics();
   const authState = useAuth();
   const signinState = useSignIn();
-  const {
-    score,
-    count
-  } = statisticsState.state.statistics;
 
   React.useEffect(() => {
     statisticsState.setState.getStatistics();
@@ -27,7 +23,7 @@ const StatisticsContainer: FC = () => {
 
   React.useEffect(() => {
     if (
-      statisticsState.state.error.status === 401 &&
+      signinState.state.error.status === 401 &&
       signinState.state.error.type === REFRESH_TOKEN
     ) {
       authState.setState.setAccessToken("");
@@ -50,8 +46,8 @@ const StatisticsContainer: FC = () => {
   return (
     <Suspense fallback={<div>로딩중...</div>}>
       <Statistics
-        score={score}
-        count={count}
+        score={statisticsState.state.statistics.score}
+        count={statisticsState.state.statistics.count}
       />
     </Suspense>
   );

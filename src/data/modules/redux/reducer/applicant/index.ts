@@ -29,63 +29,53 @@ const InitialState: ApplicantState = {
     page: 0,
     is_daejeon: false,
     is_nationwide: false,
-    is_printed_arrived: null,
+    is_submitted: null,
     is_common: false,
     is_meister: false,
     is_social: false,
     is_in: false,
     is_out: false,
     receipt_code: null,
-    telephone: null,
+    school_name: null,
     name: null,
   },
   applicantsList: {
     total_elements: 0,
     total_pages: 0,
-    applicants_information_responses: [],
+    applicants: [],
   },
   currnetApplicantInfo: {
-      submitted_applicant: {
-        status: {
-          is_printed_arrived: false,
-          is_submit: false,
-        },
-        personal_data: {
-          photo_url: '',
-          name: '',
-          email: '',
-          birth_date: '',
-          school_name: '',
-          educational_status: '',
-          application_type: '',
-          address: '',
-          detail_address: '',
-          telephone_number: '',
-          parent_tel: '',
-          school_tel: '',
-          home_tel: '',
-          is_graduated: false,
-          application_remark: '',
-          headcount: '',
-        },
-        evaluation: {
-          volunteer_time: 0,
-          conversion_score: 0,
-          day_absence_count: 0,
-          lecture_absence_count: 0,
-          early_leave_count: 0,
-          lateness_count: 0,
-          self_introduce: '',
-          study_plan: '',
-          average_score: 0,
-        },
+    status: {
+      is_printed_arrived: false,
+      is_submit: false,
     },
-      not_submitted_applicant: {
-        email: '',
-        applicant_tel: '',
-        parent_tel: '',
-        home_tel: '',
-        school_tel: '',
+    common_information:{  
+      name: '',
+      school_name: '',
+      email: '',
+      telephone_number: '',
+      school_tel: '',
+      parent_tel: '',
+    },
+    more_information: {
+      photo_url: '',
+        birthday: '',
+        education_status: '',
+        application_type: '',
+        application_remark: '',
+        address: '',
+        detail_address: '',
+        head_count: '',    },
+    evaluation: {
+      volunteer_time: 0,
+      conversion_score: 0,
+      day_absence_count: 0,
+      lecture_absence_count: 0,
+      early_leave_count: 0,
+      lateness_count: 0,
+      self_introduce: '',
+      study_plan: '',
+      average_score: 0,
     }
   },
   updateApplicantStatus: {
@@ -119,7 +109,7 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
         applicantsList: {
           total_elements: action.payload.total_elements,
           total_pages: action.payload.total_pages,
-          applicants_information_responses: action.payload.applicants_information_responses,
+          applicants: action.payload.applicants,
         },
       };
     }
@@ -133,11 +123,10 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
       return {
         ...state,
         currnetApplicantInfo: {
-          submitted_applicant: {
-            status: action.payload.submitted_applicant.status,
-            personal_data: action.payload.submitted_applicant.personal_data,
-            evaluation: action.payload.submitted_applicant.evaluation
-          },
+          status: action.payload.status,
+          common_information: action.payload.common_information,
+          more_information: action.payload.more_information,
+          evaluation: action.payload.evaluation
         },
       };
     }
@@ -145,7 +134,8 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
       return {
         ...state,
         currnetApplicantInfo: {
-          not_submitted_applicant: action.payload.not_submitted_applicant
+          status: action.payload.status,
+          common_information: action.payload.common_information,
         },
       };
     }

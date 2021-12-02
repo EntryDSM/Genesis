@@ -25,7 +25,7 @@ const ApplicantContainer: FC = () => {
 
   React.useEffect(() => {
     if (
-      applicantState.state.error.status === 401 &&
+      signinState.state.error.status === 401 &&
       signinState.state.error.type === REFRESH_TOKEN
     ) {
       authState.setState.setAccessToken("");

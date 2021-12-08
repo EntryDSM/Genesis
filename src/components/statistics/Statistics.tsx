@@ -23,7 +23,7 @@ const Statistics: FC<Props> = ({ score, count }) => {
     }
     return result;
   }
-  const totalCompetition = (getTotalCount()/80).toFixed(1);
+  const totalCompetition = (getTotalCount()/72).toFixed(1);
   return (
     <S.StatisticsPageContainer>
       <S.StatisticsContainer>
@@ -69,9 +69,7 @@ const Statistics: FC<Props> = ({ score, count }) => {
             /* totalApplicantCount={totalApplicantCount}
           totalCompetitionRate={totalCompetitionRate}
           total_submitted_applicant_count={total_submitted_applicant_count} */
-            totalApplicantCount={1}
-            totalCompetitionRate={1}
-            total_submitted_applicant_count={1}
+            count={count}
           />
         </S.StatisticsBox>
       </S.StatisticsContainer>

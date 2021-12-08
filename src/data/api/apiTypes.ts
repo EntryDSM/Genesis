@@ -140,11 +140,11 @@ export interface GetApplicantInfoPayload {
 }
 
 export interface GetApplicantInfoResponse {
-  status: {
+  status?: {
     is_printed_arrived: boolean;
     is_submit: boolean;
   },
-  common_information:{  
+  common_information?:{  
     name: string;
     school_name: string;
     email: string;
@@ -152,7 +152,7 @@ export interface GetApplicantInfoResponse {
     school_tel?: string;
     parent_tel: string;
   },
-  more_information: {
+  more_information?: {
     photo_url: string;
 		birthday: string;
 		education_status: string;
@@ -162,7 +162,7 @@ export interface GetApplicantInfoResponse {
 		detail_address: string;
 		head_count: string
   },
-  evaluation: {
+  evaluation?: {
     volunteer_time: number;
     conversion_score: number;
     day_absence_count: number;

@@ -18,6 +18,7 @@ const ApplicantsListItem: FC<Props> = ({
   applicantInfo: {
     receipt_code,
     name,
+    email,
     is_daejeon,
     application_type,
     is_printed_arrived,
@@ -40,9 +41,7 @@ const ApplicantsListItem: FC<Props> = ({
   return (
     <>
       <S.TR
-        isSelected={
-          headcount === currnetApplicantInfo?.more_information?.head_count
-        }
+        isSelected={email === currnetApplicantInfo?.common_information.email}
         onClick={() => handleClick(receipt_code)}
       >
         <S.TD>{receipt_code}</S.TD>

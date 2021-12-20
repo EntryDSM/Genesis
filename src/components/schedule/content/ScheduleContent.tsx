@@ -81,22 +81,44 @@ const ScheduleContent: FC<Props> = ({
 }) => {
   React.useEffect(() => {
     setStartDate(
-      "2021-" + String(startScheduleMonth) + "-" + String(startScheduleDay)
+      "2021-" +
+        String(startScheduleMonth) +
+        "-" +
+        String(startScheduleDay) +
+        "T" +
+        "12:05:05"
     );
     setEndDate(
-      "2021-" + String(endScheduleMonth) + "-" + String(endScheduleDay)
+      "2021-" +
+        String(endScheduleMonth) +
+        "-" +
+        String(endScheduleDay) +
+        "T" +
+        "12:05:05"
     );
     setFirstDate(
-      "2021-" + String(firstScheduleMonth) + "-" + String(firstScheduleDay)
+      "2021-" +
+        String(firstScheduleMonth) +
+        "-" +
+        String(firstScheduleDay) +
+        "T" +
+        "12:05:05"
     );
     setInterviewDate(
       "2021-" +
         String(interviewScheduleMonth) +
         "-" +
-        String(interviewScheduleDay)
+        String(interviewScheduleDay) +
+        "T" +
+        "12:05:05"
     );
     setSecondDate(
-      "2021-" + String(secondScheduleMonth) + "-" + String(secondScheduleDay)
+      "2021-" +
+        String(secondScheduleMonth) +
+        "-" +
+        String(secondScheduleDay) +
+        "T" +
+        "12:05:05"
     );
   }, [
     startScheduleMonth,

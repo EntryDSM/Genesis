@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import * as S from "./style";
 import CompetitionTable from "./competitionTable";
 import CompetitionView from "./competitionView";
@@ -9,6 +9,7 @@ import {
   GetScoreStatisticsResponse,
   SpecialScoreDistribution,
 } from "src/data/api/apiTypes";
+import { decimalLimit } from "src/utils/checkType";
 
 interface Props {
   score: GetScoreStatisticsResponse;
@@ -23,6 +24,7 @@ const Statistics: FC<Props> = ({ score, count }) => {
     }
     return result;
   }
+
   const totalCompetition = (getTotalCount()/72).toFixed(1);
   return (
     <S.StatisticsPageContainer>
@@ -37,7 +39,7 @@ const Statistics: FC<Props> = ({ score, count }) => {
             </S.EachStatisticsSubjectWrapper>
             <S.EachStatisticsSubjectWrapper>
               <S.StatisticsSubjectTitle>경쟁률 :</S.StatisticsSubjectTitle>
-              <S.StatisticsSubjectCount>{getTotalCount()?totalCompetition:0} : 1</S.StatisticsSubjectCount>
+              <S.StatisticsSubjectCount>{getTotalCount()?decimalLimit(totalCompetition):0} : 1</S.StatisticsSubjectCount>
 
             </S.EachStatisticsSubjectWrapper>
           </S.StatisticsSubjectWrapper>

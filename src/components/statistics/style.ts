@@ -3,7 +3,7 @@ import { color, pxToRem } from "../../styles";
 
 export const StatisticsPageContainer = styled.div`
   width: 100%;
-  min-height: 300vh;
+  min-height: 220vh;
   overflow-y:hidden;
   min-width: ${pxToRem(1320)}rem;
   display: flex;
@@ -16,7 +16,7 @@ export const StatisticsPageContainer = styled.div`
 
 export const StatisticsContainer = styled.div`
   width: 70%;
-  height: 300vh;
+  height: 220vh;
   padding-top: ${pxToRem(80)}rem;
   padding-bottom: ${pxToRem(80)}rem;
   background: ${color.backgorund};
@@ -340,12 +340,12 @@ export const GraphChart = styled.div`
   /*   background-color: ${color.light};*/
 `;
 
-export const CommonGraphBar = styled.div<{ isWidthOfCommonGraphBar; daejeon }>`
+export const CommonGraphBar = styled.div<{ isWidthOfCommonGraphBar; is_daejeon }>`
   height: ${({ isWidthOfCommonGraphBar }) =>
     isWidthOfCommonGraphBar ? isWidthOfCommonGraphBar>5?(310/100)*(isWidthOfCommonGraphBar)*1.07:(310/100)*5 : 0}px;
   width: 42px;
   background-image: ${(props) =>
-    props.daejeon
+    props.is_daejeon
       ? "linear-gradient(to bottom,#f57278,#ff897b)"
       : "linear-gradient(to bottom,#FF9B9F,#FF9B9F)"};
   border-radius: 25px 25px 0px 0;
@@ -369,12 +369,12 @@ export const CommonGraphBar = styled.div<{ isWidthOfCommonGraphBar; daejeon }>`
   }
 `;
 
-export const MeisterGraphBar = styled.div<{ isWidthOfMeisterGraphBar,daejeon }>`
+export const MeisterGraphBar = styled.div<{ isWidthOfMeisterGraphBar,is_daejeon }>`
   height: ${({ isWidthOfMeisterGraphBar }) =>
     isWidthOfMeisterGraphBar ? isWidthOfMeisterGraphBar>5?(310/100)*(isWidthOfMeisterGraphBar)*1.07:(310/100)*5 : 0}px;
   width: 42px;
   background-image: ${(props) =>
-    props.daejeon
+    props.is_daejeon
       ? "linear-gradient(to bottom,#f57278,#ff897b)"
       : "linear-gradient(to bottom,#FF9B9F,#FF9B9F)"};
   border-radius: 25px 25px 0px 0;
@@ -398,12 +398,12 @@ export const MeisterGraphBar = styled.div<{ isWidthOfMeisterGraphBar,daejeon }>`
   }
 `;
 
-export const SocialGraphBar = styled.div<{ isWidthOfSocialGraphBar,daejeon }>`
+export const SocialGraphBar = styled.div<{ isWidthOfSocialGraphBar,is_daejeon }>`
   height: ${({ isWidthOfSocialGraphBar }) =>
     isWidthOfSocialGraphBar ? isWidthOfSocialGraphBar>5?(310/100)*(isWidthOfSocialGraphBar)*1.07:(310/100)*5 : 0}px;
   width: 42px;
   background-image: ${(props) =>
-    props.daejeon
+    props.is_daejeon
       ? "linear-gradient(to bottom,#f57278,#ff897b)"
       : "linear-gradient(to bottom,#FF9B9F,#FF9B9F)"};
   border-radius: 25px 25px 0px 0;

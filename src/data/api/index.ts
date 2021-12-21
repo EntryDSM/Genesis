@@ -59,20 +59,21 @@ export const updateScheduleApi = async (access_token: string, payload: T.UpdateS
   }
 }
 
-export const getStatisticsApi = async (access_token: string) => {
+export const getStatisticsApi = async () => {
   const response1 = await getRequest().get<T.GetCountStatisticsResponse>(
-    uri.total+'/count' ,
+    uri.count ,
      {
        headers: authorization(getAccessToken()),
      },
    );
      const response2 = await getRequest().get<T.GetScoreStatisticsResponse>(
-      uri.total+'/score' ,
+      uri.score ,
        {
          headers: authorization(getAccessToken()),
        },
      );
        const result:T.StaticDistribution = {count:response1.data,score:response2.data}; 
+       console.log('statics:',result)
   return result;
 };
 
@@ -116,25 +117,9 @@ export const updateApplicantSubmitStatusApi = async (access_token: string, paylo
   try {
     const request = getRequest();
 
-<<<<<<< Updated upstream
     await request.patch(uri.applicant_status+`/${payload.receipt_code}`, null, {
     headers: authorization(getAccessToken()),
   });
-=======
-<<<<<<< HEAD
-    await request.patch(
-      uri.applicant_status + `/${payload.receipt_code}`,
-      null,
-      {
-        headers: authorization(getAccessToken()),
-      }
-    );
-=======
-    await request.patch(uri.application_submitted+`/${payload.receipt_code}`, null, {
-    headers: authorization(getAccessToken()),
-  });
->>>>>>> main
->>>>>>> Stashed changes
   } catch (error) {
     throw error;
   }

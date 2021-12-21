@@ -3,7 +3,7 @@ import { color, pxToRem } from "../../styles";
 
 export const StatisticsPageContainer = styled.div`
   width: 100%;
-  min-height: 220vh;
+  min-height: 1800px;
   overflow-y:hidden;
   min-width: ${pxToRem(1320)}rem;
   display: flex;
@@ -16,7 +16,7 @@ export const StatisticsPageContainer = styled.div`
 
 export const StatisticsContainer = styled.div`
   width: 70%;
-  height: 220vh;
+  height: 1800px;
   padding-top: ${pxToRem(80)}rem;
   padding-bottom: ${pxToRem(80)}rem;
   background: ${color.backgorund};

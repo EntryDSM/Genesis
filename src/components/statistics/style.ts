@@ -87,7 +87,34 @@ font-size: 28px;
   font-weight: bold;
   font-family: "Noto Sans KR-Bold", sans-serif !important;
   color: ${color.primaryTextColor};
+  display:flex;
+  flex-direction:row;
+  align-items:flex-end;
+  
+  >div{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    margin-left:30px;
+    >div{
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      
+      >p{
+        font-size:14px;
+      }
+    }
+  }
 `;
+
+export const StatisticsColorBox = styled.div`
+        width:12px;
+        height:12px;
+        border-radius:100%;
+        margin-left:5px;
+        margin-right:10px;
+`
 
 export const CompetitionTableWrapper = styled.div`
   width: 58%;

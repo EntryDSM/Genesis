@@ -19,13 +19,13 @@ interface Props {
 const Statistics: FC<Props> = ({ score, count }) => {
   const getTotalCount = () => {
     let result = 0;
-    for(let i =0;i<6;i++){
+    for (let i = 0; i < 6; i++) {
       result += count[i].count;
     }
     return result;
-  }
+  };
 
-  const totalCompetition = (getTotalCount()/72).toFixed(1);
+  const totalCompetition = (getTotalCount() / 72).toFixed(1);
   return (
     <S.StatisticsPageContainer>
       <S.StatisticsContainer>
@@ -34,20 +34,35 @@ const Statistics: FC<Props> = ({ score, count }) => {
           <S.StatisticsSubTitle>Entry DSM 2021 Admin page</S.StatisticsSubTitle>
           <S.StatisticsSubjectWrapper>
             <S.EachStatisticsSubjectWrapper>
-              <S.StatisticsSubjectTitle>총 지원자 수 :</S.StatisticsSubjectTitle>
-              <S.StatisticsSubjectCount>{getTotalCount()} <span>명</span></S.StatisticsSubjectCount>
+              <S.StatisticsSubjectTitle>
+                총 지원자 수 :
+              </S.StatisticsSubjectTitle>
+              <S.StatisticsSubjectCount>
+                {getTotalCount()} <span>명</span>
+              </S.StatisticsSubjectCount>
             </S.EachStatisticsSubjectWrapper>
             <S.EachStatisticsSubjectWrapper>
               <S.StatisticsSubjectTitle>경쟁률 :</S.StatisticsSubjectTitle>
-              <S.StatisticsSubjectCount>{getTotalCount()?decimalLimit(totalCompetition):0} : 1</S.StatisticsSubjectCount>
-
+              <S.StatisticsSubjectCount>
+                {getTotalCount() ? decimalLimit(totalCompetition) : 0} : 1
+              </S.StatisticsSubjectCount>
             </S.EachStatisticsSubjectWrapper>
           </S.StatisticsSubjectWrapper>
           <S.CompetitionTableTitle>
             2022년 신입생 지원률
+            <div>
+              <div>
+                <p>대전</p>
+                <S.StatisticsColorBox style={{backgroundColor:"#ff897b"}} />
+              </div>
+              <div>
+                <p>전국</p>
+                <S.StatisticsColorBox style={{backgroundColor:"#FF9B9F"}} />
+              </div>
+            </div>
           </S.CompetitionTableTitle>
           <CompetitionTotalGraph
-          /* commonScore={commonScore}
+            /* commonScore={commonScore}
             meisterScore={meisterScore}
             socialScore={socialScore}
             totalApplicantCount={totalApplicantCount}

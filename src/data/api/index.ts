@@ -116,9 +116,25 @@ export const updateApplicantSubmitStatusApi = async (access_token: string, paylo
   try {
     const request = getRequest();
 
+<<<<<<< Updated upstream
     await request.patch(uri.applicant_status+`/${payload.receipt_code}`, null, {
     headers: authorization(getAccessToken()),
   });
+=======
+<<<<<<< HEAD
+    await request.patch(
+      uri.applicant_status + `/${payload.receipt_code}`,
+      null,
+      {
+        headers: authorization(getAccessToken()),
+      }
+    );
+=======
+    await request.patch(uri.application_submitted+`/${payload.receipt_code}`, null, {
+    headers: authorization(getAccessToken()),
+  });
+>>>>>>> main
+>>>>>>> Stashed changes
   } catch (error) {
     throw error;
   }

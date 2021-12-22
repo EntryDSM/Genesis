@@ -21,7 +21,7 @@ const SocialGraph: FC<Props> = ({ count }) => {
     setIsWidthOfCommonGraphBar(commonscore/* commonScore.common_count */);
     setIsWidthOfDaejeonGraphBar(daejeonscore);
     setIsAppearGraphOpa(true);
-  }, []);
+  }, [count]);
 
   const graphBarContent = (count, isWidthOfGraphBar) => {
     if (isWidthOfGraphBar >= 0) {
@@ -35,12 +35,12 @@ const SocialGraph: FC<Props> = ({ count }) => {
     <S.GraphWrapper>
       <S.GraphChart>
       {isAppearGraphOpa && (
-          <S.SocialGraphBar isWidthOfSocialGraphBar={isWidthOfDaejeonGraphBar} daejeon={true}>  
+          <S.SocialGraphBar isWidthOfSocialGraphBar={isWidthOfDaejeonGraphBar} is_daejeon={true}>  
             {graphBarContent(daejeonscore,isWidthOfDaejeonGraphBar)}
           </S.SocialGraphBar>
         )}
         {isAppearGraphOpa && (
-          <S.SocialGraphBar isWidthOfSocialGraphBar={isWidthOfCommonGraphBar} daejeon={false}>  
+          <S.SocialGraphBar isWidthOfSocialGraphBar={isWidthOfCommonGraphBar} is_daejeon={false}>  
             {graphBarContent(commonscore,isWidthOfCommonGraphBar)}
           </S.SocialGraphBar>
         )}

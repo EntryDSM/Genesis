@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { GetCountStatisticsResponse } from "src/data/api/apiTypes";
+import { decimalLimit } from "src/utils/checkType";
 import * as S from "../style";
 
 interface Props {
@@ -41,12 +42,12 @@ const CompetitionView: FC<Props> = ({
 
           <tr />
           <tr className="competition-table-bottom">
-            <td>{daejeon[0].count?(daejeon[0].count/20).toFixed(1) : 0} : 1</td>
-            <td>{daejeon[1].count?(daejeon[1].count/9).toFixed(1) : 0} : 1</td>
-            <td>{daejeon[2].count?(daejeon[2].count/1).toFixed(1) :0} : 1</td>
-            <td>{common[0].count?(daejeon[0].count/20).toFixed(1):0} : 1</td>
-            <td>{common[1].count?(daejeon[1].count/9).toFixed(1):0} : 1</td>
-            <td>{common[2].count?(daejeon[2].count/1).toFixed(1):0} : 1</td>
+            <td>{daejeon[0].count?decimalLimit((daejeon[0].count/20).toFixed(1)) : 0} : 1</td>
+            <td>{daejeon[1].count?decimalLimit((daejeon[1].count/9).toFixed(1)) : 0} : 1</td>
+            <td>{daejeon[2].count?decimalLimit((daejeon[2].count/1).toFixed(1)) :0} : 1</td>
+            <td>{common[0].count?decimalLimit((daejeon[0].count/20).toFixed(1)):0} : 1</td>
+            <td>{common[1].count?decimalLimit((daejeon[1].count/9).toFixed(1)):0} : 1</td>
+            <td>{common[2].count?decimalLimit((daejeon[2].count/1).toFixed(1)):0} : 1</td>
           </tr>
           <tr />
         </tbody>

@@ -22,7 +22,7 @@ const MeisterGraph: FC<Props> = ({ count }) => {
     setIsWidthOfCommonGraphBar(commonscore/* commonScore.common_count */);
     setIsWidthOfDaejeonGraphBar(daejeonscore);
     setIsAppearGraphOpa(true);
-  }, []);
+  }, [count]);
 
   const graphBarContent = (count, isWidthOfGraphBar) => {
     if (isWidthOfGraphBar >= 0) {
@@ -36,12 +36,12 @@ const MeisterGraph: FC<Props> = ({ count }) => {
     <S.GraphWrapper>
       <S.GraphChart>
       {isAppearGraphOpa && (
-          <S.MeisterGraphBar isWidthOfMeisterGraphBar={isWidthOfDaejeonGraphBar} daejeon={true}>  
+          <S.MeisterGraphBar isWidthOfMeisterGraphBar={isWidthOfDaejeonGraphBar} is_daejeon={true}>  
             {graphBarContent(daejeonscore,isWidthOfDaejeonGraphBar)}
           </S.MeisterGraphBar>
         )}
         {isAppearGraphOpa && (
-          <S.MeisterGraphBar isWidthOfMeisterGraphBar={isWidthOfCommonGraphBar} daejeon={false}>  
+          <S.MeisterGraphBar isWidthOfMeisterGraphBar={isWidthOfCommonGraphBar} is_daejeon={false}>  
             {graphBarContent(commonscore,isWidthOfCommonGraphBar)}
           </S.MeisterGraphBar>
         )}

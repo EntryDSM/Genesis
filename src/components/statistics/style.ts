@@ -3,7 +3,7 @@ import { color, pxToRem } from "../../styles";
 
 export const StatisticsPageContainer = styled.div`
   width: 100%;
-  min-height: 300vh;
+  min-height: 1800px;
   overflow-y:hidden;
   min-width: ${pxToRem(1320)}rem;
   display: flex;
@@ -16,7 +16,7 @@ export const StatisticsPageContainer = styled.div`
 
 export const StatisticsContainer = styled.div`
   width: 70%;
-  height: 300vh;
+  height: 1800px;
   padding-top: ${pxToRem(80)}rem;
   padding-bottom: ${pxToRem(80)}rem;
   background: ${color.backgorund};
@@ -87,7 +87,34 @@ font-size: 28px;
   font-weight: bold;
   font-family: "Noto Sans KR-Bold", sans-serif !important;
   color: ${color.primaryTextColor};
+  display:flex;
+  flex-direction:row;
+  align-items:flex-end;
+  
+  >div{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    margin-left:30px;
+    >div{
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      
+      >p{
+        font-size:14px;
+      }
+    }
+  }
 `;
+
+export const StatisticsColorBox = styled.div`
+        width:12px;
+        height:12px;
+        border-radius:100%;
+        margin-left:5px;
+        margin-right:10px;
+`
 
 export const CompetitionTableWrapper = styled.div`
   width: 58%;
@@ -340,12 +367,12 @@ export const GraphChart = styled.div`
   /*   background-color: ${color.light};*/
 `;
 
-export const CommonGraphBar = styled.div<{ isWidthOfCommonGraphBar; daejeon }>`
+export const CommonGraphBar = styled.div<{ isWidthOfCommonGraphBar; is_daejeon }>`
   height: ${({ isWidthOfCommonGraphBar }) =>
     isWidthOfCommonGraphBar ? isWidthOfCommonGraphBar>5?(310/100)*(isWidthOfCommonGraphBar)*1.07:(310/100)*5 : 0}px;
   width: 42px;
   background-image: ${(props) =>
-    props.daejeon
+    props.is_daejeon
       ? "linear-gradient(to bottom,#f57278,#ff897b)"
       : "linear-gradient(to bottom,#FF9B9F,#FF9B9F)"};
   border-radius: 25px 25px 0px 0;
@@ -369,12 +396,12 @@ export const CommonGraphBar = styled.div<{ isWidthOfCommonGraphBar; daejeon }>`
   }
 `;
 
-export const MeisterGraphBar = styled.div<{ isWidthOfMeisterGraphBar,daejeon }>`
+export const MeisterGraphBar = styled.div<{ isWidthOfMeisterGraphBar,is_daejeon }>`
   height: ${({ isWidthOfMeisterGraphBar }) =>
     isWidthOfMeisterGraphBar ? isWidthOfMeisterGraphBar>5?(310/100)*(isWidthOfMeisterGraphBar)*1.07:(310/100)*5 : 0}px;
   width: 42px;
   background-image: ${(props) =>
-    props.daejeon
+    props.is_daejeon
       ? "linear-gradient(to bottom,#f57278,#ff897b)"
       : "linear-gradient(to bottom,#FF9B9F,#FF9B9F)"};
   border-radius: 25px 25px 0px 0;
@@ -398,12 +425,12 @@ export const MeisterGraphBar = styled.div<{ isWidthOfMeisterGraphBar,daejeon }>`
   }
 `;
 
-export const SocialGraphBar = styled.div<{ isWidthOfSocialGraphBar,daejeon }>`
+export const SocialGraphBar = styled.div<{ isWidthOfSocialGraphBar,is_daejeon }>`
   height: ${({ isWidthOfSocialGraphBar }) =>
     isWidthOfSocialGraphBar ? isWidthOfSocialGraphBar>5?(310/100)*(isWidthOfSocialGraphBar)*1.07:(310/100)*5 : 0}px;
   width: 42px;
   background-image: ${(props) =>
-    props.daejeon
+    props.is_daejeon
       ? "linear-gradient(to bottom,#f57278,#ff897b)"
       : "linear-gradient(to bottom,#FF9B9F,#FF9B9F)"};
   border-radius: 25px 25px 0px 0;

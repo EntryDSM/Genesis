@@ -20,7 +20,7 @@ const CommonGraph: FC<Props> = ({ count }) => {
     setIsWidthOfCommonGraphBar(commonscore/* commonScore.common_count */);
     setIsWidthOfDaejeonGraphBar(daejeonscore);
     setIsAppearGraphOpa(true);
-  }, []);
+  }, [count]);
 
   const graphBarContent = (count, isWidthOfGraphBar) => {
     if (isWidthOfGraphBar >= 0) {
@@ -34,12 +34,12 @@ const CommonGraph: FC<Props> = ({ count }) => {
     <S.GraphWrapper>
       <S.GraphChart>
       {isAppearGraphOpa && (
-          <S.CommonGraphBar isWidthOfCommonGraphBar={isWidthOfDaejeonGraphBar} daejeon={true}>  
+          <S.CommonGraphBar isWidthOfCommonGraphBar={isWidthOfDaejeonGraphBar} is_daejeon={true}>  
             {graphBarContent(daejeonscore,isWidthOfDaejeonGraphBar)}
           </S.CommonGraphBar>
         )}
         {isAppearGraphOpa && (
-          <S.CommonGraphBar isWidthOfCommonGraphBar={isWidthOfCommonGraphBar} daejeon={false}>  
+          <S.CommonGraphBar isWidthOfCommonGraphBar={isWidthOfCommonGraphBar} is_daejeon={false}>  
             {graphBarContent(commonscore,isWidthOfCommonGraphBar)}
           </S.CommonGraphBar>
         )}

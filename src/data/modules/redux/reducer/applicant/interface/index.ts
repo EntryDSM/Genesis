@@ -15,19 +15,20 @@ export interface ApplicantState {
 }
 
 export interface getApplicantsLists {
- size?: number;
- page?: number;
- is_daejeon?: boolean;
- is_nationwide?: boolean;
- is_submitted?: boolean;
- is_common?: boolean;
- is_meister?: boolean;
- is_social?: boolean;
- is_in?: boolean;
- is_out?: boolean;
- receipt_code?: number;
- school_name?: number;
- name?: string;
+  size?: number;
+  page?: number;
+  isDaejeon?: boolean;
+  isNationwide?: boolean;
+  isSubmitted?: boolean;
+  isNotSubmitted?: boolean;
+  isCommon?: boolean;
+  isMeister?: boolean;
+  isSocial?: boolean;
+  inOfHeadcount?: boolean;
+  outOfHeadcount?: boolean;
+  receiptCode?: number;
+  schoolName?: number;
+  name?: string;
 }
 
 export interface getApplicantsListResponse {

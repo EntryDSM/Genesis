@@ -54,7 +54,6 @@ const ApplicantInfo: FC<Props> = ({
               updateApplicantSubmitStatus={updateApplicantSubmitStatus}
               setIsContainerWidth={setIsContainerWidth}
               getApplicantInfo={getApplicantInfo}
-              // resetUpdateStatus={resetUpdateStatus}
             />
           ))}
       </>

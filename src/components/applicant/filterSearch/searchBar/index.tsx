@@ -10,9 +10,9 @@ interface Props {
 
 const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
   const categoryList = [
-    { content: "학교이름", id: "school_name" },
+    { content: "학교이름", id: "schoolName" },
     { content: "이름", id: "name" },
-    { content: "접수번호", id: "receipt_code" },
+    { content: "접수번호", id: "receiptCode" },
   ];
 
   const [keyword, setKeyword] = React.useState("");

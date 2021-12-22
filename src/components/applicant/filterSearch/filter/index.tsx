@@ -27,14 +27,15 @@ const Filter: FC<Props> = ({
   setIsDeleteTableModalSwitch,
 }) => {
   const checkLists = [
-    { content: "대전", value: "is_daejeon" },
-    { content: "전국", value: "is_nationwide" },
-    { content: "원서 미도착", value: "is_submitted" },
-    { content: "일반 전형", value: "is_common" },
-    { content: "마이스터 전형", value: "is_meister" },
-    { content: "사회통합 전형", value: "is_social" },
-    { content: "정원 내", value: "is_in" },
-    { content: "정원 외", value: "is_out" },
+    { content: "대전", value: "isDaejeon" },
+    { content: "전국", value: "isNationwide" },
+    { content: "최종 제출 완료", value: "isSubmitted" },
+    { content: "최종 제출 미완료", value: "isNotSubmitted" },
+    { content: "일반 전형", value: "isCommon" },
+    { content: "마이스터 전형", value: "isMeister" },
+    { content: "사회통합 전형", value: "isSocial" },
+    { content: "정원 내", value: "inOfHeadcount" },
+    { content: "정원 외", value: "outOfHeadcount" },
   ];
   const { state } = useSchedule();
 
@@ -45,17 +46,17 @@ const Filter: FC<Props> = ({
   const handleChangeFilter = async (value: string) => {
     let newFilter = { page: 0 };
 
-    if (value === "is_daejeon" && !filters[value] && filters["is_nationwide"]) {
-      newFilter["is_daejeon"] = true;
-      newFilter["is_nationwide"] = false;
+    if (value === "isDaejeon" && !filters[value] && filters["isNationwide"]) {
+      newFilter["isDaejeon"] = true;
+      newFilter["isNationwide"] = false;
     } else if (
-      value === "is_nationwide" &&
+      value === "isNationwide" &&
       !filters[value] &&
-      filters["is_daejeon"]
+      filters["isDaejeon"]
     ) {
-      newFilter["is_nationwide"] = true;
-      newFilter["is_daejeon"] = false;
-    } else if (value === "is_submitted") {
+      newFilter["isNationwide"] = true;
+      newFilter["isDaejeon"] = false;
+    } else if (value === "isSubmitted" || value === "isNotSubmitted") {
       newFilter[value] = filters[value] === false ? null : false;
     } else {
       newFilter[value] = !filters[value] || false;
@@ -67,7 +68,11 @@ const Filter: FC<Props> = ({
 
   const checkIsChecked = React.useCallback(
     (value: string) => {
-      if (value === "is_submitted" && filters[value] === false) {
+      if (
+        value === "isSubmitted" &&
+        "isNotSubmitted" &&
+        filters[value] === false
+      ) {
         return true;
       } else {
         return filters[value];

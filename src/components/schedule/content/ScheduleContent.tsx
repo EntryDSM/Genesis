@@ -94,7 +94,7 @@ const ScheduleContent: FC<Props> = ({
         "-" +
         String(endScheduleDay) +
         "T" +
-        "12:05:05"
+        "23:00:00"
     );
     setFirstDate(
       "2021-" +

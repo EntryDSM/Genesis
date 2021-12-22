@@ -15,7 +15,7 @@ export const FilterSelectBox = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 68%;
-  min-width: ${pxToRem(652.8)}rem;
+  min-width: ${pxToRem(752)}rem;
 `;
 
 export const FilterButtonContainer = styled.div`
@@ -23,7 +23,7 @@ export const FilterButtonContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   width: 32%;
-  min-width: ${pxToRem(416)}rem;
+  min-width: ${pxToRem(320)}rem;
 `;
 
 export const FilterItemContainer = styled.span`
@@ -33,7 +33,7 @@ export const FilterItemContainer = styled.span`
   > p {
     display: inline-block;
     color: #3f3f3f;
-    margin-left: 10px;
+    margin-left: 4px;
     font-size: 14px;
     font-weight: bold;
     &:hover {

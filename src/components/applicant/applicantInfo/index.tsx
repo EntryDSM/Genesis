@@ -6,6 +6,7 @@ import {
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
   UpdateApplicantStatusPayload,
+  UpdateApplicantPaidStatusPayload,
   UpdateApplicantSubmitStatusPayload,
 } from "src/data/api/apiTypes";
 
@@ -15,11 +16,13 @@ interface Props {
   currnetApplicantInfo: GetApplicantInfoResponse;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantPaidStatus: (
+    payload: UpdateApplicantPaidStatusPayload
+  ) => void;
   updateApplicantSubmitStatus: (
     payload: UpdateApplicantSubmitStatusPayload
   ) => void;
   setIsContainerWidth: (payload: boolean) => void;
-  getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
 }
 
 const ApplicantInfo: FC<Props> = ({
@@ -28,9 +31,9 @@ const ApplicantInfo: FC<Props> = ({
   currnetApplicantInfo,
   updateApplicantStatusStatus,
   updateApplicantStatus,
+  updateApplicantPaidStatus,
   updateApplicantSubmitStatus,
   setIsContainerWidth,
-  getApplicantInfo,
 }) => {
   const filterResponse = applicantsList.applicants.filter((i) => {
     return i.name === currnetApplicantInfo?.common_information?.name;
@@ -51,9 +54,9 @@ const ApplicantInfo: FC<Props> = ({
               applicantListItem={info}
               updateApplicantStatusStatus={updateApplicantStatusStatus}
               updateApplicantStatus={updateApplicantStatus}
+              updateApplicantPaidStatus={updateApplicantPaidStatus}
               updateApplicantSubmitStatus={updateApplicantSubmitStatus}
               setIsContainerWidth={setIsContainerWidth}
-              getApplicantInfo={getApplicantInfo}
             />
           ))}
       </>

@@ -20,7 +20,7 @@ export const DetailInfo = styled.img`
 export const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 25%;
+  width: 30%;
 
   &:last-child {
     margin-right: 60px;
@@ -29,8 +29,9 @@ export const CheckboxContainer = styled.div`
   > p {
     font-size: 14px;
     font-weight: bold;
+    height: 22px;
     color: ${color.lightBorderColor};
-    margin-left: 12px;
+    margin-left: 10px;
 
     &:hover {
       cursor: pointer;
@@ -42,5 +43,5 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 50%;
+  width: 55%;
 `;

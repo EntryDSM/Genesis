@@ -104,7 +104,20 @@ export const updateApplicantStatusApi = async (access_token: string, payload: T.
   try {
     const request = getRequest();
 
-    await request.patch(uri.applicant+`/${payload.receipt_code}`, null, {
+    await request.patch(uri.applicant_arrived+`/${payload.receipt_code}`, null, {
+    headers: authorization(getAccessToken()),
+    params: payload,
+  });
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const updateApplicantPaidStatusApi = async (access_token: string, payload: T.UpdateApplicantPaidStatusPayload) => {
+  try {
+    const request = getRequest();
+
+    await request.patch(uri.applicant_paid+`/${payload.receipt_code}`, null, {
     headers: authorization(getAccessToken()),
     params: payload,
   });
@@ -117,7 +130,7 @@ export const updateApplicantSubmitStatusApi = async (access_token: string, paylo
   try {
     const request = getRequest();
 
-    await request.patch(uri.applicant_status+`/${payload.receipt_code}`, null, {
+    await request.patch(uri.applicant_submitted+`/${payload.receipt_code}`, null, {
     headers: authorization(getAccessToken()),
   });
   } catch (error) {

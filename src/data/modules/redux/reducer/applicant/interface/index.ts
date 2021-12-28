@@ -9,6 +9,7 @@ export interface ApplicantState {
  applicantsList: getApplicantsListResponse;
  currnetApplicantInfo: getApplicantInfoResponse;
  updateApplicantStatus: updateApplicantStatusResponse;
+ updateApplicantPaidStatus: updateApplicantPaidStatusResponse;
  updateApplicantSubmitStatus: updateApplicantSubmitStatusResponse;
  password: string;
  error: error;
@@ -39,7 +40,7 @@ export interface getApplicantsListResponse {
 
 export interface getApplicantInfoResponse {
    status: {
-      is_printed_arrived: boolean;
+      is_prints_arrived: boolean;
       is_submit: boolean;
     },
     common_information:{  
@@ -74,14 +75,18 @@ export interface getApplicantInfoResponse {
 }
 
 export interface updateApplicantStatusResponse {
-   receipt_code?: number;
-   is_printed_arrived?: boolean;
+  receipt_code?: number;
+  is_prints_arrived?: boolean;
+}
+
+export interface updateApplicantPaidStatusResponse {
+  receipt_code?: number;
 }
 
 export interface updateApplicantSubmitStatusResponse {
-   receipt_code?: number;
+  receipt_code?: number;
  }
 
 export interface checkPasswordResponse {
-   password: string;
+  password: string;
 }

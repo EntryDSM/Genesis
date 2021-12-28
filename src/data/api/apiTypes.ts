@@ -125,7 +125,7 @@ export interface ApplicantListItem {
   email: string;
   is_daejeon: boolean;
   application_type: string;
-  is_printed_arrived: boolean;
+  is_prints_arrived: boolean;
   is_submit: boolean;
   headcount: string;
 }
@@ -142,7 +142,7 @@ export interface GetApplicantInfoPayload {
 
 export interface GetApplicantInfoResponse {
   status?: {
-    is_printed_arrived: boolean;
+    is_prints_arrived: boolean;
     is_submit: boolean;
   },
   common_information?:{  
@@ -178,7 +178,11 @@ export interface GetApplicantInfoResponse {
 
 export interface UpdateApplicantStatusPayload {
   receipt_code?: number;
-  is_printed_arrived?: boolean;
+  is_prints_arrived?: boolean;
+}
+
+export interface UpdateApplicantPaidStatusPayload {
+  receipt_code?: number;
 }
 
 export interface UpdateApplicantSubmitStatusPayload {

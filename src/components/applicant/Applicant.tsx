@@ -12,6 +12,7 @@ import {
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
   UpdateApplicantStatusPayload,
+  UpdateApplicantPaidStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   CheckPasswordRequest,
 } from "src/data/api/apiTypes";
@@ -25,6 +26,9 @@ interface Props {
   error: error;
   setFilter: (payload: GetApplicantsListPayload) => void;
   updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantPaidStatus: (
+    payload: UpdateApplicantPaidStatusPayload
+  ) => void;
   updateApplicantSubmitStatus: (
     payload: UpdateApplicantSubmitStatusPayload
   ) => void;
@@ -44,6 +48,7 @@ const Applicant: FC<Props> = ({
   error,
   setFilter,
   updateApplicantStatus,
+  updateApplicantPaidStatus,
   updateApplicantSubmitStatus,
   getApplicantsList,
   getApplicantInfo,
@@ -110,9 +115,9 @@ const Applicant: FC<Props> = ({
               currnetApplicantInfo={currnetApplicantInfo}
               updateApplicantStatusStatus={updateApplicantStatusStatus}
               updateApplicantStatus={updateApplicantStatus}
+              updateApplicantPaidStatus={updateApplicantPaidStatus}
               updateApplicantSubmitStatus={updateApplicantSubmitStatus}
               setIsContainerWidth={setIsContainerWidth}
-              getApplicantInfo={getApplicantInfo}
             />
           )}
         </S.ApplicantInfoWrap>

@@ -9,6 +9,9 @@ import {
   UPDATE_APPLICANT_STATUS,
   UPDATE_APPLICANT_STATUS_SUCCESS,
   UPDATE_APPLICANT_STATUS_FAILURE,
+  UPDATE_APPLICANT_PAID_STATUS,
+  UPDATE_APPLICANT_PAID_STATUS_SUCCESS,
+  UPDATE_APPLICANT_PAID_STATUS_FAILURE,
   UPDATE_APPLICANT_SUBMIT_STATUS,
   UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS,
   UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE,
@@ -47,7 +50,7 @@ const InitialState: ApplicantState = {
   },
   currnetApplicantInfo: {
     status: {
-      is_printed_arrived: false,
+      is_prints_arrived: false,
       is_submit: false,
     },
     common_information:{  
@@ -80,8 +83,11 @@ const InitialState: ApplicantState = {
     }
   },
   updateApplicantStatus: {
+    is_prints_arrived: false,
     receipt_code: null,
-    is_printed_arrived: false,
+  },
+  updateApplicantPaidStatus: {
+    receipt_code: null,
   },
   updateApplicantSubmitStatus: {
     receipt_code: null,
@@ -144,8 +150,8 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
       return {
         ...state,
         updateApplicantStatus: {
+          is_prints_arrived: action.payload.is_prints_arrived,
           receipt_code: action.payload.receipt_code,
-          is_printed_arrived: action.payload.is_printed_arrived
         },
       }
     }
@@ -156,6 +162,25 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
     }
     case UPDATE_APPLICANT_STATUS_FAILURE: {
       return {
+        ...state,
+        error: action.payload,
+      }
+    }
+    case UPDATE_APPLICANT_PAID_STATUS: {
+      return {
+        ...state,
+        updateApplicantPaidStatus: {
+          receipt_code: action.payload.receipt_code,
+        },
+      }
+    }
+    case UPDATE_APPLICANT_PAID_STATUS_SUCCESS: {
+      return{
+        ...state
+      }
+    }
+    case UPDATE_APPLICANT_PAID_STATUS_FAILURE: {
+      return{
         ...state,
         error: action.payload,
       }

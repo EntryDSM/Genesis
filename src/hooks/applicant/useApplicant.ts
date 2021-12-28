@@ -5,6 +5,7 @@ import {
   getApplicantsList,
   getApplicantInfo,
   updateApplicantStatus,
+  updateApplicantPaidStatus,
   updateApplicantSubmitStatus,
   setPassword,
   checkPassword,
@@ -14,6 +15,7 @@ import {
   GetApplicantsListPayload, 
   GetApplicantInfoPayload,
   UpdateApplicantStatusPayload,
+  UpdateApplicantPaidStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   CheckPasswordRequest
 } from "src/data/api/apiTypes";
@@ -26,6 +28,7 @@ const useApplicant = () => {
     getApplicantsList: (payload: GetApplicantsListPayload) => dispatch(getApplicantsList(payload)),
     getApplicantInfo: (payload: GetApplicantInfoPayload) => dispatch(getApplicantInfo(payload)),
     updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => dispatch(updateApplicantStatus(payload)),
+    updateApplicantPaidStatus: (payload: UpdateApplicantPaidStatusPayload) => dispatch(updateApplicantPaidStatus(payload)),
     updateApplicantSubmitStatus: (payload: UpdateApplicantSubmitStatusPayload) => dispatch(updateApplicantSubmitStatus(payload)),
     setPassword: (payload: string) => dispatch(setPassword(payload)),
     checkPassword: (payload: CheckPasswordRequest) => dispatch(checkPassword(payload)),

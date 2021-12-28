@@ -7,6 +7,7 @@ import Documents from "./documents";
 import {
   ApplicantListItem,
   UpdateApplicantStatusPayload,
+  UpdateApplicantPaidStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   GetApplicantInfoPayload,
 } from "src/data/api/apiTypes";
@@ -15,7 +16,7 @@ import { returnEducationalType } from "src/utils/checkType";
 interface Props {
   isContainerWidth: boolean;
   applicantStatus: {
-    is_printed_arrived;
+    is_prints_arrived;
   };
   applicantCommonInformation: {
     name: string;
@@ -49,11 +50,13 @@ interface Props {
   applicantListItem: ApplicantListItem;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantPaidStatus: (
+    payload: UpdateApplicantPaidStatusPayload
+  ) => void;
   updateApplicantSubmitStatus: (
     payload: UpdateApplicantSubmitStatusPayload
   ) => void;
   setIsContainerWidth: (payload: boolean) => void;
-  getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
 }
 
 const Submitted: FC<Props> = ({
@@ -65,9 +68,9 @@ const Submitted: FC<Props> = ({
   applicantListItem,
   updateApplicantStatusStatus,
   updateApplicantStatus,
+  updateApplicantPaidStatus,
   updateApplicantSubmitStatus,
   setIsContainerWidth,
-  getApplicantInfo,
 }) => {
   const checkGradeType = React.useCallback(() => {
     return (
@@ -80,13 +83,13 @@ const Submitted: FC<Props> = ({
     <S.Wrapper>
       <ApplicantStatusContainer
         isContainerWidth={isContainerWidth}
-        is_printed_arrived={applicantStatus.is_printed_arrived}
+        is_prints_arrived={applicantListItem.is_prints_arrived}
         receipt_code={applicantListItem.receipt_code}
         updateApplicantStatusStatus={updateApplicantStatusStatus}
         updateApplicantStatus={updateApplicantStatus}
+        updateApplicantPaidStatus={updateApplicantPaidStatus}
         updateApplicantSubmitStatus={updateApplicantSubmitStatus}
         setIsContainerWidth={setIsContainerWidth}
-        getApplicantInfo={getApplicantInfo}
       />
       <BasicInfo
         applicantMoreInformation={applicantMoreInformation}

@@ -21,9 +21,8 @@ const ApplicantsListItem: FC<Props> = ({
     email,
     is_daejeon,
     application_type,
-    is_printed_arrived,
+    is_prints_arrived,
     is_submit,
-    headcount,
   },
   handleClick,
 }) => {
@@ -50,7 +49,7 @@ const ApplicantsListItem: FC<Props> = ({
         <S.TD>{checkApplyType()}</S.TD>
         <S.TD>
           <S.CheckboxWrapper>
-            <Checkbox isChecked={is_printed_arrived} />
+            <Checkbox isChecked={is_prints_arrived} />
           </S.CheckboxWrapper>
         </S.TD>
         <S.TD>{checkSubmitStatus()}</S.TD>

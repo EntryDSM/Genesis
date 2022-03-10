@@ -1,5 +1,5 @@
 # Burmilla
-EntryDSM 7.0 adminsystem Front
+EntryDSM adminsystem Front
 
 ## Getting Started
 

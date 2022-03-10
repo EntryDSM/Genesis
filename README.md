@@ -1,4 +1,4 @@
-# Burmilla
+# Genesis
 EntryDSM adminsystem Front
 
 ## Getting Started

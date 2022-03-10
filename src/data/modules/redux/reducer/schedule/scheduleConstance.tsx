@@ -87,7 +87,7 @@ const scheduleConstance: Record<scheduleType, processType> = {
     buttonText: "일정 수정",
   },
   [END]: {
-    title: "2022년 입학 전형이 끝났습니다.",
+    title: "2023년 입학 전형이 끝났습니다.",
     getDescription: () => <p>내년을 기약해 주세요.</p>,
     buttonText: "일정 수정",
   },

@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { SIGNIN } from 'src/data/modules/redux/action/signin';
-import { refreshTokenApi, signinApi } from 'src/data/api';
+import { refreshTokenApi, signinApi } from 'src/data/api/signin/signinApi';
 import { IS_LOGIN } from 'src/data/modules/redux/action/auth';
 import { REFRESH_TOKEN } from 'src/data/modules/redux/action/signin/interface';
 

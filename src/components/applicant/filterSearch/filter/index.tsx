@@ -8,11 +8,12 @@ import { downloadExcel } from "src/utils/download";
 import {
   downloadApplicantsListExcel,
   downloadAdmissionExcel,
-} from "src/data/api/index";
+} from "src/data/api/excel/excelApi";
 import { GetApplicantsListPayload } from "src/data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;
+  isContainerWidth: boolean;
   isDeleteTableModalSwitch: boolean;
   setFilter: (payload: GetApplicantsListPayload) => void;
   getApplicantsList: (payload: GetApplicantsListPayload) => void;
@@ -21,6 +22,7 @@ interface Props {
 
 const Filter: FC<Props> = ({
   filters,
+  isContainerWidth,
   isDeleteTableModalSwitch,
   setFilter,
   getApplicantsList,
@@ -56,8 +58,34 @@ const Filter: FC<Props> = ({
     ) {
       newFilter["isNationwide"] = true;
       newFilter["isDaejeon"] = false;
-    } else if (value === "isSubmitted" || value === "isNotSubmitted") {
-      newFilter[value] = filters[value] === false ? null : false;
+    } else if (
+      value === "isSubmitted" &&
+      !filters[value] &&
+      filters["isNotSubmitted"]
+    ) {
+      newFilter["isSubmitted"] = true;
+      newFilter["isNotSubmitted"] = false;
+    } else if (
+      value === "isNotSubmitted" &&
+      !filters[value] &&
+      filters["isSubmitted"]
+    ) {
+      newFilter["isNotSubmitted"] = true;
+      newFilter["isSubmitted"] = false;
+    } else if (
+      value === "inOfHeadcount" &&
+      !filters[value] &&
+      filters["outOfHeadcount"]
+    ) {
+      newFilter["inOfHeadcount"] = true;
+      newFilter["outOfHeadcount"] = false;
+    } else if (
+      value === "outOfHeadcount" &&
+      !filters[value] &&
+      filters["inOfHeadcount"]
+    ) {
+      newFilter["outOfHeadcount"] = true;
+      newFilter["inOfHeadcount"] = false;
     } else {
       newFilter[value] = !filters[value] || false;
     }
@@ -68,11 +96,7 @@ const Filter: FC<Props> = ({
 
   const checkIsChecked = React.useCallback(
     (value: string) => {
-      if (
-        value === "isSubmitted" &&
-        "isNotSubmitted" &&
-        filters[value] === false
-      ) {
+      if (value === "isSubmitted" && "isNotSubmitted" && filters[value]) {
         return true;
       } else {
         return filters[value];
@@ -97,8 +121,8 @@ const Filter: FC<Props> = ({
   }, []);
 
   return (
-    <S.FilterWrapper>
-      <S.FilterSelectBox>
+    <S.FilterWrapper isContainerWidth={isContainerWidth}>
+      <S.FilterSelectBox isContainerWidth={isContainerWidth}>
         {checkLists.map((item) => (
           <S.FilterItemContainer
             key={item.value}
@@ -109,7 +133,7 @@ const Filter: FC<Props> = ({
           </S.FilterItemContainer>
         ))}
       </S.FilterSelectBox>
-      <S.FilterButtonContainer>
+      <S.FilterButtonContainer isContainerWidth={isContainerWidth}>
         <Button
           className="applicant-list__excel-btn"
           onClick={handleDownloadExcel}

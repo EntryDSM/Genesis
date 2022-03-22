@@ -32,8 +32,8 @@ const ApplicantsList: FC<Props> = ({
     <S.ApplicantsList>
       <ApplicantsListHeader />
       <tbody className="no-select">
-        {applicantsList.applicants_information_responses &&
-          applicantsList.applicants_information_responses.map((info) => (
+        {applicantsList.applicants &&
+          applicantsList.applicants.map((info) => (
             <ApplicantsListItem
               currnetApplicantInfo={currnetApplicantInfo}
               key={info.receipt_code}

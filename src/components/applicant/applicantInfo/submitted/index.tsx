@@ -6,10 +6,8 @@ import DetailInfo from "./detailInfo";
 import Documents from "./documents";
 import {
   ApplicantListItem,
-  ApplicantPersonalData,
-  ApplicantEvaluation,
-  ApplicantStatus,
   UpdateApplicantStatusPayload,
+  UpdateApplicantPaidStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   GetApplicantInfoPayload,
 } from "src/data/api/apiTypes";
@@ -17,54 +15,89 @@ import { returnEducationalType } from "src/utils/checkType";
 
 interface Props {
   isContainerWidth: boolean;
-  applicantPersonalData: ApplicantPersonalData;
-  applicantEvaluation: ApplicantEvaluation;
-  applicantStatus: ApplicantStatus;
+  applicantStatus: {
+    is_prints_arrived;
+  };
+  applicantCommonInformation: {
+    name: string;
+    school_name: string;
+    email: string;
+    telephone_number: string;
+    school_tel?: string;
+    parent_tel: string;
+  };
+  applicantMoreInformation: {
+    photo_url: string;
+    birthday: string;
+    education_status: string;
+    application_type: string;
+    application_remark: string;
+    address: string;
+    detail_address: string;
+    head_count: string;
+  };
+  applicantEvaluation: {
+    volunteer_time: number;
+    conversion_score: number;
+    day_absence_count: number;
+    lecture_absence_count: number;
+    early_leave_count: number;
+    lateness_count: number;
+    self_introduce: string;
+    study_plan: string;
+    average_score: number;
+  };
   applicantListItem: ApplicantListItem;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantPaidStatus: (
+    payload: UpdateApplicantPaidStatusPayload
+  ) => void;
   updateApplicantSubmitStatus: (
     payload: UpdateApplicantSubmitStatusPayload
   ) => void;
   setIsContainerWidth: (payload: boolean) => void;
-  getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
 }
 
 const Submitted: FC<Props> = ({
   isContainerWidth,
-  applicantPersonalData,
-  applicantEvaluation,
   applicantStatus,
+  applicantCommonInformation,
+  applicantMoreInformation,
+  applicantEvaluation,
   applicantListItem,
   updateApplicantStatusStatus,
   updateApplicantStatus,
+  updateApplicantPaidStatus,
   updateApplicantSubmitStatus,
   setIsContainerWidth,
-  getApplicantInfo,
 }) => {
   const checkGradeType = React.useCallback(() => {
     return (
-      returnEducationalType(applicantPersonalData.educational_status) ===
+      returnEducationalType(applicantMoreInformation.education_status) ===
       "검정고시"
     );
-  }, [applicantPersonalData.application_type]);
+  }, [applicantMoreInformation.education_status]);
 
   return (
     <S.Wrapper>
       <ApplicantStatusContainer
         isContainerWidth={isContainerWidth}
-        is_printed_arrived={applicantStatus.is_printed_arrived}
+        is_prints_arrived={applicantListItem.is_prints_arrived}
         receipt_code={applicantListItem.receipt_code}
         updateApplicantStatusStatus={updateApplicantStatusStatus}
         updateApplicantStatus={updateApplicantStatus}
+        updateApplicantPaidStatus={updateApplicantPaidStatus}
         updateApplicantSubmitStatus={updateApplicantSubmitStatus}
         setIsContainerWidth={setIsContainerWidth}
-        getApplicantInfo={getApplicantInfo}
       />
-      <BasicInfo applicantPersonalData={applicantPersonalData} />
+      <BasicInfo
+        applicantMoreInformation={applicantMoreInformation}
+        applicantCommonInformation={applicantCommonInformation}
+      />
       <DetailInfo
         isQUALIFICATION_EXAM={checkGradeType()}
-        applicantPersonalData={applicantPersonalData}
+        applicantCommonInformation={applicantCommonInformation}
         applicantEvaluation={applicantEvaluation}
       />
       <Documents applicantEvaluation={applicantEvaluation} />

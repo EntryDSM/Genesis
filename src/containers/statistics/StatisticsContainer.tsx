@@ -12,14 +12,6 @@ const StatisticsContainer: FC = () => {
   const statisticsState = useStatistics();
   const authState = useAuth();
   const signinState = useSignIn();
-  const {
-    common_score,
-    meister_score,
-    social_score,
-    total_applicant_count,
-    total_competition_rate,
-    total_submitted_applicant_count,
-  } = statisticsState.state.statistics;
 
   React.useEffect(() => {
     statisticsState.setState.getStatistics();
@@ -31,7 +23,7 @@ const StatisticsContainer: FC = () => {
 
   React.useEffect(() => {
     if (
-      statisticsState.state.error.status === 401 &&
+      signinState.state.error.status === 401 &&
       signinState.state.error.type === REFRESH_TOKEN
     ) {
       authState.setState.setAccessToken("");
@@ -54,12 +46,8 @@ const StatisticsContainer: FC = () => {
   return (
     <Suspense fallback={<div>로딩중...</div>}>
       <Statistics
-        commonScore={common_score}
-        meisterScore={meister_score}
-        socialScore={social_score}
-        totalApplicantCount={total_applicant_count}
-        totalCompetitionRate={total_competition_rate}
-        total_submitted_applicant_count={total_submitted_applicant_count}
+        score={statisticsState.state.statistics.score}
+        count={statisticsState.state.statistics.count}
       />
     </Suspense>
   );

@@ -1,6 +1,6 @@
 import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga from 'src/utils/saga/createRequestSaga';
-import { getScheduleApi, updateScheduleApi } from 'src/data/api/index';
+import { getScheduleApi, updateScheduleApi } from 'src/data/api/schedule/scheduleApi';
 import { GET_STATUS, SET_SCHEDULE } from 'src/data/modules/redux/action/schedule/interface';
 
 export const getScheduleSaga = createRequestSaga(GET_STATUS, getScheduleApi);

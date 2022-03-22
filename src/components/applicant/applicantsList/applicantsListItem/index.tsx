@@ -21,7 +21,7 @@ const ApplicantsListItem: FC<Props> = ({
     email,
     is_daejeon,
     application_type,
-    is_printed_arrived,
+    is_prints_arrived,
     is_submit,
   },
   handleClick,
@@ -40,11 +40,7 @@ const ApplicantsListItem: FC<Props> = ({
   return (
     <>
       <S.TR
-        isSelected={
-          email ===
-            currnetApplicantInfo?.submitted_applicant?.personal_data?.email ||
-          email === currnetApplicantInfo?.not_submitted_applicant?.email
-        }
+        isSelected={email === currnetApplicantInfo?.common_information.email}
         onClick={() => handleClick(receipt_code)}
       >
         <S.TD>{receipt_code}</S.TD>
@@ -53,7 +49,7 @@ const ApplicantsListItem: FC<Props> = ({
         <S.TD>{checkApplyType()}</S.TD>
         <S.TD>
           <S.CheckboxWrapper>
-            <Checkbox isChecked={is_printed_arrived} />
+            <Checkbox isChecked={is_prints_arrived} />
           </S.CheckboxWrapper>
         </S.TD>
         <S.TD>{checkSubmitStatus()}</S.TD>

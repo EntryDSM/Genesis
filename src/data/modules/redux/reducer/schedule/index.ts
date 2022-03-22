@@ -42,23 +42,23 @@ const InitialState: IScheduleState = {
   scheduleDate: [
     {
       type: 'START_DATE',
-      date: '2021-10-05',
+      date: '2021-10-05T12:05:55',
     },
     {
       type: 'END_DATE',
-      date: '2021-10-07',
+      date: '2021-10-07T12:05:55',
     },
     {
       type: 'FIRST_ANNOUNCEMENT',
-      date: '2021-10-09',
+      date: '2021-10-09T12:05:55',
     },
     {
       type: 'INTERVIEW',
-      date: '2021-10-10',
+      date: '2021-10-10T12:05:55',
     },
     {
       type: 'SECOND_ANNOUNCEMENT',
-      date: '2021-10-11',
+      date: '2021-10-11T12:05:55',
     },
   ],
   startScheduleDate: '',
@@ -69,23 +69,23 @@ const InitialState: IScheduleState = {
   date: [
      {
       type: 'END_DATE',
-      date: '2021-10-07T17:00',
+      date: '2021-10-07T12:05:55',
     },
     {
       type: 'FIRST_ANNOUNCEMENT',
-      date: '2021-10-22T00:00',
+      date: '2021-10-22T12:05:55',
     },
     {
       type: 'INTERVIEW',
-      date: '2021-10-23T00:00',
+      date: '2021-10-23T12:05:55',
     },
     {
       type: 'SECOND_ANNOUNCEMENT',
-      date: '2021-10-25T00:00',
+      date: '2021-10-25T12:05:55',
     },
     {
       type: 'START_DATE',
-      date: '2021-10-04T08:00',
+      date: '2021-10-04T12:05:55',
     },
     {
       type: 'NOT_APPLICATION_PERIOD',

@@ -9,6 +9,9 @@ import {
   UPDATE_APPLICANT_STATUS,
   UPDATE_APPLICANT_STATUS_SUCCESS,
   UPDATE_APPLICANT_STATUS_FAILURE,
+  UPDATE_APPLICANT_PAID_STATUS,
+  UPDATE_APPLICANT_PAID_STATUS_SUCCESS,
+  UPDATE_APPLICANT_PAID_STATUS_FAILURE,
   UPDATE_APPLICANT_SUBMIT_STATUS,
   UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS,
   UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE,
@@ -26,6 +29,7 @@ import {
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
   UpdateApplicantStatusPayload,
+  UpdateApplicantPaidStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   CheckPasswordRequest
  } from "src/data/api/apiTypes"; 
@@ -42,6 +46,9 @@ export const getApplicantsListFailure = createAction(GET_APPLICANTS_LIST_FAILURE
 export const updateApplicantStatus = createAction(UPDATE_APPLICANT_STATUS)<UpdateApplicantStatusPayload>();
 export const updateApplicantStatusSuccess = createAction(UPDATE_APPLICANT_STATUS_SUCCESS)();
 export const updateApplicantStatusFailure = createAction(UPDATE_APPLICANT_STATUS_FAILURE)<error>();
+export const updateApplicantPaidStatus = createAction(UPDATE_APPLICANT_PAID_STATUS)<UpdateApplicantPaidStatusPayload>();
+export const updateApplicantPaidStatusSuccess = createAction(UPDATE_APPLICANT_PAID_STATUS_SUCCESS)();
+export const updateApplicantPaidStatusFailure = createAction(UPDATE_APPLICANT_PAID_STATUS_FAILURE)<error>();
 export const updateApplicantSubmitStatus = createAction(UPDATE_APPLICANT_SUBMIT_STATUS)<UpdateApplicantSubmitStatusPayload>();
 export const updateApplicantSubmitStatusSuccess = createAction(UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS)();
 export const updateApplicantSubmitStatusFailure = createAction(UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE)<error>();
@@ -64,6 +71,9 @@ export type applicantActionType =
   | ReturnType<typeof updateApplicantStatus>
   | ReturnType<typeof updateApplicantStatusSuccess>
   | ReturnType<typeof updateApplicantStatusFailure>
+  | ReturnType<typeof updateApplicantPaidStatus>
+  | ReturnType<typeof updateApplicantPaidStatusSuccess>
+  | ReturnType<typeof updateApplicantPaidStatusFailure>
   | ReturnType<typeof updateApplicantSubmitStatus>
   | ReturnType<typeof updateApplicantSubmitStatusSuccess>
   | ReturnType<typeof updateApplicantSubmitStatusFailure>

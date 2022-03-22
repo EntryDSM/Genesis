@@ -6,6 +6,7 @@ import {
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
   UpdateApplicantStatusPayload,
+  UpdateApplicantPaidStatusPayload,
   UpdateApplicantSubmitStatusPayload,
 } from "src/data/api/apiTypes";
 
@@ -15,11 +16,13 @@ interface Props {
   currnetApplicantInfo: GetApplicantInfoResponse;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantPaidStatus: (
+    payload: UpdateApplicantPaidStatusPayload
+  ) => void;
   updateApplicantSubmitStatus: (
     payload: UpdateApplicantSubmitStatusPayload
   ) => void;
   setIsContainerWidth: (payload: boolean) => void;
-  getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
 }
 
 const ApplicantInfo: FC<Props> = ({
@@ -28,49 +31,41 @@ const ApplicantInfo: FC<Props> = ({
   currnetApplicantInfo,
   updateApplicantStatusStatus,
   updateApplicantStatus,
+  updateApplicantPaidStatus,
   updateApplicantSubmitStatus,
   setIsContainerWidth,
-  getApplicantInfo,
 }) => {
-  const filterResponse = applicantsList.applicants_information_responses.filter(
-    (i) => {
-      return (
-        i.name ===
-        currnetApplicantInfo?.submitted_applicant?.personal_data?.name
-      );
-    }
-  );
-  if (currnetApplicantInfo.submitted_applicant) {
+  const filterResponse = applicantsList.applicants.filter((i) => {
+    return i.name === currnetApplicantInfo?.common_information?.name;
+  });
+  if (currnetApplicantInfo.more_information) {
     return (
       <>
-        {applicantsList.applicants_information_responses &&
+        {applicantsList.applicants &&
           filterResponse.map((info) => (
             <Submitted
               isContainerWidth={isContainerWidth}
-              applicantPersonalData={
-                currnetApplicantInfo.submitted_applicant.personal_data
+              applicantCommonInformation={
+                currnetApplicantInfo.common_information
               }
-              applicantEvaluation={
-                currnetApplicantInfo.submitted_applicant.evaluation
-              }
-              applicantStatus={currnetApplicantInfo.submitted_applicant.status}
+              applicantMoreInformation={currnetApplicantInfo.more_information}
+              applicantEvaluation={currnetApplicantInfo.evaluation}
+              applicantStatus={currnetApplicantInfo.status}
               applicantListItem={info}
               updateApplicantStatusStatus={updateApplicantStatusStatus}
               updateApplicantStatus={updateApplicantStatus}
+              updateApplicantPaidStatus={updateApplicantPaidStatus}
               updateApplicantSubmitStatus={updateApplicantSubmitStatus}
               setIsContainerWidth={setIsContainerWidth}
-              getApplicantInfo={getApplicantInfo}
-              // resetUpdateStatus={resetUpdateStatus}
             />
           ))}
       </>
     );
-  }
-  if (currnetApplicantInfo.not_submitted_applicant) {
+  } else {
     return (
       <UnSubmitted
         isContainerWidth={isContainerWidth}
-        not_submitted_applicant={currnetApplicantInfo.not_submitted_applicant}
+        applicantCommonInfomation={currnetApplicantInfo.common_information}
         setIsContainerWidth={setIsContainerWidth}
       />
     );

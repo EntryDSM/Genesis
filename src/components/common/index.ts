@@ -27,6 +27,17 @@ export const Button = styled.button`
     font-weight: bold;
     font-family: 'Noto Sans KR-Bold', sans-serif !important;
   }
+  &.applicant-info__fee-btn {
+    width: 125px;
+    height: 26px;
+    border: 1px solid ${color.primaryColor};
+    border-radius: 4px;
+    background-color: ${color.primaryColor};
+    color: ${color.backgorund};
+    font-size: 13px;
+    font-weight: bold;
+    font-family: 'Noto Sans KR', sans-serif !important;
+  }
   &.applicant-info__cancel-btn {
     width: 94px;
     height: 26px;

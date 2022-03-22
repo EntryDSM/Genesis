@@ -9,6 +9,9 @@ import {
   UPDATE_APPLICANT_STATUS,
   UPDATE_APPLICANT_STATUS_SUCCESS,
   UPDATE_APPLICANT_STATUS_FAILURE,
+  UPDATE_APPLICANT_PAID_STATUS,
+  UPDATE_APPLICANT_PAID_STATUS_SUCCESS,
+  UPDATE_APPLICANT_PAID_STATUS_FAILURE,
   UPDATE_APPLICANT_SUBMIT_STATUS,
   UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS,
   UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE,
@@ -27,70 +30,64 @@ const InitialState: ApplicantState = {
   filters: {
     size: 10,
     page: 0,
-    is_daejeon: false,
-    is_nationwide: false,
-    is_printed_arrived: null,
-    is_common: false,
-    is_meister: false,
-    is_social: false,
-    is_in: false,
-    is_out: false,
-    receipt_code: null,
-    telephone: null,
+    isDaejeon: false,
+    isNationwide: false,
+    isSubmitted: null,
+    isNotSubmitted: null,
+    isCommon: false,
+    isMeister: false,
+    isSocial: false,
+    inOfHeadcount: false,
+    outOfHeadcount: false,
+    receiptCode: null,
+    schoolName: null,
     name: null,
   },
   applicantsList: {
     total_elements: 0,
     total_pages: 0,
-    applicants_information_responses: [],
+    applicants: [],
   },
   currnetApplicantInfo: {
-      submitted_applicant: {
-        status: {
-          is_printed_arrived: false,
-          is_submit: false,
-        },
-        personal_data: {
-          photo_url: '',
-          name: '',
-          email: '',
-          birth_date: '',
-          school_name: '',
-          educational_status: '',
-          application_type: '',
-          address: '',
-          detail_address: '',
-          telephone_number: '',
-          parent_tel: '',
-          school_tel: '',
-          home_tel: '',
-          is_graduated: false,
-          application_remark: '',
-          headcount: '',
-        },
-        evaluation: {
-          volunteer_time: 0,
-          conversion_score: 0,
-          day_absence_count: 0,
-          lecture_absence_count: 0,
-          early_leave_count: 0,
-          lateness_count: 0,
-          self_introduce: '',
-          study_plan: '',
-          average_score: 0,
-        },
+    status: {
+      is_prints_arrived: false,
+      is_submit: false,
     },
-      not_submitted_applicant: {
-        email: '',
-        applicant_tel: '',
-        parent_tel: '',
-        home_tel: '',
-        school_tel: '',
+    common_information:{  
+      name: '',
+      school_name: '',
+      email: '',
+      telephone_number: '',
+      school_tel: '',
+      parent_tel: '',
+    },
+    more_information: {
+      photo_url: '',
+        birthday: '',
+        education_status: '',
+        application_type: '',
+        application_remark: '',
+        address: '',
+        detail_address: '',
+        head_count: '',    },
+    evaluation: {
+      volunteer_time: 0,
+      conversion_score: 0,
+      day_absence_count: 0,
+      lecture_absence_count: 0,
+      early_leave_count: 0,
+      lateness_count: 0,
+      self_introduce: '',
+      study_plan: '',
+      average_score: 0,
     }
   },
   updateApplicantStatus: {
+    is_prints_arrived: false,
     receipt_code: null,
-    is_printed_arrived: false,
+  },
+  updateApplicantPaidStatus: {
+    receipt_code: null,
   },
   updateApplicantSubmitStatus: {
     receipt_code: null,
@@ -119,7 +116,7 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
         applicantsList: {
           total_elements: action.payload.total_elements,
           total_pages: action.payload.total_pages,
-          applicants_information_responses: action.payload.applicants_information_responses,
+          applicants: action.payload.applicants,
         },
       };
     }
@@ -133,11 +130,10 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
       return {
         ...state,
         currnetApplicantInfo: {
-          submitted_applicant: {
-            status: action.payload.submitted_applicant.status,
-            personal_data: action.payload.submitted_applicant.personal_data,
-            evaluation: action.payload.submitted_applicant.evaluation
-          },
+          status: action.payload.status,
+          common_information: action.payload.common_information,
+          more_information: action.payload.more_information,
+          evaluation: action.payload.evaluation
         },
       };
     }
@@ -145,7 +141,8 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
       return {
         ...state,
         currnetApplicantInfo: {
-          not_submitted_applicant: action.payload.not_submitted_applicant
+          status: action.payload.status,
+          common_information: action.payload.common_information,
         },
       };
     }
@@ -153,8 +150,8 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
       return {
         ...state,
         updateApplicantStatus: {
+          is_prints_arrived: action.payload.is_prints_arrived,
           receipt_code: action.payload.receipt_code,
-          is_printed_arrived: action.payload.is_printed_arrived
         },
       }
     }
@@ -165,6 +162,25 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
     }
     case UPDATE_APPLICANT_STATUS_FAILURE: {
       return {
+        ...state,
+        error: action.payload,
+      }
+    }
+    case UPDATE_APPLICANT_PAID_STATUS: {
+      return {
+        ...state,
+        updateApplicantPaidStatus: {
+          receipt_code: action.payload.receipt_code,
+        },
+      }
+    }
+    case UPDATE_APPLICANT_PAID_STATUS_SUCCESS: {
+      return{
+        ...state
+      }
+    }
+    case UPDATE_APPLICANT_PAID_STATUS_FAILURE: {
+      return{
         ...state,
         error: action.payload,
       }

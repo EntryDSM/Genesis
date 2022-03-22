@@ -75,3 +75,13 @@ export const phoneWithHyphen = (number: string) => {
         .replace("--", "-")
     : "";
 };
+
+export const decimalLimit = (number:string) => {
+  let num = number;
+  num = num.toString();
+  const len = num.length;
+  if(num.charAt(len-1) === '0'){
+    num = num.substring(0,len-2);
+  }
+  return num;
+}

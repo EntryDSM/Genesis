@@ -12,6 +12,7 @@ import {
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
   UpdateApplicantStatusPayload,
+  UpdateApplicantPaidStatusPayload,
   UpdateApplicantSubmitStatusPayload,
   CheckPasswordRequest,
 } from "src/data/api/apiTypes";
@@ -25,6 +26,9 @@ interface Props {
   error: error;
   setFilter: (payload: GetApplicantsListPayload) => void;
   updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantPaidStatus: (
+    payload: UpdateApplicantPaidStatusPayload
+  ) => void;
   updateApplicantSubmitStatus: (
     payload: UpdateApplicantSubmitStatusPayload
   ) => void;
@@ -44,6 +48,7 @@ const Applicant: FC<Props> = ({
   error,
   setFilter,
   updateApplicantStatus,
+  updateApplicantPaidStatus,
   updateApplicantSubmitStatus,
   getApplicantsList,
   getApplicantInfo,
@@ -53,8 +58,16 @@ const Applicant: FC<Props> = ({
 }) => {
   const [isContainerWidth, setIsContainerWidth] =
     React.useState<boolean>(false);
+  const [checkModalOn, setCheckModalOn] = React.useState<boolean>(false);
   const [isDeleteTableModalSwitch, setIsDeleteTableModalSwitch] =
     React.useState<boolean>(false);
+
+  const checkModal = () => {
+    if (isContainerWidth) {
+      setCheckModalOn(!checkModalOn);
+    }
+    setCheckModalOn(false);
+  };
 
   const checkPasswordDisable = () => {
     if (password === "testpassword") {
@@ -77,10 +90,11 @@ const Applicant: FC<Props> = ({
           setIsDeleteTableModalSwitch={setIsDeleteTableModalSwitch}
         />
       )}
-      <S.Applicant>
-        <S.ApplicantContainer>
+      <S.Applicant isContainerWidth={isContainerWidth}>
+        <S.ApplicantContainer isContainerWidth={isContainerWidth}>
           <FilterSearch
             filters={filters}
+            isContainerWidth={isContainerWidth}
             isDeleteTableModalSwitch={isDeleteTableModalSwitch}
             setFilter={setFilter}
             getApplicantsList={getApplicantsList}
@@ -103,16 +117,16 @@ const Applicant: FC<Props> = ({
           </S.PaginationBox>
         </S.ApplicantContainer>
         <S.ApplicantInfoWrap isContainerWidth={isContainerWidth}>
-          {isContainerWidth && (
+          {checkModal && (
             <ApplicantInfo
               isContainerWidth={isContainerWidth}
               applicantsList={applicantsList}
               currnetApplicantInfo={currnetApplicantInfo}
               updateApplicantStatusStatus={updateApplicantStatusStatus}
               updateApplicantStatus={updateApplicantStatus}
+              updateApplicantPaidStatus={updateApplicantPaidStatus}
               updateApplicantSubmitStatus={updateApplicantSubmitStatus}
               setIsContainerWidth={setIsContainerWidth}
-              getApplicantInfo={getApplicantInfo}
             />
           )}
         </S.ApplicantInfoWrap>

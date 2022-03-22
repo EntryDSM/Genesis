@@ -1,5 +1,10 @@
 import axios from 'axios';
 
+export const authorization = (token: string) => ({
+  Authorization: `Bearer ${token}`,
+  'Cache-Control': 'no-cache',
+});
+
 export const getRequest = () => {
   const request = axios.create({
     timeout: 10000,

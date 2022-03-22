@@ -8,11 +8,12 @@ import { downloadExcel } from "src/utils/download";
 import {
   downloadApplicantsListExcel,
   downloadAdmissionExcel,
-} from "src/data/api/index";
+} from "src/data/api/excel/excelApi";
 import { GetApplicantsListPayload } from "src/data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;
+  isContainerWidth: boolean;
   isDeleteTableModalSwitch: boolean;
   setFilter: (payload: GetApplicantsListPayload) => void;
   getApplicantsList: (payload: GetApplicantsListPayload) => void;
@@ -21,20 +22,22 @@ interface Props {
 
 const Filter: FC<Props> = ({
   filters,
+  isContainerWidth,
   isDeleteTableModalSwitch,
   setFilter,
   getApplicantsList,
   setIsDeleteTableModalSwitch,
 }) => {
   const checkLists = [
-    { content: "대전", value: "is_daejeon" },
-    { content: "전국", value: "is_nationwide" },
-    { content: "원서 미도착", value: "is_printed_arrived" },
-    { content: "일반 전형", value: "is_common" },
-    { content: "마이스터 전형", value: "is_meister" },
-    { content: "사회통합 전형", value: "is_social" },
-    { content: "정원 내", value: "is_in" },
-    { content: "정원 외", value: "is_out" },
+    { content: "대전", value: "isDaejeon" },
+    { content: "전국", value: "isNationwide" },
+    { content: "최종 제출 완료", value: "isSubmitted" },
+    { content: "최종 제출 미완료", value: "isNotSubmitted" },
+    { content: "일반 전형", value: "isCommon" },
+    { content: "마이스터 전형", value: "isMeister" },
+    { content: "사회통합 전형", value: "isSocial" },
+    { content: "정원 내", value: "inOfHeadcount" },
+    { content: "정원 외", value: "outOfHeadcount" },
   ];
   const { state } = useSchedule();
 
@@ -45,18 +48,44 @@ const Filter: FC<Props> = ({
   const handleChangeFilter = async (value: string) => {
     let newFilter = { page: 0 };
 
-    if (value === "is_daejeon" && !filters[value] && filters["is_nationwide"]) {
-      newFilter["is_daejeon"] = true;
-      newFilter["is_nationwide"] = false;
+    if (value === "isDaejeon" && !filters[value] && filters["isNationwide"]) {
+      newFilter["isDaejeon"] = true;
+      newFilter["isNationwide"] = false;
     } else if (
-      value === "is_nationwide" &&
+      value === "isNationwide" &&
       !filters[value] &&
-      filters["is_daejeon"]
+      filters["isDaejeon"]
     ) {
-      newFilter["is_nationwide"] = true;
-      newFilter["is_daejeon"] = false;
-    } else if (value === "is_printed_arrived") {
-      newFilter[value] = filters[value] === false ? null : false;
+      newFilter["isNationwide"] = true;
+      newFilter["isDaejeon"] = false;
+    } else if (
+      value === "isSubmitted" &&
+      !filters[value] &&
+      filters["isNotSubmitted"]
+    ) {
+      newFilter["isSubmitted"] = true;
+      newFilter["isNotSubmitted"] = false;
+    } else if (
+      value === "isNotSubmitted" &&
+      !filters[value] &&
+      filters["isSubmitted"]
+    ) {
+      newFilter["isNotSubmitted"] = true;
+      newFilter["isSubmitted"] = false;
+    } else if (
+      value === "inOfHeadcount" &&
+      !filters[value] &&
+      filters["outOfHeadcount"]
+    ) {
+      newFilter["inOfHeadcount"] = true;
+      newFilter["outOfHeadcount"] = false;
+    } else if (
+      value === "outOfHeadcount" &&
+      !filters[value] &&
+      filters["inOfHeadcount"]
+    ) {
+      newFilter["outOfHeadcount"] = true;
+      newFilter["inOfHeadcount"] = false;
     } else {
       newFilter[value] = !filters[value] || false;
     }
@@ -67,7 +96,7 @@ const Filter: FC<Props> = ({
 
   const checkIsChecked = React.useCallback(
     (value: string) => {
-      if (value === "is_printed_arrived" && filters[value] === false) {
+      if (value === "isSubmitted" && "isNotSubmitted" && filters[value]) {
         return true;
       } else {
         return filters[value];
@@ -92,8 +121,8 @@ const Filter: FC<Props> = ({
   }, []);
 
   return (
-    <S.FilterWrapper>
-      <S.FilterSelectBox>
+    <S.FilterWrapper isContainerWidth={isContainerWidth}>
+      <S.FilterSelectBox isContainerWidth={isContainerWidth}>
         {checkLists.map((item) => (
           <S.FilterItemContainer
             key={item.value}
@@ -104,7 +133,7 @@ const Filter: FC<Props> = ({
           </S.FilterItemContainer>
         ))}
       </S.FilterSelectBox>
-      <S.FilterButtonContainer>
+      <S.FilterButtonContainer isContainerWidth={isContainerWidth}>
         <Button
           className="applicant-list__excel-btn"
           onClick={handleDownloadExcel}

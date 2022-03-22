@@ -1,15 +1,22 @@
 import React, { FC } from "react";
 
 import * as S from "./style";
-import { ApplicantEvaluation } from "src/data/api/apiTypes";
 
 interface Props {
-  applicantEvaluation: ApplicantEvaluation;
+  applicantEvaluation: {
+    volunteer_time: number;
+    conversion_score: number;
+    day_absence_count: number;
+    lecture_absence_count: number;
+    early_leave_count: number;
+    lateness_count: number;
+    self_introduce: string;
+    study_plan: string;
+    average_score: number;
+  };
 }
 
-const Documents: FC<Props> = ({
-  applicantEvaluation: { self_introduce, study_plan },
-}) => {
+const Documents: FC<Props> = ({ applicantEvaluation }) => {
   const [selectedItem, setSelectedItem] = React.useState("자기소개서");
 
   const handleClickContent = React.useCallback(
@@ -36,7 +43,9 @@ const Documents: FC<Props> = ({
         ))}
       </S.ContentSelector>
       <S.Document>
-        {selectedItem === contents[0] ? self_introduce : study_plan}
+        {selectedItem === contents[0]
+          ? applicantEvaluation.self_introduce
+          : applicantEvaluation.study_plan}
       </S.Document>
     </S.Wrapper>
   );

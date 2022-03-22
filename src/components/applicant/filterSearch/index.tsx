@@ -7,6 +7,7 @@ import { GetApplicantsListPayload } from "src/data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;
+  isContainerWidth: boolean;
   isDeleteTableModalSwitch: boolean;
   setFilter: (payload: GetApplicantsListPayload) => void;
   getApplicantsList: (payload: GetApplicantsListPayload) => void;
@@ -15,19 +16,22 @@ interface Props {
 
 const FilterSearch: FC<Props> = ({
   filters,
+  isContainerWidth,
   isDeleteTableModalSwitch,
   setFilter,
   getApplicantsList,
   setIsDeleteTableModalSwitch,
 }) => {
   return (
-    <FilterSearchWrapper>
+    <FilterSearchWrapper isContainerWidth={isContainerWidth}>
       <SearchBar
+        isContainerWidth={isContainerWidth}
         searchProgressImg={list_progressbar}
         searchIcon={search_icon}
         setFilter={setFilter}
       />
       <Filter
+        isContainerWidth={isContainerWidth}
         filters={filters}
         isDeleteTableModalSwitch={isDeleteTableModalSwitch}
         setFilter={setFilter}

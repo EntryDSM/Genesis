@@ -1,5 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
-import { getStatisticsApi } from 'src/data/api/index';
+import { getStatisticsApi } from 'src/data/api/statistics/statisticsApi';
 import { GET_STATISTICS } from "src/data/modules/redux/action/statistics/interface";
 
 // export const getStatisticsSaga = createRequestSaga(GET_STATISTICS, getStatisticsApi);

@@ -50,16 +50,7 @@ const Statistics: FC<Props> = ({ score, count }) => {
           </S.StatisticsSubjectWrapper>
           <S.CompetitionTableTitle>
             2022년 신입생 지원률
-            <div>
-              <div>
-                <p>대전</p>
-                <S.StatisticsColorBox style={{backgroundColor:"#ff897b"}} />
-              </div>
-              <div>
-                <p>전국</p>
-                <S.StatisticsColorBox style={{backgroundColor:"#FF9B9F"}} />
-              </div>
-            </div>
+            
           </S.CompetitionTableTitle>
           <CompetitionTotalGraph
             /* commonScore={commonScore}

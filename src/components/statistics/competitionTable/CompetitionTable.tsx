@@ -12,15 +12,10 @@ interface Props {
   meisterScore: SpecialScoreDistribution;
   socialScore: SpecialScoreDistribution;
   totalApplicantCount: number; */
-  score:GetScoreStatisticsResponse,
+  score: GetScoreStatisticsResponse;
 }
 
-const CompetitionTable: FC<Props> = (
-  {
-    
-    score
-  }
-) => {
+const CompetitionTable: FC<Props> = ({ score }) => {
   const CommonScoreList = ({ type, score1, score2 }) => {
     return (
       <tr>
@@ -45,26 +40,69 @@ const CompetitionTable: FC<Props> = (
     <S.CompetitionTableWrapper>
       <table className="common_score-table">
         <tbody>
-          <th style={{ fontSize: "15px" }} className="common_score-left">
+          <tr className="table-edge"></tr>
+
+          <th rowSpan={2}></th>
+
+          <th
+            style={{ fontSize: "15px", lineHeight: "20px", fontWeight: "bold" }}
+            colSpan={2}
+            className="common_score-left"
+          >
             일반 전형
           </th>
-          <th>대전</th>
-          <th>전국</th>
-          <CommonScoreList type="158~170" score1={score[0]["158-170"]} score2={score[1]["158-170"]} />
-          <CommonScoreList type="145~157" score1={score[0]["145-157"]} score2={score[1]["145-157"]} />
-          <CommonScoreList type="132~144" score1={score[0]["132-144"]} score2={score[1]["132-144"]} />
-          <CommonScoreList type="119~131" score1={score[0]["119-131"]} score2={score[1]["119-131"]} />
-          <CommonScoreList type="106~118" score1={score[0]["106-118"]} score2={score[1]["106-118"]} />
-          <CommonScoreList type="93~105" score1={score[0]["93-105"]} score2={score[1]["93-105"]} />
-          <CommonScoreList type="80~92" score1={score[0]["80-92"]} score2={score[1]["80-92"]} />
-          <CommonScoreList type="79점 이하" score1={score[0]["-79"]} score2={score[0]["-79"]} />
+          <tr className="common_score-top">
+            <td>대전</td>
+            <td>전국</td>
+          </tr>
+
+          <CommonScoreList
+            type="158~170"
+            score1={score[0]["158-170"]}
+            score2={score[1]["158-170"]}
+          />
+          <CommonScoreList
+            type="145~157"
+            score1={score[0]["145-157"]}
+            score2={score[1]["145-157"]}
+          />
+          <CommonScoreList
+            type="132~144"
+            score1={score[0]["132-144"]}
+            score2={score[1]["132-144"]}
+          />
+          <CommonScoreList
+            type="119~131"
+            score1={score[0]["119-131"]}
+            score2={score[1]["119-131"]}
+          />
+          <CommonScoreList
+            type="106~118"
+            score1={score[0]["106-118"]}
+            score2={score[1]["106-118"]}
+          />
+          <CommonScoreList
+            type="93~105"
+            score1={score[0]["93-105"]}
+            score2={score[1]["93-105"]}
+          />
+          <CommonScoreList
+            type="80~92"
+            score1={score[0]["80-92"]}
+            score2={score[1]["80-92"]}
+          />
+          <CommonScoreList
+            type="79점 이하"
+            score1={score[0]["-79"]}
+            score2={score[0]["-79"]}
+          />
+          <tr className="table-edge"></tr>
         </tbody>
       </table>
       <table className="meister_score-table">
         <tbody>
-          <th className="meister_score-left" rowSpan={2}>
-            
-          </th>
+          <tr className="table-edge"></tr>
+          <th className="meister_score-left" rowSpan={2}></th>
           <th colSpan={2}>마이스터</th>
           <th colSpan={2}>사회통합</th>
           <tr className="meister_score-top">
@@ -129,6 +167,7 @@ const CompetitionTable: FC<Props> = (
             score3={score[4]["-19"]}
             score4={score[5]["-19"]}
           />
+          <tr className="table-edge"></tr>
         </tbody>
       </table>
       {/* <S.TotalScore>총계: {1}명</S.TotalScore> */}

@@ -23,7 +23,7 @@ import {
 const useApplicant = () => {
   const dispatch = useDispatch();
   const state = useSelectState().applicant;
-  const setState = {
+  const setState = { 
     setFilter: (payload: GetApplicantsListPayload) => dispatch(setFilter(payload)),
     getApplicantsList: (payload: GetApplicantsListPayload) => dispatch(getApplicantsList(payload)),
     getApplicantInfo: (payload: GetApplicantInfoPayload) => dispatch(getApplicantInfo(payload)),

@@ -31,7 +31,7 @@ const MonthSelect: FC<Props> = ({ date, setEndScheduleMonth }) => {
   };
 
   const getLocalStorage =
-    JSON.parse(localStorage.getItem("endScheduleMonth")) || "10";
+    JSON.parse(localStorage.getItem("endScheduleMonth")) || "3";
 
   const activeImg = React.useMemo(() => {
     if (active) return <img src={select_on} alt="select_on" />;

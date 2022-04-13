@@ -31,7 +31,7 @@ const Statistics: FC<Props> = ({ score, count }) => {
       <S.StatisticsContainer>
         <S.StatisticsBox>
           <S.StatisticsTitle>입학원서 접수 현황</S.StatisticsTitle>
-          <S.StatisticsSubTitle>Entry DSM 2021 Admin page</S.StatisticsSubTitle>
+          <S.StatisticsSubTitle>Entry DSM 2022 Admin page</S.StatisticsSubTitle>
           <S.StatisticsSubjectWrapper>
             <S.EachStatisticsSubjectWrapper>
               <S.StatisticsSubjectTitle>

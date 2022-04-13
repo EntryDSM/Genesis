@@ -42,23 +42,23 @@ const InitialState: IScheduleState = {
   scheduleDate: [
     {
       type: 'START_DATE',
-      date: '2021-10-05T12:05:55',
+      date: '2022-10-05T12:05:55',
     },
     {
       type: 'END_DATE',
-      date: '2021-10-07T12:05:55',
+      date: '2022-10-07T12:05:55',
     },
     {
       type: 'FIRST_ANNOUNCEMENT',
-      date: '2021-10-09T12:05:55',
+      date: '2022-10-09T12:05:55',
     },
     {
       type: 'INTERVIEW',
-      date: '2021-10-10T12:05:55',
+      date: '2022-10-10T12:05:55',
     },
     {
       type: 'SECOND_ANNOUNCEMENT',
-      date: '2021-10-11T12:05:55',
+      date: '2022-10-11T12:05:55',
     },
   ],
   startScheduleDate: '',
@@ -69,27 +69,27 @@ const InitialState: IScheduleState = {
   date: [
      {
       type: 'END_DATE',
-      date: '2021-10-07T12:05:55',
+      date: '2022-10-07T12:05:55',
     },
     {
       type: 'FIRST_ANNOUNCEMENT',
-      date: '2021-10-22T12:05:55',
+      date: '2022-10-22T12:05:55',
     },
     {
       type: 'INTERVIEW',
-      date: '2021-10-23T12:05:55',
+      date: '2022-10-23T12:05:55',
     },
     {
       type: 'SECOND_ANNOUNCEMENT',
-      date: '2021-10-25T12:05:55',
+      date: '2022-10-25T12:05:55',
     },
     {
       type: 'START_DATE',
-      date: '2021-10-04T12:05:55',
+      date: '2022-10-04T12:05:55',
     },
     {
       type: 'NOT_APPLICATION_PERIOD',
-      date: '2021-10-20',
+      date: '2022-10-20',
     },
   ],  
   error: {
@@ -119,7 +119,7 @@ const scheduleReducer = (
     case GET_STATUS_SUCCESS: {
       return {
         ...state,
-        date: action.payload.schedules,
+        date: action.payload.schedule,
         status: action.payload.current_status as scheduleType,
       };
     }
@@ -222,7 +222,7 @@ const scheduleReducer = (
     case SET_SCHEDULE: {
       return {
         ...state,
-        scheduleDate: action.payload.schedules,
+        scheduleDate: action.payload.schedule,
       };
     }
     case SET_SCHEDULE_SUCCESS: {

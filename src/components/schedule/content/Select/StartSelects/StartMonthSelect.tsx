@@ -33,7 +33,7 @@ const MonthSelect: FC<Props> = ({ date, setStartScheduleMonth }) => {
   };
 
   const getLocalStorage = JSON.parse(
-    localStorage.getItem("startScheduleMonth") || "10"
+    localStorage.getItem("startScheduleMonth") || "3"
   );
 
   const activeImg = React.useMemo(() => {

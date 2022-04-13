@@ -10,12 +10,12 @@ export interface UpdateSchedulesPayload {
 }
 
 export interface GetSchedulesResponse {
-  schedules: GetSchedulesPayload[];
+  schedule: GetSchedulesPayload[];
   current_status: string;
 }
 
 export interface UpdateScheduleStatusPayload {
-  schedules: UpdateSchedulesPayload[];
+  schedule: UpdateSchedulesPayload[];
 }
 
 export interface CommonScoreDistribution {

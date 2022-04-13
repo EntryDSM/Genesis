@@ -4,7 +4,7 @@ import { color, pxToRem } from "../../styles";
 export const StatisticsPageContainer = styled.div`
   width: 100%;
   min-height: 1800px;
-  overflow-y:hidden;
+  overflow-y: hidden;
   min-width: ${pxToRem(1320)}rem;
   display: flex;
   justify-content: center;
@@ -47,74 +47,47 @@ export const StatisticsSubTitle = styled.p`
 `;
 
 export const StatisticsSubjectWrapper = styled.div`
-  display:flex;
-  flex-direction:column;
-  width:30%;
-  font-size:24px;
-  margin-top:3%;
-  background-color:#ffebec;
-  padding:3%;
-  border-radius:5px;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  font-size: 24px;
+  margin-top: 3%;
+  background-color: #ffebec;
+  padding: 3%;
+  border-radius: 5px;
 `;
 
 export const EachStatisticsSubjectWrapper = styled.div`
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:3%;
-  padding-bottom:2px;
-  border-bottom:0.5px solid gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3%;
+  padding-bottom: 2px;
+  border-bottom: 0.5px solid gray;
 `;
 
-export const StatisticsSubjectTitle = styled.span`
-
-`;
+export const StatisticsSubjectTitle = styled.span``;
 
 export const StatisticsSubjectCount = styled.span`
-  font-weight:bold;
-  >span{
-    font-weight:normal;
+  font-weight: bold;
+  > span {
+    font-weight: normal;
   }
 `;
 
 export const CompetitionTableTitle = styled.h1`
-  width: 58%;
-/*   margin-top: ${pxToRem(104)}rem;
- */  
-  padding-top:105px;
-font-size: 28px;
+  width: 75%;
+  padding-left: 17%;
+  padding-top: 105px;
+  font-size: 28px;
   font-weight: bold;
   font-family: "Noto Sans KR-Bold", sans-serif !important;
   color: ${color.primaryTextColor};
-  display:flex;
-  flex-direction:row;
-  align-items:flex-end;
-  
-  >div{
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    margin-left:30px;
-    >div{
-      display:flex;
-      flex-direction:row;
-      align-items:center;
-      
-      >p{
-        font-size:14px;
-      }
-    }
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 `;
-
-export const StatisticsColorBox = styled.div`
-        width:12px;
-        height:12px;
-        border-radius:100%;
-        margin-left:5px;
-        margin-right:10px;
-`
 
 export const CompetitionTableWrapper = styled.div`
   width: 58%;
@@ -125,61 +98,68 @@ export const CompetitionTableWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   text-align: center;
-  margin-top:3%;
+  margin-top: 3%;
+  .table-edge {
+    border: 1px double black !important;
+    width: 100%;
+  }
   > table.common_score-table {
     border-spacing: 0px;
     border-collapse: collapse;
-    width: 40%;
+    display: table;
+    width: 34%;
     height: 100%;
-    border: 0.802326px solid #000000;
     color: white;
+    font-size: 14px;
     .common_score-left {
-      width: 40%;
-      background-color: #ff9b9f;
+      width: 50%;
+      background-color: #ffebec;
       font-weight: lighter;
-      color:white;
+      color: black;
+    }
+    .common_score-top {
+      td {
+        background-color: #ffebec;
+        font-size: 16px;
+        line-height: 20px;
+      }
     }
     th {
-      border: 0.802326px solid #000000;
-      font-size: 17px;
+      border: 0.802326px solid lightgray;
+      font-size: 16px;
       line-height: 24px;
-      background-color: #f57278 !important;
+      background-color: #ffebec !important;
       font-weight: bold !important;
     }
     td {
-      border: 0.802326px solid #000000;
-      color:black;
+      border: 0.802326px solid lightgray;
+      color: black;
+      width: 33% !important;
     }
   }
   > table.meister_score-table {
     width: 55%;
-    border: 0.802326px solid #000000;
     border-spacing: 0px;
     border-collapse: collapse;
-    color:white;
-    .meister_score-left{
-      width:20% !important;
-      background-color:#FF9B9F; 
-      font-size:14px;
-      color:white;
-      font-weight:lighter;
-
+    .meister_score-left {
+      width: 20% !important;
+      background-color: #ffebec;
+      font-size: 14px;
+      font-weight: lighter;
     }
-    .meister_score-top td{
-      font-weight:bold;
-      background-color:#FF9B9F;
-      color:white !important;
+    .meister_score-top td {
+      background-color: #ffebec;
     }
     th {
-      border: 0.802326px solid #000000;
-      width:40%;
-      font-size:12px;
-      line-height:24px;
-      background-color:#F57278 !important;
+      border: 0.802326px solid lightgray;
+      width: 40%;
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 24px;
+      background-color: #ffebec !important;
     }
     td {
-      border: 0.802326px solid #000000;
-      color:black;
+      border: 0.802326px solid lightgray;
     }
   }
 `;
@@ -193,60 +173,50 @@ export const TotalScore = styled.div`
 `;
 
 export const CompetitionViewWrapper = styled.table`
-  /* width: 30%;
-  font-size: 24px;
-  margin-top: 40px;
-  tr:last-child {
-    width: 100%;
-  }
-
-  tr {
-    display: flex;
-    justify-content: space-evenly;
-    line-height: 45px;
-  } */
   width: 58%;
-  height: 170px;
-  background-color: #ffffff;
+  height: 160px;
   display: flex;
   justify-content: space-between;
   margin-top: 3%;
-  border: 0.5px solid #505050;
+  border-spacing: 0px;
+  th {
+    width: 50%;
+    font-family: Noto Sans KR;
+    background-color: #ffebec;
+    font-weight: 700;
+    font-size: 20px;
+    height: 33.33%;
+    border: 0.802326px solid lightgray;
+  }
+  td {
+    border: 0.802326px solid lightgray !important;
+  }
+  .table-edge {
+    border: 1px double black;
+    width: 100%;
+  }
   .competition-table {
+    border-collapse: collapse;
     border-spacing: 0px;
-    border-collapse: separate;
     width: 100%;
     text-align: center;
-    color: white;
+    display: table;
 
-    .competition-table-top td {
-      border: 0.5px solid #505050;
-      width: 50%;
-      font-family: Noto Sans KR;
-      background-color: #f57278;
-      font-weight: 700;
-      font-size: 20px;
-      height: 33.33%;
-    }
     .competition-table-mid td {
-      border: 0.5px solid #505050;
-      background-color: #ff9b9f;
       font-family: Noto Sans;
+      background-color: #ffebec;
       font-style: normal;
-      font-weight: bold;
+      font-weight: 500;
       font-size: 15px;
       height: 33.33%;
     }
     .competition-table-bottom td {
-      border: 0.5px solid #505050;
       color: black;
     }
   }
 `;
 
-export const CompetitionViewTitle = styled.h1`
-
-`;
+export const CompetitionViewTitle = styled.h1``;
 
 export const CompetitionViewTH = styled.th`
   width: 65%;
@@ -269,12 +239,15 @@ export const CompetitionViewTD = styled.td`
 `;
 
 export const CompetitionTotalGraphWrapper = styled.div`
-  
-  width: 58%;
-  height:352px;
+  width: 75%;
+  height: 265px;
   margin-top: 3%;
-/*   margin-right: 10%;
- */`;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /*   margin-right: 10%;
+ */
+`;
 
 export const CompetitionFreshmanTotal = styled.div`
   display: flex;
@@ -306,46 +279,57 @@ export const TotalCompetitionRate = styled.div`
 `;
 
 export const CompetitionGraphContainer = styled.div`
-  
-  height:334px;
-  display:flex;
-  flex-direction:column;
-  >.graph-wrapper{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-around;
-    height:100%;
-    width:94%;
-    margin-left:6%;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  > .graph-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 78%;
   }
-  >.graph-region{
+  > .graph-region {
     display: flex;
     flex-direction: row;
-    margin-left:6%;
-    width:94%;
-    display:flex;
-    flex-direction:row;
-    justify-content:space-around;
-    justify-self:flex-end;
-    >span{
-      width:13%;
-      font-size:100%;
-      text-align:center;
-      
+    width: 11%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-self: flex-end;
+    > p {
+      text-align: center;
+      font-weight: bold;
     }
   }
-  
-
+  .graph-competition-rate {
+    width: 11%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    > .graph-rate-wrapper {
+      display: flex;
+      flex-direction: row;
+      padding-right: 10px;
+      width: 60%;
+      justify-content: flex-end;
+      font-weight: bold;
+      > .rate-end {
+        margin-left: 7px;
+      }
+    }
+  }
 `;
 
 export const GraphWrapper = styled.div`
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  width:94px;
-  
-/*   margin-bottom: ${pxToRem(14)}rem;
- */`;
+  width: 100%;
+  height: 50px;
+  background-color: #ffebec;
+
+  /*   margin-bottom: ${pxToRem(14)}rem;
+ */
+`;
 
 export const GraphTitle = styled.div`
   width: 100%;
@@ -356,113 +340,119 @@ export const GraphTitle = styled.div`
 `;
 
 export const GraphChart = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-  position:absolute;
-  width: ${pxToRem(94)}rem;
-  
+  width: 100%;
+  height: 100%;
+
   /* padding-right: 1rem; */
   /*   background-color: ${color.light};*/
 `;
 
-export const CommonGraphBar = styled.div<{ isWidthOfCommonGraphBar; is_daejeon }>`
-  height: ${({ isWidthOfCommonGraphBar }) =>
-    isWidthOfCommonGraphBar ? isWidthOfCommonGraphBar>5?(310/100)*(isWidthOfCommonGraphBar)*1.07:(310/100)*5 : 0}px;
-  width: 42px;
-  background-image: ${(props) =>
-    props.is_daejeon
-      ? "linear-gradient(to bottom,#f57278,#ff897b)"
-      : "linear-gradient(to bottom,#FF9B9F,#FF9B9F)"};
-  border-radius: 25px 25px 0px 0;
-  animation: CommonGraphOpa 1.5s ease-in Alternate;
+export const CommonGraphBar = styled.div<{
+  isWidthOfCommonGraphBar;
+}>`
+  height: 100%;
+  background-image: linear-gradient(to left, #f57278, #ff897b);
+  border-radius: 0px 50px 50px 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-
+  justify-content: flex-end;
+  width: ${({ isWidthOfCommonGraphBar }) =>
+    isWidthOfCommonGraphBar
+      ? isWidthOfCommonGraphBar > 5
+        ? isWidthOfCommonGraphBar + "%"
+        : "25px"
+      : "25px"};
+  animation: CommonGraphOpa 1.5s ease-in alternate;
   @keyframes CommonGraphOpa {
     from {
       // same 0%
-      height:${(310/100)*5}px
+      width: 25px;
     }
-
     to {
-      // same 100%
-      height: ${({ isWidthOfCommonGraphBar }) =>
-    isWidthOfCommonGraphBar ? isWidthOfCommonGraphBar>5?(310/100)*(isWidthOfCommonGraphBar)*1.07:(310/100)*5 : (310/100)*5}px;
+      width: ${({ isWidthOfCommonGraphBar }) =>
+        isWidthOfCommonGraphBar
+          ? isWidthOfCommonGraphBar > 5
+            ? isWidthOfCommonGraphBar + "%"
+            : "25px"
+          : "25px"};
     }
   }
 `;
 
-export const MeisterGraphBar = styled.div<{ isWidthOfMeisterGraphBar,is_daejeon }>`
-  height: ${({ isWidthOfMeisterGraphBar }) =>
-    isWidthOfMeisterGraphBar ? isWidthOfMeisterGraphBar>5?(310/100)*(isWidthOfMeisterGraphBar)*1.07:(310/100)*5 : 0}px;
-  width: 42px;
-  background-image: ${(props) =>
-    props.is_daejeon
-      ? "linear-gradient(to bottom,#f57278,#ff897b)"
-      : "linear-gradient(to bottom,#FF9B9F,#FF9B9F)"};
-  border-radius: 25px 25px 0px 0;
-  animation: MeisterGraphOpa 1.5s ease-in Alternate;
+export const MeisterGraphBar = styled.div<{
+  isWidthOfMeisterGraphBar;
+}>`
+  height: 100%;
+  background-image: linear-gradient(to left, #f57278, #ff897b);
+  border-radius: 0px 50px 50px 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-
+  justify-content: flex-end;
+  width: ${({ isWidthOfMeisterGraphBar }) =>
+    isWidthOfMeisterGraphBar
+      ? isWidthOfMeisterGraphBar > 5
+        ? isWidthOfMeisterGraphBar + "%"
+        : "25px"
+      : "25px"};
+  animation: MeisterGraphOpa 1.5s ease-in alternate;
   @keyframes MeisterGraphOpa {
     from {
       // same 0%
-      height:${(310/100)*5}px
+      width: 25px;
     }
-
     to {
-      // same 100%
-      height: ${({ isWidthOfMeisterGraphBar }) =>
-    isWidthOfMeisterGraphBar ? isWidthOfMeisterGraphBar>5?(310/100)*(isWidthOfMeisterGraphBar)*1.07:(310/100)*5 : (310/100)*5}px;
+      width: ${({ isWidthOfMeisterGraphBar }) =>
+        isWidthOfMeisterGraphBar
+          ? isWidthOfMeisterGraphBar > 5
+            ? isWidthOfMeisterGraphBar + "%"
+            : "25px"
+          : "25px"};
     }
   }
 `;
 
-export const SocialGraphBar = styled.div<{ isWidthOfSocialGraphBar,is_daejeon }>`
-  height: ${({ isWidthOfSocialGraphBar }) =>
-    isWidthOfSocialGraphBar ? isWidthOfSocialGraphBar>5?(310/100)*(isWidthOfSocialGraphBar)*1.07:(310/100)*5 : 0}px;
-  width: 42px;
-  background-image: ${(props) =>
-    props.is_daejeon
-      ? "linear-gradient(to bottom,#f57278,#ff897b)"
-      : "linear-gradient(to bottom,#FF9B9F,#FF9B9F)"};
-  border-radius: 25px 25px 0px 0;
-  animation: SocialGraphOpa 1.5s ease-in Alternate;
+export const SocialGraphBar = styled.div<{
+  isWidthOfSocialGraphBar;
+}>`
+  height: 100%;
+  background-image: linear-gradient(to left, #f57278, #ff897b);
+  border-radius: 0px 50px 50px 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  
-
+  justify-content: flex-end;
+  width: ${({ isWidthOfSocialGraphBar }) =>
+    isWidthOfSocialGraphBar
+      ? isWidthOfSocialGraphBar > 5
+        ? isWidthOfSocialGraphBar + "%"
+        : "25px"
+      : "25px"};
+  animation: SocialGraphOpa 1.5s ease-in alternate;
   @keyframes SocialGraphOpa {
     from {
       // same 0%
-      height:${(310/100)*5}px
+      width: 25px;
     }
-
     to {
-      // same 100%
-      height: ${({ isWidthOfSocialGraphBar }) =>
-    isWidthOfSocialGraphBar ? isWidthOfSocialGraphBar>5?(310/100)*(isWidthOfSocialGraphBar)*1.07:(310/100)*5 : (310/100)*5}px;
+      width: ${({ isWidthOfSocialGraphBar }) =>
+        isWidthOfSocialGraphBar
+          ? isWidthOfSocialGraphBar > 5
+            ? isWidthOfSocialGraphBar + "%"
+            : "25px"
+          : "25px"};
     }
   }
 `;
 
-export const GraphBarContentText = styled.span<{ isWidthOfGraphBar }>`
+export const GraphBarContentText = styled.p`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  width: 100%;
-  height: 96%;
-  
-  color:${({isWidthOfGraphBar})=>isWidthOfGraphBar?"white":"rgba(0,0,0,0)"};
+  margin-right: 10px;
+
+  color: white;
   font-size: 14px;
   font-weight: bold;
   font-family: "Noto Sans KR-Bold", sans-serif !important;
@@ -476,32 +466,19 @@ export const GraphCompetitionRate = styled.div`
 `;
 
 export const GraphRateBar = styled.div`
-  width:40.5%;
-  height:322px;
-  position:absolute;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  
-`;
-
-export const EachGraphRateBarWrapper = styled.div`
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content:space-between;
-  color:#C5C5C5;
-  >span{
-    width:20px;
-    text-align:center;
-    font-weight:bold;
-  }
-  >div{
-    border-bottom:1.5px solid #C5C5C5;
-    width:96%;
+  width: 78%;
+  margin-left: 11%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-family: Noto Sans KR;
+  > #endofnum {
+    width: 30px;
   }
 `;
-
 
 export const GraphItemBox = styled.div`
   display: flex;

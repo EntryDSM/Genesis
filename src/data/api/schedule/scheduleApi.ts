@@ -4,7 +4,7 @@ import { getRequest, authorization } from "../default/default";
 import uri from "../uri";
 
 export const getScheduleApi = async () => {
-    const response = await getRequest().get<T.GetSchedulesResponse>(uri.schedules);
+    const response = await getRequest().get<T.GetSchedulesResponse>(uri.schedule);
   
     return response;
   }
@@ -13,7 +13,7 @@ export const getScheduleApi = async () => {
     try {
       const request = getRequest();
   
-      await request.patch(uri.schedules , payload, {
+      await request.patch(uri.schedule , payload, {
       headers: authorization(getAccessToken()),
     });
     } catch (error) {

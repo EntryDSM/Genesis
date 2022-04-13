@@ -50,7 +50,7 @@ export const setIsEnd = (payload: boolean) => ({
 });
 
 export const getStatusSuccess = (payload: {
-  schedules: processTimeType[];
+  schedule: processTimeType[];
   current_status: string;
 }) => ({
   type: GET_STATUS_SUCCESS,
@@ -142,7 +142,7 @@ export const setSecondDate = (payload: string) => ({
 })
 
 export const setSchedule = (payload: {
-  schedules: Array<scheduleUpdateTypes>;
+  schedule: Array<scheduleUpdateTypes>;
 }) => ({
   type: SET_SCHEDULE,
   payload,

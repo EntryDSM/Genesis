@@ -31,7 +31,7 @@ const MonthSelect: FC<Props> = ({ date, setFirstScheduleDay }) => {
   };
 
   const getLocalStorage =
-    JSON.parse(localStorage.getItem("firstScheduleDay")) || "25";
+    JSON.parse(localStorage.getItem("firstScheduleDay")) || "28";
 
   const activeImg = React.useMemo(() => {
     if (active) return <img src={select_on} alt="select_on" />;

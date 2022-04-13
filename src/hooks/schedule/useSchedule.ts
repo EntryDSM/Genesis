@@ -81,7 +81,7 @@ const useSchedule = () => {
       dispatch(setSecondDate(payload))
     },
     setSchedule: (payload: { 
-      schedules: Array<scheduleUpdateTypes>; 
+      schedule: Array<scheduleUpdateTypes>; 
     }) => {
       dispatch(setSchedule(payload))
     },

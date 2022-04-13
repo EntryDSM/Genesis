@@ -7,7 +7,6 @@ import {
 } from "src/data/api/apiTypes";
 
 interface Props {
-  /*   socialScore: SpecialScoreDistribution; */
   count: GetCountStatisticsResponse;
 }
 

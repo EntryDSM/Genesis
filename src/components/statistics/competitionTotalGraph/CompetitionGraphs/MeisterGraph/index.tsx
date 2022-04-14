@@ -16,7 +16,7 @@ const MeisterGraph: FC<Props> = ({ count }) => {
   const daejeonscore = count[2].count;
   const commonscore = count[3].count;
 
-  const [isWidthOfGraphBar, setIsWidthOfGraphBar] = React.useState<any>("");
+  const [isWidthOfGraphBar, setIsWidthOfGraphBar] = React.useState<number>();
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
 

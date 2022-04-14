@@ -14,7 +14,7 @@ const CommonGraph: FC<Props> = ({ count }) => {
   const daejeonscore = count[0].count;
   const commonscore = count[1].count;
 
-  const [isWidthOfGraphBar, setIsWidthOfGraphBar] = React.useState<any>("");
+  const [isWidthOfGraphBar, setIsWidthOfGraphBar] = React.useState<number>();
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
 

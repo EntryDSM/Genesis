@@ -14,7 +14,7 @@ const SocialGraph: FC<Props> = ({ count }) => {
   const daejeonscore = count[4].count;
   const commonscore = count[5].count;
 
-  const [isWidthOfGraphBar, setIsWidthOfGraphBar] = React.useState<any>("");
+  const [isWidthOfGraphBar, setIsWidthOfGraphBar] = React.useState<number>();
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
 

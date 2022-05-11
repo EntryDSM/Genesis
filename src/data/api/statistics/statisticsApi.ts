@@ -17,7 +17,6 @@ export const getStatisticsApi = async () => {
          },
        );
          const result:T.StaticDistribution = {count:response1.data,score:response2.data}; 
-         console.log('statics:',result)
     return result;
   };
   

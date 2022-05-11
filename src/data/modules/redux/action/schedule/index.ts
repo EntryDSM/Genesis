@@ -50,7 +50,7 @@ export const setIsEnd = (payload: boolean) => ({
 });
 
 export const getStatusSuccess = (payload: {
-  schedule: processTimeType[];
+  schedules: processTimeType[];
   current_status: string;
 }) => ({
   type: GET_STATUS_SUCCESS,

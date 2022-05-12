@@ -22,7 +22,7 @@ const ApplicantsListItem: FC<Props> = ({
     is_daejeon,
     application_type,
     is_prints_arrived,
-    is_submit,
+    is_submitted,
   },
   handleClick,
 }) => {
@@ -33,8 +33,8 @@ const ApplicantsListItem: FC<Props> = ({
     return returnApplicationType(application_type);
   }, [application_type]);
   const checkSubmitStatus = React.useCallback(
-    () => (is_submit ? "완료" : "미완료"),
-    [is_submit]
+    () => (is_submitted ? "완료" : "미완료"),
+    [is_submitted]
   );
 
   return (

@@ -9,17 +9,18 @@ interface Props {
   setFilter: (payload: GetApplicantsListPayload) => void;
 }
 
+const categoryList = [
+  { content: "학교이름", id: "schoolName" },
+  { content: "이름", id: "name" },
+  { content: "접수번호", id: "receiptCode" },
+];
+
 const SearchBar: FC<Props> = ({
   isContainerWidth,
   searchProgressImg,
   searchIcon,
   setFilter,
 }) => {
-  const categoryList = [
-    { content: "학교이름", id: "schoolName" },
-    { content: "이름", id: "name" },
-    { content: "접수번호", id: "receiptCode" },
-  ];
 
   const [keyword, setKeyword] = React.useState("");
   const [selectedCategory, setSelectedCategory] = React.useState(

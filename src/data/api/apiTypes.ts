@@ -15,7 +15,7 @@ export interface GetSchedulesResponse {
 }
 
 export interface UpdateScheduleStatusPayload {
-  schedule: UpdateSchedulesPayload[];
+  schedules: UpdateSchedulesPayload[];
 }
 
 export interface CommonScoreDistribution {

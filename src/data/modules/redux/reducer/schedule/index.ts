@@ -232,7 +232,7 @@ const scheduleReducer = (
     case SET_SCHEDULE: {
       return {
         ...state,
-        scheduleDate: action.payload.schedule,
+        scheduleDate: action.payload.schedules,
       };
     }
     case SET_SCHEDULE_SUCCESS: {

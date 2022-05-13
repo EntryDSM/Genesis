@@ -142,7 +142,7 @@ export const setSecondDate = (payload: string) => ({
 })
 
 export const setSchedule = (payload: {
-  schedule: Array<scheduleUpdateTypes>;
+  schedules: Array<scheduleUpdateTypes>;
 }) => ({
   type: SET_SCHEDULE,
   payload,

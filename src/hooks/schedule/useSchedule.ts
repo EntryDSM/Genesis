@@ -35,10 +35,10 @@ const useSchedule = () => {
     setIsEnd: (payload: boolean) => dispatch(setIsEnd(payload)),
     setProcess: (payload: processType[]) => dispatch(setProcess(payload)),
     getStatus: () => dispatch(getStatus()),
-    setStartScheduleMonth: (payload: number) => { 
+    setStartScheduleMonth: (payload: number) => {
       dispatch(setStartScheduleMonth(payload));
     },
-    setStartScheduleDay: (payload: number) => { 
+    setStartScheduleDay: (payload: number) => {
       dispatch(setStartScheduleDay(payload));
     },
     setEndScheduleMonth: (payload: number) => {
@@ -80,8 +80,8 @@ const useSchedule = () => {
     setSecondDate: (payload: string) => {
       dispatch(setSecondDate(payload))
     },
-    setSchedule: (payload: { 
-      schedule: Array<scheduleUpdateTypes>; 
+    setSchedule: (payload: {
+      schedules: Array<scheduleUpdateTypes>;
     }) => {
       dispatch(setSchedule(payload))
     },

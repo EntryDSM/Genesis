@@ -128,8 +128,7 @@ export const Select = styled.div<{
   cursor: pointer;
 `;
 
-export const SelectContent = styled.div<{
-}>`
+export const SelectContent = styled.div`
   width: 100%;
   display: flex;
   align-items: center;

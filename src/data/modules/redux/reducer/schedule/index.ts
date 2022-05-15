@@ -31,6 +31,21 @@ import {
   SET_SCHEDULE,
   SET_SCHEDULE_SUCCESS,
   SET_SCHEDULE_FAILURE,
+  START_SCHEDULE_HOUR,
+  START_SCHEDULE_MINUTE,
+  START_SCHEDULE_SECOND,
+  END_SCHEDULE_HOUR,
+  END_SCHEDULE_MINUTE,
+  END_SCHEDULE_SECOND,
+  FIRST_SCHEDULE_HOUR,
+  FIRST_SCHEDULE_MINUTE,
+  FIRST_SCHEDULE_SECOND,
+  INTERVIEW_SCHEDULE_HOUR,
+  INTERVIEW_SCHEDULE_MINUTE,
+  INTERVIEW_SCHEDULE_SECOND,
+  SECOND_SCHEDULE_HOUR,
+  SECOND_SCHEDULE_MINUTE,
+  SECOND_SCHEDULE_SECOND,
 } from "../../action/schedule/interface";
 
 const InitialState: IScheduleState = {
@@ -40,14 +55,29 @@ const InitialState: IScheduleState = {
   processes: scheduleConstance,
   startScheduleMonth: 10,
   startScheduleDay: 5,
+  startScheduleHour: 12,
+  startScheduleMinute: 0,
+  startScheduleSecond: 0,
   endScheduleMonth: 10,
   endScheduleDay: 7,
+  endScheduleHour: 12,
+  endScheduleMinute: 0,
+  endScheduleSecond: 0,
   firstScheduleMonth: 10,
   firstScheduleDay: 9,
+  firstScheduleHour: 12,
+  firstScheduleMinute: 0,
+  firstScheduleSecond: 0,
   interviewScheduleMonth: 10,
   interviewScheduleDay: 10,
+  interviewScheduleHour: 12,
+  interviewScheduleMinute: 0,
+  interviewScheduleSecond: 0,
   secondScheduleMonth: 10,
   secondScheduleDay: 11,
+  secondScheduleHour: 12,
+  secondScheduleMinute: 0,
+  secondScheduleSecond: 0,
   scheduleDate: [
     {
       type: "START_DATE",
@@ -151,6 +181,24 @@ const scheduleReducer = (
         startScheduleDay: action.payload,
       };
     }
+    case START_SCHEDULE_HOUR: {
+      return {
+        ...state,
+        startScheduleHour: action.payload,
+      };
+    }
+    case START_SCHEDULE_MINUTE: {
+      return {
+        ...state,
+        startScheduleMinute: action.payload,
+      };
+    }
+    case START_SCHEDULE_SECOND: {
+      return {
+        ...state,
+        startScheduleSecond: action.payload,
+      };
+    }
     case END_SCHEDULE_MONTH: {
       return {
         ...state,
@@ -161,6 +209,24 @@ const scheduleReducer = (
       return {
         ...state,
         endScheduleDay: action.payload,
+      };
+    }
+    case END_SCHEDULE_HOUR: {
+      return {
+        ...state,
+        endScheduleHour: action.payload,
+      };
+    }
+    case END_SCHEDULE_MINUTE: {
+      return {
+        ...state,
+        endScheduleMinute: action.payload,
+      };
+    }
+    case END_SCHEDULE_SECOND: {
+      return {
+        ...state,
+        endScheduleSecond: action.payload,
       };
     }
     case FIRST_SCHEDULE_MONTH: {
@@ -175,6 +241,24 @@ const scheduleReducer = (
         firstScheduleDay: action.payload,
       };
     }
+    case FIRST_SCHEDULE_HOUR: {
+      return {
+        ...state,
+        firstScheduleHour: action.payload,
+      };
+    }
+    case FIRST_SCHEDULE_MINUTE: {
+      return {
+        ...state,
+        firstScheduleMinute: action.payload,
+      };
+    }
+    case FIRST_SCHEDULE_SECOND: {
+      return {
+        ...state,
+        firstScheduleSecond: action.payload,
+      };
+    }
     case INTERVIEW_SCHEDULE_MONTH: {
       return {
         ...state,
@@ -187,6 +271,24 @@ const scheduleReducer = (
         interviewScheduleDay: action.payload,
       };
     }
+    case INTERVIEW_SCHEDULE_HOUR: {
+      return {
+        ...state,
+        interviewScheduleHour: action.payload,
+      };
+    }
+    case INTERVIEW_SCHEDULE_MINUTE: {
+      return {
+        ...state,
+        interviewScheduleMinute: action.payload,
+      };
+    }
+    case INTERVIEW_SCHEDULE_SECOND: {
+      return {
+        ...state,
+        interviewScheduleSecond: action.payload,
+      };
+    }
     case SECOND_SCHEDULE_MONTH: {
       return {
         ...state,
@@ -197,6 +299,24 @@ const scheduleReducer = (
       return {
         ...state,
         secondScheduleDay: action.payload,
+      };
+    }
+    case SECOND_SCHEDULE_HOUR: {
+      return {
+        ...state,
+        secondScheduleHour: action.payload,
+      };
+    }
+    case SECOND_SCHEDULE_MINUTE: {
+      return {
+        ...state,
+        secondScheduleMinute: action.payload,
+      };
+    }
+    case SECOND_SCHEDULE_SECOND: {
+      return {
+        ...state,
+        secondScheduleSecond: action.payload,
       };
     }
     case START_SCHEDULE_DATE: {
@@ -232,7 +352,7 @@ const scheduleReducer = (
     case SET_SCHEDULE: {
       return {
         ...state,
-        scheduleDate: action.payload.schedule,
+        scheduleDate: action.payload.schedules,
       };
     }
     case SET_SCHEDULE_SUCCESS: {

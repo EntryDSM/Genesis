@@ -8,14 +8,29 @@ import {
   getStatus,
   setStartScheduleMonth,
   setStartScheduleDay,
+  setStartScheduleHour,
+  setStartScheduleMinute,
+  setStartScheduleSecond,
   setEndScheduleMonth,
   setEndScheduleDay,
+  setEndScheduleHour,
+  setEndScheduleMinute,
+  setEndScheduleSecond,
   setFirstScheduleMonth,
   setFirstScheduleDay,
+  setFirstScheduleHour,
+  setFirstScheduleMinute,
+  setFirstScheduleSecond,
   setInterviewScheduleMonth,
   setInterviewScheduleDay,
+  setInterviewScheduleHour,
+  setInterviewScheduleMinute,
+  setInterviewScheduleSecond,
   setSecondScheduleMonth,
   setSecondScheduleDay,
+  setSecondScheduleHour,
+  setSecondScheduleMinute,
+  setSecondScheduleSecond,
   setStartDate,
   setEndDate,
   setFirstDate,
@@ -41,11 +56,29 @@ const useSchedule = () => {
     setStartScheduleDay: (payload: number) => { 
       dispatch(setStartScheduleDay(payload));
     },
+    setStartScheduleHour: (payload: number) => {
+      dispatch(setStartScheduleHour(payload));
+    },
+    setStartScheduleMinute: (payload: number) => {
+      dispatch(setStartScheduleMinute(payload));
+    },
+    setStartScheduleSecond: (payload: number) => {
+      dispatch(setStartScheduleSecond(payload));
+    },
     setEndScheduleMonth: (payload: number) => {
       dispatch(setEndScheduleMonth(payload));
     },
     setEndScheduleDay: (payload: number) => {
       dispatch(setEndScheduleDay(payload));
+    },
+    setEndScheduleHour: (payload: number) => {
+      dispatch(setEndScheduleHour(payload));
+    },
+    setEndScheduleMinute: (payload: number) => {
+      dispatch(setEndScheduleMinute(payload));
+    },
+    setEndScheduleSecond: (payload: number) => {
+      dispatch(setEndScheduleSecond(payload));
     },
     setFirstScheduleMonth: (payload: number) => {
       dispatch(setFirstScheduleMonth(payload));
@@ -53,17 +86,44 @@ const useSchedule = () => {
     setFirstScheduleDay: (payload: number) => {
       dispatch(setFirstScheduleDay(payload));
     },
+    setFirstScheduleHour: (payload: number) => {
+      dispatch(setFirstScheduleHour(payload));
+    },
+    setFirstScheduleMinute: (payload: number) => {
+      dispatch(setFirstScheduleMinute(payload));
+    },
+    setFirstScheduleSecond: (payload: number) => {
+      dispatch(setFirstScheduleSecond(payload));
+    },
     setInterviewScheduleMonth: (payload: number) => {
       dispatch(setInterviewScheduleMonth(payload));
     },
     setInterviewScheduleDay: (payload: number) => {
       dispatch(setInterviewScheduleDay(payload));
     },
+    setInterviewScheduleHour: (payload: number) => {
+      dispatch(setInterviewScheduleHour(payload));
+    },
+    setInterviewScheduleMinute: (payload: number) => {
+      dispatch(setInterviewScheduleMinute(payload));
+    },
+    setInterviewScheduleSecond: (payload: number) => {
+      dispatch(setInterviewScheduleSecond(payload));
+    },
     setSecondScheduleMonth: (payload: number) => {
       dispatch(setSecondScheduleMonth(payload));
     },
     setSecondScheduleDay: (payload: number) => {
       dispatch(setSecondScheduleDay(payload));
+    },
+    setSecondScheduleHour: (payload: number) => {
+      dispatch(setSecondScheduleHour(payload));
+    },
+    setSecondScheduleMinute: (payload: number) => {
+      dispatch(setSecondScheduleMinute(payload));
+    },
+    setSecondScheduleSecond: (payload: number) => {
+      dispatch(setSecondScheduleSecond(payload));
     },
     setStartDate: (payload: string) => {
       dispatch(setStartDate(payload))
@@ -81,7 +141,7 @@ const useSchedule = () => {
       dispatch(setSecondDate(payload))
     },
     setSchedule: (payload: { 
-      schedule: Array<scheduleUpdateTypes>; 
+      schedules: Array<scheduleUpdateTypes>; 
     }) => {
       dispatch(setSchedule(payload))
     },

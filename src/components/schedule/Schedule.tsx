@@ -51,7 +51,7 @@ interface Props {
   setFirstDate: (payload: string) => void;
   setInterviewDate: (payload: string) => void;
   setSecondDate: (payload: string) => void;
-  setSchedule: (payload: { schedule: Array<scheduleUpdateTypes> }) => void;
+  setSchedule: (payload: { schedules: Array<scheduleUpdateTypes> }) => void;
 }
 
 const Schedule: FC<Props> = ({
@@ -91,7 +91,7 @@ const Schedule: FC<Props> = ({
   const handleClickCheckBox = async (e) => {
     if (window.confirm("일정을 수정하시겠습니까?")) {
       setSchedule({
-        schedule: [
+        schedules: [
           {
             type: "START_DATE",
             date: startScheduleDate,

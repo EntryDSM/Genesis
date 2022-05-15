@@ -1,4 +1,4 @@
-import React, { Component, FC } from "react";
+import React, { Component, FC, useEffect } from "react";
 import * as S from "../style";
 import {
   CommonScoreDistribution,
@@ -16,6 +16,7 @@ interface Props {
 }
 
 const CompetitionTable: FC<Props> = ({ score }) => {
+
   const CommonScoreList = ({ type, score1, score2 }) => {
     return (
       <tr>
@@ -94,7 +95,7 @@ const CompetitionTable: FC<Props> = ({ score }) => {
           <CommonScoreList
             type="79점 이하"
             score1={score[0]["-79"]}
-            score2={score[0]["-79"]}
+            score2={score[1]["-79"]}
           />
           <tr className="table-edge"></tr>
         </tbody>

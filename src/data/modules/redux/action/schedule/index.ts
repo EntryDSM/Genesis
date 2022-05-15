@@ -1,4 +1,5 @@
 import { processTimeType, scheduleUpdateTypes } from '../../reducer/schedule/interface';
+import { createAction } from 'typesafe-actions';
 import { error } from "src/models/error";
 import { scheduleType } from 'src/data/modules/redux/reducer/schedule/scheduleConstance';
 import {
@@ -11,14 +12,29 @@ import {
   GET_STATUS,
   START_SCHEDULE_MONTH,
   START_SCHEDULE_DAY,
+  START_SCHEDULE_HOUR, 
+  START_SCHEDULE_MINUTE, 
+  START_SCHEDULE_SECOND,     
   END_SCHEDULE_MONTH,
   END_SCHEDULE_DAY,
+  END_SCHEDULE_HOUR, 
+  END_SCHEDULE_MINUTE,  
+  END_SCHEDULE_SECOND,
   FIRST_SCHEDULE_MONTH,
   FIRST_SCHEDULE_DAY,
+  FIRST_SCHEDULE_HOUR,  
+  FIRST_SCHEDULE_MINUTE, 
+  FIRST_SCHEDULE_SECOND, 
   INTERVIEW_SCHEDULE_MONTH,
   INTERVIEW_SCHEDULE_DAY,
+  INTERVIEW_SCHEDULE_HOUR,   
+  INTERVIEW_SCHEDULE_MINUTE, 
+  INTERVIEW_SCHEDULE_SECOND,
   SECOND_SCHEDULE_MONTH,
   SECOND_SCHEDULE_DAY,
+  SECOND_SCHEDULE_HOUR,   
+  SECOND_SCHEDULE_MINUTE,  
+  SECOND_SCHEDULE_SECOND,
   START_SCHEDULE_DATE,
   END_SCHEDULE_DATE,
   FIRST_SCHEDULE_DATE,
@@ -29,133 +45,50 @@ import {
   SET_SCHEDULE_FAILURE,
 } from './interface';
 
-export const setStatus = (payload: scheduleType) => ({
-  type: STATUS,
-  payload,
-});
-
-export const setProcess = (payload: Object) => ({
-  type: PROCESS,
-  payload,
-});
-
-export const setIsStart = (payload: boolean) => ({
-  type: IS_START,
-  payload,
-});
-
-export const setIsEnd = (payload: boolean) => ({
-  type: IS_END,
-  payload,
-});
-
-export const getStatusSuccess = (payload: {
-  schedules: processTimeType[];
-  current_status: string;
-}) => ({
-  type: GET_STATUS_SUCCESS,
-  payload,
-});
-
-export const getStatusFailure = (payload: error) => ({
-  type: GET_STATUS_FAILURE,
-  payload,
-});
-
-export const getStatus = () => ({
-  type: GET_STATUS,
-});
-
-export const setStartScheduleMonth = (payload: number) => ({
-  type: START_SCHEDULE_MONTH,
-  payload,
-});
-
-export const setStartScheduleDay = (payload: number) => ({
-  type: START_SCHEDULE_DAY,
-  payload,
-});
-
-export const setEndScheduleMonth = (payload: number) => ({
-  type: END_SCHEDULE_MONTH,
-  payload,
-});
-
-export const setEndScheduleDay = (payload: number) => ({
-  type: END_SCHEDULE_DAY,
-  payload,
-});
-
-export const setFirstScheduleMonth = (payload: number) => ({
-  type: FIRST_SCHEDULE_MONTH,
-  payload,
-});
-
-export const setFirstScheduleDay = (payload: number) => ({
-  type: FIRST_SCHEDULE_DAY,
-  payload,
-});
-
-export const setInterviewScheduleMonth = (payload: number) => ({
-  type: INTERVIEW_SCHEDULE_MONTH,
-  payload,
-});
-
-export const setInterviewScheduleDay = (payload: number) => ({
-  type: INTERVIEW_SCHEDULE_DAY,
-  payload,
-});
-
-export const setSecondScheduleMonth = (payload: number) => ({
-  type: SECOND_SCHEDULE_MONTH,
-  payload,
-});
-
-export const setSecondScheduleDay = (payload: number) => ({
-  type: SECOND_SCHEDULE_DAY,
-  payload,
-});
-
-export const setStartDate = (payload: string) => ({
-  type: START_SCHEDULE_DATE,
-  payload,
-})
-
-export const setEndDate = (payload: string) => ({
-  type: END_SCHEDULE_DATE,
-  payload,
-})
-
-export const setFirstDate = (payload: string) => ({
-  type: FIRST_SCHEDULE_DATE,
-  payload,
-})
-
-export const setInterviewDate = (payload: string) => ({
-  type: INTERVIEW_SCHEDULE_DATE,
-  payload,
-})
-
-export const setSecondDate = (payload: string) => ({
-  type: SECOND_SCHEDULE_DATE,
-  payload,
-})
-
-export const setSchedule = (payload: {
-  schedule: Array<scheduleUpdateTypes>;
-}) => ({
-  type: SET_SCHEDULE,
-  payload,
-});
-
-export const setScheduleSuccess = () => ({
-  type: SET_SCHEDULE_SUCCESS
-});
-
-export const setScheduleFailure = (payload: error) => ({
-  type: SET_SCHEDULE_FAILURE,
-  payload
-})
+export const setStatus = createAction(STATUS)<scheduleType>();
+export const setProcess = createAction(PROCESS)<Object>();
+export const setIsStart = createAction(IS_START)<boolean>();
+export const setIsEnd = createAction(IS_END)<boolean>();
+export const getStatusSuccess = createAction(GET_STATUS_SUCCESS)<{
+  schedules: processTimeType[]; current_status: string;
+}>();
+export const getStatusFailure = createAction(GET_STATUS_FAILURE)<error>();
+export const getStatus = createAction(GET_STATUS)();
+export const setStartScheduleMonth = createAction(START_SCHEDULE_MONTH)<number>();
+export const setStartScheduleDay = createAction(START_SCHEDULE_DAY)<number>();
+export const setStartScheduleHour = createAction(START_SCHEDULE_HOUR)<number>();
+export const setStartScheduleMinute = createAction(START_SCHEDULE_MINUTE)<number>();
+export const setStartScheduleSecond = createAction(START_SCHEDULE_SECOND)<number>();
+export const setEndScheduleMonth = createAction(END_SCHEDULE_MONTH)<number>();
+export const setEndScheduleDay = createAction(END_SCHEDULE_DAY)<number>();
+export const setEndScheduleHour = createAction(END_SCHEDULE_HOUR)<number>();
+export const setEndScheduleMinute = createAction(END_SCHEDULE_MINUTE)<number>();
+export const setEndScheduleSecond = createAction(END_SCHEDULE_SECOND)<number>();
+export const setFirstScheduleMonth = createAction(FIRST_SCHEDULE_MONTH)<number>();
+export const setFirstScheduleDay = createAction(FIRST_SCHEDULE_DAY)<number>();
+export const setFirstScheduleHour = createAction(FIRST_SCHEDULE_HOUR)<number>();
+export const setFirstScheduleMinute = createAction(FIRST_SCHEDULE_MINUTE)<number>();
+export const setFirstScheduleSecond = createAction(FIRST_SCHEDULE_SECOND)<number>();
+export const setInterviewScheduleMonth = createAction(INTERVIEW_SCHEDULE_MONTH)<number>();
+export const setInterviewScheduleDay = createAction(INTERVIEW_SCHEDULE_DAY)<number>();
+export const setInterviewScheduleHour = createAction(INTERVIEW_SCHEDULE_HOUR)<number>();
+export const setInterviewScheduleMinute = createAction(INTERVIEW_SCHEDULE_MINUTE)<number>();
+export const setInterviewScheduleSecond = createAction(INTERVIEW_SCHEDULE_SECOND)<number>();
+export const setSecondScheduleMonth = createAction(SECOND_SCHEDULE_MONTH)<number>();
+export const setSecondScheduleDay = createAction(SECOND_SCHEDULE_DAY)<number>();
+export const setSecondScheduleHour = createAction(SECOND_SCHEDULE_HOUR)<number>();
+export const setSecondScheduleMinute = createAction(SECOND_SCHEDULE_MINUTE)<number>();
+export const setSecondScheduleSecond = createAction(SECOND_SCHEDULE_SECOND)<number>();
+export const setStartDate = createAction(START_SCHEDULE_DATE)<string>();
+export const setEndDate = createAction(END_SCHEDULE_DATE)<string>();
+export const setFirstDate = createAction(FIRST_SCHEDULE_DATE)<string>();
+export const setInterviewDate = createAction(INTERVIEW_SCHEDULE_DATE)<string>();
+export const setSecondDate = createAction(SECOND_SCHEDULE_DATE)<string>();
+export const setSchedule = createAction(SET_SCHEDULE)<{
+  schedules: Array<scheduleUpdateTypes>;
+}>();
+export const setScheduleSuccess = createAction(SET_SCHEDULE_SUCCESS)();
+export const setScheduleFailure = createAction(SET_SCHEDULE_FAILURE)<error>();
 
 export { IS_END, IS_START, STATUS, PROCESS };
 export type scheduleActionType =
@@ -168,14 +101,29 @@ export type scheduleActionType =
   | ReturnType<typeof getStatus>
   | ReturnType<typeof setStartScheduleMonth>
   | ReturnType<typeof setStartScheduleDay>
+  | ReturnType<typeof setStartScheduleHour>
+  | ReturnType<typeof setStartScheduleMinute>
+  | ReturnType<typeof setStartScheduleSecond>
   | ReturnType<typeof setEndScheduleMonth>
   | ReturnType<typeof setEndScheduleDay>
+  | ReturnType<typeof setEndScheduleHour>
+  | ReturnType<typeof setEndScheduleMinute>
+  | ReturnType<typeof setEndScheduleSecond>
   | ReturnType<typeof setFirstScheduleMonth>
   | ReturnType<typeof setFirstScheduleDay>
+  | ReturnType<typeof setFirstScheduleHour>
+  | ReturnType<typeof setFirstScheduleMinute>
+  | ReturnType<typeof setFirstScheduleSecond>
   | ReturnType<typeof setInterviewScheduleMonth>
   | ReturnType<typeof setInterviewScheduleDay>
+  | ReturnType<typeof setInterviewScheduleHour>
+  | ReturnType<typeof setInterviewScheduleMinute>
+  | ReturnType<typeof setInterviewScheduleSecond>
   | ReturnType<typeof setSecondScheduleMonth>
   | ReturnType<typeof setSecondScheduleDay>
+  | ReturnType<typeof setSecondScheduleHour>
+  | ReturnType<typeof setSecondScheduleMinute>
+  | ReturnType<typeof setSecondScheduleSecond>
   | ReturnType<typeof setStartDate>
   | ReturnType<typeof setEndDate>
   | ReturnType<typeof setFirstDate>

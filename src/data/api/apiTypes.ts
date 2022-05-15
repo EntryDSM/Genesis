@@ -15,7 +15,7 @@ export interface GetSchedulesResponse {
 }
 
 export interface UpdateScheduleStatusPayload {
-  schedule: UpdateSchedulesPayload[];
+  schedules: UpdateSchedulesPayload[];
 }
 
 export interface CommonScoreDistribution {
@@ -52,7 +52,7 @@ export interface SpecialScoreDistribution {
 
 export interface CommonCountDistribution {
   //일반전형 숫자
-  count:number,
+  count: number,
   application_type: "COMMON";
   daejeon: boolean;
   /* common_count: number;
@@ -61,8 +61,8 @@ export interface CommonCountDistribution {
 
 export interface SpecialCountDistribution {
   //특별전형 숫자
-  count:number,
-  application_type:"MEISTER" | "SOCIAL";
+  count: number,
+  application_type: "MEISTER" | "SOCIAL";
   daejeon: boolean;
   /* special_count: number,
     special_competition_rate: number, */
@@ -79,27 +79,27 @@ export interface SpecialCountDistribution {
 
 export interface GetScoreStatisticsResponse {
   //응답받는 형식..? 점수
-  0:CommonScoreDistribution,
-  1:CommonScoreDistribution,
-  2:SpecialScoreDistribution,
-  3:SpecialScoreDistribution,
-  4:SpecialScoreDistribution,
-  5:SpecialScoreDistribution,
+  0: CommonScoreDistribution,
+  1: CommonScoreDistribution,
+  2: SpecialScoreDistribution,
+  3: SpecialScoreDistribution,
+  4: SpecialScoreDistribution,
+  5: SpecialScoreDistribution,
 }
 
 export interface GetCountStatisticsResponse {
   //응답받는 형식..? 숫자
-  0:CommonCountDistribution,
-  1:CommonCountDistribution,
-  2:SpecialCountDistribution,
-  3:SpecialCountDistribution,
-  4:SpecialCountDistribution,
-  5:SpecialCountDistribution,
+  0: CommonCountDistribution,
+  1: CommonCountDistribution,
+  2: SpecialCountDistribution,
+  3: SpecialCountDistribution,
+  4: SpecialCountDistribution,
+  5: SpecialCountDistribution,
 }
 
 export interface StaticDistribution {
-  count:GetCountStatisticsResponse,
-  score:GetScoreStatisticsResponse;
+  count: GetCountStatisticsResponse,
+  score: GetScoreStatisticsResponse;
 }
 
 export interface GetApplicantsListPayload {
@@ -126,7 +126,7 @@ export interface ApplicantListItem {
   is_daejeon: boolean;
   application_type: string;
   is_prints_arrived: boolean;
-  is_submit: boolean;
+  is_submitted: boolean;
   headcount: string;
 }
 
@@ -145,7 +145,7 @@ export interface GetApplicantInfoResponse {
     is_prints_arrived: boolean;
     is_submit: boolean;
   },
-  common_information?:{  
+  common_information?: {
     name: string;
     school_name: string;
     email: string;
@@ -155,13 +155,13 @@ export interface GetApplicantInfoResponse {
   },
   more_information?: {
     photo_url: string;
-		birthday: string;
-		education_status: string;
-		application_type: string;
-		application_remark: string;
-		address: string;
-		detail_address: string;
-		head_count: string
+    birthday: string;
+    education_status: string;
+    application_type: string;
+    application_remark: string;
+    address: string;
+    detail_address: string;
+    head_count: string
   },
   evaluation?: {
     volunteer_time: number;

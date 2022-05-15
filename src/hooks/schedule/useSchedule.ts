@@ -50,10 +50,10 @@ const useSchedule = () => {
     setIsEnd: (payload: boolean) => dispatch(setIsEnd(payload)),
     setProcess: (payload: processType[]) => dispatch(setProcess(payload)),
     getStatus: () => dispatch(getStatus()),
-    setStartScheduleMonth: (payload: number) => { 
+    setStartScheduleMonth: (payload: number) => {
       dispatch(setStartScheduleMonth(payload));
     },
-    setStartScheduleDay: (payload: number) => { 
+    setStartScheduleDay: (payload: number) => {
       dispatch(setStartScheduleDay(payload));
     },
     setStartScheduleHour: (payload: number) => {
@@ -146,6 +146,7 @@ const useSchedule = () => {
       dispatch(setSchedule(payload))
     },
   };
+
   return {
     state,
     setState,

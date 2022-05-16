@@ -36,65 +36,6 @@ const Unsubmitted: FC<Props> = ({
     setIsContainerWidth(!isContainerWidth);
   };
 
-  const checkIsSubmitted = () => {
-    if (school_tel !== null) {
-      return (
-        <>
-          <S.BasicInfoTableTR>
-            <th>이름</th>
-            <td>{name}</td>
-          </S.BasicInfoTableTR>
-          <S.BasicInfoTableTR>
-            <th>학교 이름</th>
-            <td>{school_name}</td>
-          </S.BasicInfoTableTR>
-          <S.BasicInfoTableTR>
-            <th>이메일</th>
-            <td>{email}</td>
-          </S.BasicInfoTableTR>
-          <S.BasicInfoTableTR>
-            <th>학생 연락처</th>
-            <td>{setContactForm(telephone_number)}</td>
-          </S.BasicInfoTableTR>
-          <S.BasicInfoTableTR>
-            <th>부모님 연락처</th>
-            <td>{setContactForm(parent_tel)}</td>
-          </S.BasicInfoTableTR>
-          <S.BasicInfoTableTR>
-            <th>학교 연락처</th>
-            <td>{setContactForm(school_tel)}</td>
-          </S.BasicInfoTableTR>
-        </>
-      );
-    }
-    if (school_tel === null) {
-      return (
-        <>
-          <S.BasicInfoTableTR>
-            <th>이름</th>
-            <td>{name}</td>
-          </S.BasicInfoTableTR>
-          <S.BasicInfoTableTR>
-            <th>학교 이름</th>
-            <td>{school_name}</td>
-          </S.BasicInfoTableTR>
-          <S.BasicInfoTableTR>
-            <th>이메일</th>
-            <td>{email}</td>
-          </S.BasicInfoTableTR>
-          <S.BasicInfoTableTR>
-            <th>학생 연락처</th>
-            <td>{setContactForm(telephone_number)}</td>
-          </S.BasicInfoTableTR>
-          <S.BasicInfoTableTR>
-            <th>부모님 연락처</th>
-            <td>{setContactForm(parent_tel)}</td>
-          </S.BasicInfoTableTR>
-        </>
-      );
-    }
-  };
-
   return (
     <S.Wrapper>
       <S.DetailInfo
@@ -103,7 +44,35 @@ const Unsubmitted: FC<Props> = ({
       />
       <h3>최종제출을 하지 않은 지원자입니다.</h3>
       <table>
-        <tbody>{checkIsSubmitted()}</tbody>
+        <tbody>
+          <S.BasicInfoTableTR>
+            <th>이름</th>
+            <td>{name}</td>
+          </S.BasicInfoTableTR>
+          <S.BasicInfoTableTR>
+            <th>학교 이름</th>
+            <td>{school_name}</td>
+          </S.BasicInfoTableTR>
+          <S.BasicInfoTableTR>
+            <th>이메일</th>
+            <td>{email}</td>
+          </S.BasicInfoTableTR>
+          <S.BasicInfoTableTR>
+            <th>학생 연락처</th>
+            <td>{setContactForm(telephone_number)}</td>
+          </S.BasicInfoTableTR>
+          <S.BasicInfoTableTR>
+            <th>부모님 연락처</th>
+            <td>{setContactForm(parent_tel)}</td>
+          </S.BasicInfoTableTR>
+          {
+            school_tel &&
+            <S.BasicInfoTableTR>
+              <th>학교 연락처</th>
+              <td>{setContactForm(school_tel)}</td>
+            </S.BasicInfoTableTR>
+          }
+        </tbody>
       </table>
     </S.Wrapper>
   );

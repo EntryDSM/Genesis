@@ -3,16 +3,22 @@ import * as S from "../../../style";
 import { select_off, select_on } from "src/assets/schedule";
 import { processTimeType } from "src/data/modules/redux/reducer/schedule/interface";
 import { INTERVIEW } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
+import { useSchedule } from "src/hooks/schedule";
 
 interface Props {
   date: Array<processTimeType>;
-  setInterviewScheduleDay: (payload: number) => void;
+  setInterviewScheduleDay: (payload: string) => void;
 }
 
 const MonthSelect: FC<Props> = ({ date, setInterviewScheduleDay }) => {
+  const { setState } = useSchedule();
   const [active, setActive] = React.useState(false);
   const [disabled, setDisabled] = React.useState("normal");
   const onestToThirtyOnest = [...Array(31)].map((_, i) => i + 1);
+
+  React.useEffect(() => {
+    setState.getStatus();
+  }, []);
 
   const onSelectClick = () => {
     if (active === true) {
@@ -31,7 +37,10 @@ const MonthSelect: FC<Props> = ({ date, setInterviewScheduleDay }) => {
   };
 
   const getLocalStorage = JSON.parse(
-    localStorage.getItem("interviewScheduleDay") || "29"
+    localStorage.getItem("interviewScheduleDay") ||
+      JSON.stringify(
+        !date.filter((date) => date.type === INTERVIEW)[0].date.slice(8, 10)
+      )
   );
 
   const activeImg = React.useMemo(() => {
@@ -39,14 +48,23 @@ const MonthSelect: FC<Props> = ({ date, setInterviewScheduleDay }) => {
     else return <img src={select_off} alt="select_off" />;
   }, [active]);
 
+  React.useEffect(() => {
+    localStorage.setItem(
+      "interviewScheduleDay",
+      JSON.stringify(
+        date
+          .filter(
+            (date) => date.type === INTERVIEW && date.date.slice(8, 10)
+          )[0]
+          .date.slice(8, 10)
+      )
+    );
+  }, []);
+
   return (
     <S.Select disabled={disabled} onClick={onSelectClick}>
       <S.SelectContent>
-        <p>
-          {date
-            .filter((date) => date.type === INTERVIEW)[0]
-            .date.slice(8, 10) && getLocalStorage}
-        </p>
+        <p>{getLocalStorage}</p>
         {activeImg}
       </S.SelectContent>
       {active && (

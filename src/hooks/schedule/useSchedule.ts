@@ -50,79 +50,79 @@ const useSchedule = () => {
     setIsEnd: (payload: boolean) => dispatch(setIsEnd(payload)),
     setProcess: (payload: processType[]) => dispatch(setProcess(payload)),
     getStatus: () => dispatch(getStatus()),
-    setStartScheduleMonth: (payload: number) => {
+    setStartScheduleMonth: (payload: string) => {
       dispatch(setStartScheduleMonth(payload));
     },
-    setStartScheduleDay: (payload: number) => {
+    setStartScheduleDay: (payload: string) => {
       dispatch(setStartScheduleDay(payload));
     },
-    setStartScheduleHour: (payload: number) => {
+    setStartScheduleHour: (payload: string) => {
       dispatch(setStartScheduleHour(payload));
     },
-    setStartScheduleMinute: (payload: number) => {
+    setStartScheduleMinute: (payload: string) => {
       dispatch(setStartScheduleMinute(payload));
     },
-    setStartScheduleSecond: (payload: number) => {
+    setStartScheduleSecond: (payload: string) => {
       dispatch(setStartScheduleSecond(payload));
     },
-    setEndScheduleMonth: (payload: number) => {
+    setEndScheduleMonth: (payload: string) => {
       dispatch(setEndScheduleMonth(payload));
     },
-    setEndScheduleDay: (payload: number) => {
+    setEndScheduleDay: (payload: string) => {
       dispatch(setEndScheduleDay(payload));
     },
-    setEndScheduleHour: (payload: number) => {
+    setEndScheduleHour: (payload: string) => {
       dispatch(setEndScheduleHour(payload));
     },
-    setEndScheduleMinute: (payload: number) => {
+    setEndScheduleMinute: (payload: string) => {
       dispatch(setEndScheduleMinute(payload));
     },
-    setEndScheduleSecond: (payload: number) => {
+    setEndScheduleSecond: (payload: string) => {
       dispatch(setEndScheduleSecond(payload));
     },
-    setFirstScheduleMonth: (payload: number) => {
+    setFirstScheduleMonth: (payload: string) => {
       dispatch(setFirstScheduleMonth(payload));
     },
-    setFirstScheduleDay: (payload: number) => {
+    setFirstScheduleDay: (payload: string) => {
       dispatch(setFirstScheduleDay(payload));
     },
-    setFirstScheduleHour: (payload: number) => {
+    setFirstScheduleHour: (payload: string) => {
       dispatch(setFirstScheduleHour(payload));
     },
-    setFirstScheduleMinute: (payload: number) => {
+    setFirstScheduleMinute: (payload: string) => {
       dispatch(setFirstScheduleMinute(payload));
     },
-    setFirstScheduleSecond: (payload: number) => {
+    setFirstScheduleSecond: (payload: string) => {
       dispatch(setFirstScheduleSecond(payload));
     },
-    setInterviewScheduleMonth: (payload: number) => {
+    setInterviewScheduleMonth: (payload: string) => {
       dispatch(setInterviewScheduleMonth(payload));
     },
-    setInterviewScheduleDay: (payload: number) => {
+    setInterviewScheduleDay: (payload: string) => {
       dispatch(setInterviewScheduleDay(payload));
     },
-    setInterviewScheduleHour: (payload: number) => {
+    setInterviewScheduleHour: (payload: string) => {
       dispatch(setInterviewScheduleHour(payload));
     },
-    setInterviewScheduleMinute: (payload: number) => {
+    setInterviewScheduleMinute: (payload: string) => {
       dispatch(setInterviewScheduleMinute(payload));
     },
-    setInterviewScheduleSecond: (payload: number) => {
+    setInterviewScheduleSecond: (payload: string) => {
       dispatch(setInterviewScheduleSecond(payload));
     },
-    setSecondScheduleMonth: (payload: number) => {
+    setSecondScheduleMonth: (payload: string) => {
       dispatch(setSecondScheduleMonth(payload));
     },
-    setSecondScheduleDay: (payload: number) => {
+    setSecondScheduleDay: (payload: string) => {
       dispatch(setSecondScheduleDay(payload));
     },
-    setSecondScheduleHour: (payload: number) => {
+    setSecondScheduleHour: (payload: string) => {
       dispatch(setSecondScheduleHour(payload));
     },
-    setSecondScheduleMinute: (payload: number) => {
+    setSecondScheduleMinute: (payload: string) => {
       dispatch(setSecondScheduleMinute(payload));
     },
-    setSecondScheduleSecond: (payload: number) => {
+    setSecondScheduleSecond: (payload: string) => {
       dispatch(setSecondScheduleSecond(payload));
     },
     setStartDate: (payload: string) => {

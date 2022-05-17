@@ -3,7 +3,7 @@ import { color, pxToRem } from '../../styles';
 
 export const Schedule = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: 96vh;
   min-width: ${pxToRem(1320)}rem;
   box-sizing: border-box;
 `;
@@ -21,9 +21,9 @@ export const ScheduleContentsBox = styled.div`
 `;
 
 export const ScheduleButtonBox = styled.div`
-    display: flex;
-    justify-content: center;
-    padding-top: ${pxToRem(30)}rem;
+  display: flex;
+  justify-content: center;
+  padding-top: ${pxToRem(30)}rem;
 
     & > Button {
         border: 1px solid ${color.primaryColor};
@@ -35,7 +35,7 @@ export const ScheduleContent = styled.div`
   border: 1px solid ${color.fail};
   border-radius: 10px;
   width: 225px;
-  height: 350px;
+  height: 430px;
 `;
 
 export const ScheduleContentBox = styled.div`
@@ -108,6 +108,23 @@ export const ScheduleSelectDivision = styled.span`
   color: ${color.primaryTextColor};
 `;
 
+export const ScheduleTimeSelectBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  q:before {
+    content: ":";
+    font-size: 32px;
+    font-weight: bold;
+  }
+`;
+
 export const Select = styled.div<{
   disabled: string;
 }>`
@@ -144,6 +161,210 @@ export const SelectContent = styled.div`
 `;
 
 export const SubSelect = styled.div`
+  position: absolute;
+  min-width: 100%;
+  height: 200px;
+  background: ${color.backgorund};
+  border: 1px solid #606060;
+  border-radius: 0 0 4px 4px;
+  border-top: none;
+  cursor: pointer;
+  z-index: 10;
+  left: -1px;
+  top: 90%;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  > p {
+    height: 24px;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 11px;
+    margin-bottom: 6px;
+    color: black;
+    cursor: pointer;
+  }
+  > p:hover {
+    color: ${color.sub};
+    font-weight: 500;
+  }
+`;
+
+export const HourSelect = styled.div<{
+  disabled: string;
+}>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${({ disabled }) => css`
+    width: 32%;
+    border: 1px solid ${disabled === 'disabled' ? color.disable : 'black'};
+    color: ${disabled === 'disabled' ? color.disable : 'black'};
+    background-color: ${disabled === 'block' ? '#f1f1f1' : '#ffffff'};
+  `}
+  height: 38px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 4px;
+  padding: 0.5rem 0.7rem;
+  position: relative;
+  cursor: pointer;
+`;
+
+export const HourSelectContent = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  > img {
+    margin-top: 3px;
+    width: 11px;
+  }
+`;
+
+export const HourSubSelect = styled.div`
+  position: absolute;
+  min-width: 100%;
+  height: 200px;
+  background: ${color.backgorund};
+  border: 1px solid #606060;
+  border-radius: 0 0 4px 4px;
+  border-top: none;
+  cursor: pointer;
+  z-index: 10;
+  left: -1px;
+  top: 90%;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  > p {
+    height: 24px;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 11px;
+    margin-bottom: 6px;
+    color: black;
+    cursor: pointer;
+  }
+  > p:hover {
+    color: ${color.sub};
+    font-weight: 500;
+  }
+`;
+
+export const MinuteSelect = styled.div<{
+  disabled: string;
+}>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${({ disabled }) => css`
+    width: 32%;
+    border: 1px solid ${disabled === 'disabled' ? color.disable : 'black'};
+    color: ${disabled === 'disabled' ? color.disable : 'black'};
+    background-color: ${disabled === 'block' ? '#f1f1f1' : '#ffffff'};
+  `}
+  height: 38px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 4px;
+  padding: 0.5rem 0.7rem;
+  position: relative;
+  cursor: pointer;
+`;
+
+export const MinuteSelectContent = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  > img {
+    margin-top: 3px;
+    width: 11px;
+  }
+`;
+
+export const MinuteSubSelect = styled.div`
+  position: absolute;
+  min-width: 100%;
+  height: 200px;
+  background: ${color.backgorund};
+  border: 1px solid #606060;
+  border-radius: 0 0 4px 4px;
+  border-top: none;
+  cursor: pointer;
+  z-index: 10;
+  left: -1px;
+  top: 90%;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  > p {
+    height: 24px;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 11px;
+    margin-bottom: 6px;
+    color: black;
+    cursor: pointer;
+  }
+  > p:hover {
+    color: ${color.sub};
+    font-weight: 500;
+  }
+`;
+
+export const SecondSelect = styled.div<{
+  disabled: string;
+}>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${({ disabled }) => css`
+    width: 32%;
+    border: 1px solid ${disabled === 'disabled' ? color.disable : 'black'};
+    color: ${disabled === 'disabled' ? color.disable : 'black'};
+    background-color: ${disabled === 'block' ? '#f1f1f1' : '#ffffff'};
+  `}
+  height: 38px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 4px;
+  padding: 0.5rem 0.7rem;
+  position: relative;
+  cursor: pointer;
+`;
+
+export const SecondSelectContent = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  > img {
+    margin-top: 3px;
+    width: 11px;
+  }
+`;
+
+export const SecondSubSelect = styled.div`
   position: absolute;
   min-width: 100%;
   height: 200px;

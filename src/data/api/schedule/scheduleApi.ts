@@ -9,14 +9,14 @@ export const getScheduleApi = async () => {
     return response;
   }
   
-  export const updateScheduleApi = async (access_token: string, payload: T.UpdateScheduleStatusPayload) => {
-    try {
-      const request = getRequest();
+export const updateScheduleApi = async (access_token: string, payload: T.UpdateScheduleStatusPayload) => {
+  try {
+    const request = getRequest();
   
-      await request.patch(uri.schedule , payload, {
-      headers: authorization(getAccessToken()),
-    });
-    } catch (error) {
-      throw error;
-    }
+    await request.patch(uri.schedule , payload, {
+    headers: authorization(getAccessToken()),
+  });
+  } catch (error) {
+    throw error;
   }
+}

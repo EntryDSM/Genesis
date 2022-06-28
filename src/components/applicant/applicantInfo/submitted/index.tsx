@@ -61,7 +61,6 @@ interface Props {
 
 const Submitted: FC<Props> = ({
   isContainerWidth,
-  applicantStatus,
   applicantCommonInformation,
   applicantMoreInformation,
   applicantEvaluation,

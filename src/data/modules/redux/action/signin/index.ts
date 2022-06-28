@@ -1,4 +1,5 @@
 import { signinRequest } from 'src/models/dto/request/signinRequest';
+import { signinResponse } from 'src/models/dto/response/signinResponse';
 import { error } from 'src/models/error';
 import {
   ERROR,
@@ -22,7 +23,7 @@ export const signinSuccess = createAction(SIGNIN_SUCCESS)<string>();
 export const signin = createAction(SIGNIN)<signinRequest>();
 export const refreshToken = createAction(REFRESH_TOKEN)<{ callback: () => void }>();
 export const refreshTokenFailure = createAction(REFRESH_TOKEN_FAILURE)<error>();
-export const refreshTokenSuccess = createAction(REFRESH_TOKEN_SUCCESS)();
+export const refreshTokenSuccess = createAction(REFRESH_TOKEN_SUCCESS)<signinResponse>();
 export const reset = createAction(RESET)();
 
 export type signinActionType =

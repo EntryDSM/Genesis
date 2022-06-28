@@ -19,7 +19,7 @@ const Header: FC<Props> = (props) => {
   const handleButtonClick = () => {
     props.setIsLogin(false);
     props.setAccessToken("");
-    localStorage.removeItem("access_token");
+    localStorage.clear();
     navigate("/login");
   };
 

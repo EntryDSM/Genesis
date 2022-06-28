@@ -37,7 +37,7 @@ const ApplicantInfo: FC<Props> = ({
 }) => {
   const filterResponse = useMemo(() => {
     const response = applicantsList.applicants.filter((i) => {
-      return i.name === currnetApplicantInfo?.common_information.name;
+      return i.name === currnetApplicantInfo.common_information.name;
     });
     return response;
   }, [currnetApplicantInfo.common_information.name]);

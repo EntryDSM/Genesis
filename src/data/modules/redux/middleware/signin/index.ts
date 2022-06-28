@@ -12,6 +12,7 @@ export const refreshTokenSaga = function* (action: any) {
     const response: { access_token: string } = yield call(refreshTokenApi);
     yield put({
       type: SUCCESS,
+      payload: response ? response : '',
     });
     localStorage.setItem('access_token', response.access_token);
     yield call(callback);

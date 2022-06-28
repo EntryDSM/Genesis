@@ -2,7 +2,7 @@ import React, { FC, Suspense } from "react";
 import { useApplicant } from "src/hooks/applicant";
 import { useSignIn } from "src/hooks/signin";
 import { useAuth } from "src/hooks/auth";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useStatistics } from "src/hooks/statistics";
 import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
 
@@ -10,6 +10,7 @@ const Applicant = React.lazy(() => import("../../components/applicant"));
 
 const ApplicantContainer: FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const applicantState = useApplicant();
   const statisticsState = useStatistics();
   const authState = useAuth();
@@ -33,6 +34,13 @@ const ApplicantContainer: FC = () => {
       localStorage.removeItem("refresh_token");
     }
   }, [signinState.state.error]);
+
+  React.useEffect(() => {
+    if (!authState.state.isLogin) {
+      window.alert("로그인 후에 접근할 수 있습니다.");
+      navigate("/login");
+    }
+  }, [!localStorage.getItem("access_token")]);
 
   React.useEffect(() => {
     const errorStatus = statisticsState.state.error.status;

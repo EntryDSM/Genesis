@@ -7,14 +7,15 @@ import { useSchedule } from "src/hooks/schedule";
 
 interface Props {
   date: Array<processTimeType>;
-  setEndScheduleDay: (payload: string) => void;
+  setEndScheduleHour: (payload: string) => void;
 }
 
-const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
+const HourSelect: FC<Props> = ({ date, setEndScheduleHour }) => {
   const { setState } = useSchedule();
+
   const [active, setActive] = React.useState(false);
   const [disabled, setDisabled] = React.useState("normal");
-  const onestToThirtyOnest = [...Array(31)].map((_, i) => i + 1);
+  const onestToTwelvest = [...Array(24)].map((_, i) => i + 1);
 
   React.useEffect(() => {
     setState.getStatus();
@@ -30,16 +31,16 @@ const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
     }
   };
 
-  const onSelectDayClick = (e) => {
-    const day = e.target.innerText;
-    day < 10 ? setEndScheduleDay(0 + day) : setEndScheduleDay(day);
-    localStorage.setItem("endScheduleDay", JSON.stringify(day));
+  const onSelectHourClick = (e) => {
+    const hour = e.target.innerText;
+    hour < 10 ? setEndScheduleHour(0 + hour) : setEndScheduleHour(hour);
+    localStorage.setItem("EndScheduleHour", JSON.stringify(hour));
   };
 
   const getLocalStorage = JSON.parse(
-    localStorage.getItem("endScheduleDay") ||
+    localStorage.getItem("EndScheduleHour") ||
       JSON.stringify(
-        !date.filter((date) => date.type === END_DATE)[0].date.slice(5, 7)
+        !date.filter((date) => date.type === END_DATE)[0].date.slice(11, 13)
       )
   );
 
@@ -50,31 +51,38 @@ const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
 
   React.useEffect(() => {
     localStorage.setItem(
-      "endScheduleDay",
+      "EndScheduleHour",
       JSON.stringify(
         date
-          .filter((date) => date.type === END_DATE && date.date.slice(5, 7))[0]
-          .date.slice(5, 7)
+          .filter(
+            (date) => date.type === END_DATE && date.date.slice(11, 13)
+          )[0]
+          .date.slice(11, 13)
       )
+    );
+    setEndScheduleHour(
+      date
+        .filter((date) => date.type === END_DATE && date.date.slice(11, 13))[0]
+        .date.slice(11, 13)
     );
   }, []);
 
   return (
-    <S.Select disabled={disabled} onClick={onSelectClick}>
-      <S.SelectContent>
+    <S.HourSelect disabled={disabled} onClick={onSelectClick}>
+      <S.HourSelectContent>
         <p>{getLocalStorage}</p>
         {activeImg}
-      </S.SelectContent>
+      </S.HourSelectContent>
       {active && (
-        <S.SubSelect>
+        <S.HourSubSelect>
           <S.GrayLine width={52} />
-          {onestToThirtyOnest.map((day) => {
-            return <p onClick={onSelectDayClick}>{day}</p>;
+          {onestToTwelvest.map((hour) => {
+            return <p onClick={onSelectHourClick}>{hour}</p>;
           })}
-        </S.SubSelect>
+        </S.HourSubSelect>
       )}
-    </S.Select>
+    </S.HourSelect>
   );
 };
 
-export default MonthSelect;
+export default HourSelect;

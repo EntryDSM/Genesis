@@ -20,32 +20,47 @@ import {
 import ScheduleContent from "./content";
 
 interface Props {
-  startScheduleMonth: number;
-  startScheduleDay: number;
-  endScheduleMonth: number;
-  endScheduleDay: number;
-  firstScheduleMonth: number;
-  firstScheduleDay: number;
-  interviewScheduleMonth: number;
-  interviewScheduleDay: number;
-  secondScheduleMonth: number;
-  secondScheduleDay: number;
+  startScheduleMonth: string;
+  startScheduleDay: string;
+  endScheduleMonth: string;
+  endScheduleDay: string;
+  firstScheduleMonth: string;
+  firstScheduleDay: string;
+  interviewScheduleMonth: string;
+  interviewScheduleDay: string;
+  secondScheduleMonth: string;
+  secondScheduleDay: string;
   startScheduleDate: string;
   endScheduleDate: string;
   firstScheduleDate: string;
   interviewScheduleDate: string;
   secondScheduleDate: string;
   date: Array<processTimeType>;
-  setStartScheduleMonth: (payload: number) => void;
-  setStartScheduleDay: (payload: number) => void;
-  setEndScheduleMonth: (payload: number) => void;
-  setEndScheduleDay: (payload: number) => void;
-  setFirstScheduleMonth: (payload: number) => void;
-  setFirstScheduleDay: (payload: number) => void;
-  setInterviewScheduleMonth: (payload: number) => void;
-  setInterviewScheduleDay: (payload: number) => void;
-  setSecondScheduleMonth: (payload: number) => void;
-  setSecondScheduleDay: (payload: number) => void;
+  setStartScheduleMonth: (payload: string) => void;
+  setStartScheduleDay: (payload: string) => void;
+  setStartScheduleHour: (payload: string) => void;
+  setStartScheduleMinute: (payload: string) => void;
+  setStartScheduleSecond: (payload: string) => void;
+  setEndScheduleMonth: (payload: string) => void;
+  setEndScheduleDay: (payload: string) => void;
+  setEndScheduleHour: (payload: string) => void;
+  setEndScheduleMinute: (payload: string) => void;
+  setEndScheduleSecond: (payload: string) => void;
+  setFirstScheduleMonth: (payload: string) => void;
+  setFirstScheduleDay: (payload: string) => void;
+  setFirstScheduleHour: (payload: string) => void;
+  setFirstScheduleMinute: (payload: string) => void;
+  setFirstScheduleSecond: (payload: string) => void;
+  setInterviewScheduleMonth: (payload: string) => void;
+  setInterviewScheduleDay: (payload: string) => void;
+  setInterviewScheduleHour: (payload: string) => void;
+  setInterviewScheduleMinute: (payload: string) => void;
+  setInterviewScheduleSecond: (payload: string) => void;
+  setSecondScheduleMonth: (payload: string) => void;
+  setSecondScheduleDay: (payload: string) => void;
+  setSecondScheduleHour: (payload: string) => void;
+  setSecondScheduleMinute: (payload: string) => void;
+  setSecondScheduleSecond: (payload: string) => void;
   setStartDate: (payload: string) => void;
   setEndDate: (payload: string) => void;
   setFirstDate: (payload: string) => void;
@@ -87,6 +102,21 @@ const Schedule: FC<Props> = ({
   setInterviewDate,
   setSecondDate,
   setSchedule,
+  setStartScheduleHour,
+  setStartScheduleMinute,
+  setStartScheduleSecond,
+  setEndScheduleHour,
+  setEndScheduleMinute,
+  setEndScheduleSecond,
+  setFirstScheduleHour,
+  setFirstScheduleMinute,
+  setFirstScheduleSecond,
+  setInterviewScheduleHour,
+  setInterviewScheduleMinute,
+  setInterviewScheduleSecond,
+  setSecondScheduleHour,
+  setSecondScheduleMinute,
+  setSecondScheduleSecond,
 }) => {
   const handleClickCheckBox = async (e) => {
     if (window.confirm("일정을 수정하시겠습니까?")) {
@@ -152,6 +182,21 @@ const Schedule: FC<Props> = ({
             setFirstDate={setFirstDate}
             setInterviewDate={setInterviewDate}
             setSecondDate={setSecondDate}
+            setStartScheduleHour={setStartScheduleHour}
+            setStartScheduleMinute={setStartScheduleMinute}
+            setStartScheduleSecond={setStartScheduleSecond}
+            setEndScheduleHour={setEndScheduleHour}
+            setEndScheduleMinute={setEndScheduleMinute}
+            setEndScheduleSecond={setEndScheduleSecond}
+            setFirstScheduleHour={setFirstScheduleHour}
+            setFirstScheduleMinute={setFirstScheduleMinute}
+            setFirstScheduleSecond={setFirstScheduleSecond}
+            setInterviewScheduleHour={setInterviewScheduleHour}
+            setInterviewScheduleMinute={setInterviewScheduleMinute}
+            setInterviewScheduleSecond={setInterviewScheduleSecond}
+            setSecondScheduleHour={setSecondScheduleHour}
+            setSecondScheduleMinute={setSecondScheduleMinute}
+            setSecondScheduleSecond={setSecondScheduleSecond}
           />
           <ScheduleContent
             scheduleImg={presentation_icon}
@@ -184,6 +229,21 @@ const Schedule: FC<Props> = ({
             setFirstDate={setFirstDate}
             setInterviewDate={setInterviewDate}
             setSecondDate={setSecondDate}
+            setStartScheduleHour={setStartScheduleHour}
+            setStartScheduleMinute={setStartScheduleMinute}
+            setStartScheduleSecond={setStartScheduleSecond}
+            setEndScheduleHour={setEndScheduleHour}
+            setEndScheduleMinute={setEndScheduleMinute}
+            setEndScheduleSecond={setEndScheduleSecond}
+            setFirstScheduleHour={setFirstScheduleHour}
+            setFirstScheduleMinute={setFirstScheduleMinute}
+            setFirstScheduleSecond={setFirstScheduleSecond}
+            setInterviewScheduleHour={setInterviewScheduleHour}
+            setInterviewScheduleMinute={setInterviewScheduleMinute}
+            setInterviewScheduleSecond={setInterviewScheduleSecond}
+            setSecondScheduleHour={setSecondScheduleHour}
+            setSecondScheduleMinute={setSecondScheduleMinute}
+            setSecondScheduleSecond={setSecondScheduleSecond}
           />
           <ScheduleContent
             scheduleImg={interview_icon}
@@ -216,6 +276,21 @@ const Schedule: FC<Props> = ({
             setFirstDate={setFirstDate}
             setInterviewDate={setInterviewDate}
             setSecondDate={setSecondDate}
+            setStartScheduleHour={setStartScheduleHour}
+            setStartScheduleMinute={setStartScheduleMinute}
+            setStartScheduleSecond={setStartScheduleSecond}
+            setEndScheduleHour={setEndScheduleHour}
+            setEndScheduleMinute={setEndScheduleMinute}
+            setEndScheduleSecond={setEndScheduleSecond}
+            setFirstScheduleHour={setFirstScheduleHour}
+            setFirstScheduleMinute={setFirstScheduleMinute}
+            setFirstScheduleSecond={setFirstScheduleSecond}
+            setInterviewScheduleHour={setInterviewScheduleHour}
+            setInterviewScheduleMinute={setInterviewScheduleMinute}
+            setInterviewScheduleSecond={setInterviewScheduleSecond}
+            setSecondScheduleHour={setSecondScheduleHour}
+            setSecondScheduleMinute={setSecondScheduleMinute}
+            setSecondScheduleSecond={setSecondScheduleSecond}
           />
           <ScheduleContent
             scheduleImg={presentation_regiester_icon}
@@ -248,6 +323,21 @@ const Schedule: FC<Props> = ({
             setFirstDate={setFirstDate}
             setInterviewDate={setInterviewDate}
             setSecondDate={setSecondDate}
+            setStartScheduleHour={setStartScheduleHour}
+            setStartScheduleMinute={setStartScheduleMinute}
+            setStartScheduleSecond={setStartScheduleSecond}
+            setEndScheduleHour={setEndScheduleHour}
+            setEndScheduleMinute={setEndScheduleMinute}
+            setEndScheduleSecond={setEndScheduleSecond}
+            setFirstScheduleHour={setFirstScheduleHour}
+            setFirstScheduleMinute={setFirstScheduleMinute}
+            setFirstScheduleSecond={setFirstScheduleSecond}
+            setInterviewScheduleHour={setInterviewScheduleHour}
+            setInterviewScheduleMinute={setInterviewScheduleMinute}
+            setInterviewScheduleSecond={setInterviewScheduleSecond}
+            setSecondScheduleHour={setSecondScheduleHour}
+            setSecondScheduleMinute={setSecondScheduleMinute}
+            setSecondScheduleSecond={setSecondScheduleSecond}
           />
         </S.ScheduleContentsBox>
         <S.ScheduleButtonBox>

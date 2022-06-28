@@ -1,20 +1,21 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
-import { select_off, select_on } from "../../../../../assets/schedule";
-import { processTimeType } from "../../../../../data/modules/redux/reducer/schedule/interface";
+import { select_off, select_on } from "src/assets/schedule";
+import { processTimeType } from "src/data/modules/redux/reducer/schedule/interface";
 import { FIRST_ANNOUNCEMENT } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
 import { useSchedule } from "src/hooks/schedule";
 
 interface Props {
   date: Array<processTimeType>;
-  setFirstScheduleDay: (payload: string) => void;
+  setFirstScheduleHour: (payload: string) => void;
 }
 
-const MonthSelect: FC<Props> = ({ date, setFirstScheduleDay }) => {
+const HourSelect: FC<Props> = ({ date, setFirstScheduleHour }) => {
   const { setState } = useSchedule();
+
   const [active, setActive] = React.useState(false);
   const [disabled, setDisabled] = React.useState("normal");
-  const onestToThirtyOnest = [...Array(31)].map((_, i) => i + 1);
+  const onestToTwelvest = [...Array(24)].map((_, i) => i + 1);
 
   React.useEffect(() => {
     setState.getStatus();
@@ -30,18 +31,18 @@ const MonthSelect: FC<Props> = ({ date, setFirstScheduleDay }) => {
     }
   };
 
-  const onSelectDayClick = (e) => {
-    const day = e.target.innerText;
-    day < 10 ? setFirstScheduleDay(0 + day) : setFirstScheduleDay(day);
-    localStorage.setItem("firstScheduleDay", JSON.stringify(day));
+  const onSelectHourClick = (e) => {
+    const hour = e.target.innerText;
+    hour < 10 ? setFirstScheduleHour(0 + hour) : setFirstScheduleHour(hour);
+    localStorage.setItem("FirstScheduleHour", JSON.stringify(hour));
   };
 
   const getLocalStorage = JSON.parse(
-    localStorage.getItem("firstScheduleDay") ||
+    localStorage.getItem("FirstScheduleHour") ||
       JSON.stringify(
         !date
           .filter((date) => date.type === FIRST_ANNOUNCEMENT)[0]
-          .date.slice(8, 10)
+          .date.slice(11, 13)
       )
   );
 
@@ -52,33 +53,41 @@ const MonthSelect: FC<Props> = ({ date, setFirstScheduleDay }) => {
 
   React.useEffect(() => {
     localStorage.setItem(
-      "firstScheduleDay",
+      "FirstScheduleHour",
       JSON.stringify(
         date
           .filter(
-            (date) => date.type === FIRST_ANNOUNCEMENT && date.date.slice(8, 10)
+            (date) =>
+              date.type === FIRST_ANNOUNCEMENT && date.date.slice(11, 13)
           )[0]
-          .date.slice(8, 10)
+          .date.slice(11, 13)
       )
+    );
+    setFirstScheduleHour(
+      date
+        .filter(
+          (date) => date.type === FIRST_ANNOUNCEMENT && date.date.slice(11, 13)
+        )[0]
+        .date.slice(11, 13)
     );
   }, []);
 
   return (
-    <S.Select disabled={disabled} onClick={onSelectClick}>
-      <S.SelectContent>
+    <S.HourSelect disabled={disabled} onClick={onSelectClick}>
+      <S.HourSelectContent>
         <p>{getLocalStorage}</p>
         {activeImg}
-      </S.SelectContent>
+      </S.HourSelectContent>
       {active && (
-        <S.SubSelect>
+        <S.HourSubSelect>
           <S.GrayLine width={52} />
-          {onestToThirtyOnest.map((day) => {
-            return <p onClick={onSelectDayClick}>{day}</p>;
+          {onestToTwelvest.map((hour) => {
+            return <p onClick={onSelectHourClick}>{hour}</p>;
           })}
-        </S.SubSelect>
+        </S.HourSubSelect>
       )}
-    </S.Select>
+    </S.HourSelect>
   );
 };
 
-export default MonthSelect;
+export default HourSelect;

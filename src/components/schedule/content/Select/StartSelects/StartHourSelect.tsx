@@ -7,14 +7,15 @@ import { useSchedule } from "src/hooks/schedule";
 
 interface Props {
   date: Array<processTimeType>;
-  setStartScheduleDay: (payload: string) => void;
+  setStartScheduleHour: (payload: string) => void;
 }
 
-const MonthSelect: FC<Props> = ({ date, setStartScheduleDay }) => {
+const HourSelect: FC<Props> = ({ date, setStartScheduleHour }) => {
   const { setState } = useSchedule();
+
   const [active, setActive] = React.useState(false);
   const [disabled, setDisabled] = React.useState("normal");
-  const onestToThirtyOnest = [...Array(31)].map((_, i) => i + 1);
+  const onestToTwelvest = [...Array(24)].map((_, i) => i + 1);
 
   React.useEffect(() => {
     setState.getStatus();
@@ -30,16 +31,16 @@ const MonthSelect: FC<Props> = ({ date, setStartScheduleDay }) => {
     }
   };
 
-  const onSelectDayClick = (e) => {
-    const day = e.target.innerText;
-    day < 10 ? setStartScheduleDay(0 + day) : setStartScheduleDay(day);
-    localStorage.setItem("startScheduleDay", JSON.stringify(day));
+  const onSelectHourClick = (e) => {
+    const hour = e.target.innerText;
+    hour < 10 ? setStartScheduleHour(0 + hour) : setStartScheduleHour(hour);
+    localStorage.setItem("startScheduleHour", JSON.stringify(hour));
   };
 
   const getLocalStorage = JSON.parse(
-    localStorage.getItem("startScheduleDay") ||
+    localStorage.getItem("startScheduleHour") ||
       JSON.stringify(
-        !date.filter((date) => date.type === START_DATE)[0].date.slice(8, 10)
+        !date.filter((date) => date.type === START_DATE)[0].date.slice(11, 13)
       )
   );
 
@@ -50,33 +51,40 @@ const MonthSelect: FC<Props> = ({ date, setStartScheduleDay }) => {
 
   React.useEffect(() => {
     localStorage.setItem(
-      "startScheduleDay",
+      "startScheduleHour",
       JSON.stringify(
         date
           .filter(
-            (date) => date.type === START_DATE && date.date.slice(8, 10)
+            (date) => date.type === START_DATE && date.date.slice(11, 13)
           )[0]
-          .date.slice(8, 10)
+          .date.slice(11, 13)
       )
+    );
+    setStartScheduleHour(
+      date
+        .filter(
+          (date) => date.type === START_DATE && date.date.slice(11, 13)
+        )[0]
+        .date.slice(11, 13)
     );
   }, []);
 
   return (
-    <S.Select disabled={disabled} onClick={onSelectClick}>
-      <S.SelectContent>
+    <S.HourSelect disabled={disabled} onClick={onSelectClick}>
+      <S.HourSelectContent>
         <p>{getLocalStorage}</p>
         {activeImg}
-      </S.SelectContent>
+      </S.HourSelectContent>
       {active && (
-        <S.SubSelect>
+        <S.HourSubSelect>
           <S.GrayLine width={52} />
-          {onestToThirtyOnest.map((day) => {
-            return <p onClick={onSelectDayClick}>{day}</p>;
+          {onestToTwelvest.map((hour) => {
+            return <p onClick={onSelectHourClick}>{hour}</p>;
           })}
-        </S.SubSelect>
+        </S.HourSubSelect>
       )}
-    </S.Select>
+    </S.HourSelect>
   );
 };
 
-export default MonthSelect;
+export default HourSelect;

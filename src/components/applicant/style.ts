@@ -8,7 +8,7 @@ export const Applicant = styled.div<{ isContainerWidth?: boolean }>`
         position: relative;
         width: 100%;
         min-width: ${pxToRem(1136)}rem;
-        min-height: 100vh;
+        min-height: 96vh;
         display: flex;
         background: ${color.backgorund};
         box-sizing: border-box;
@@ -18,13 +18,14 @@ export const Applicant = styled.div<{ isContainerWidth?: boolean }>`
       css`
         width: 80%;
         min-width: ${pxToRem(1136)}rem;
-        min-height: 100vh;
+        min-height: 96vh;
         display: flex;
         background: ${color.backgorund};
         box-sizing: border-box;
         padding-top: 75px;
         margin: 0 auto;
         transition: all ease 1.3s;
+        overflow: hidden;
       ` 
   }
 `;

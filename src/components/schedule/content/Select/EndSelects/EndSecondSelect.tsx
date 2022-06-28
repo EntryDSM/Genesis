@@ -7,14 +7,15 @@ import { useSchedule } from "src/hooks/schedule";
 
 interface Props {
   date: Array<processTimeType>;
-  setEndScheduleDay: (payload: string) => void;
+  setEndScheduleSecond: (payload: string) => void;
 }
 
-const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
+const SecondSelect: FC<Props> = ({ date, setEndScheduleSecond }) => {
   const { setState } = useSchedule();
+
   const [active, setActive] = React.useState(false);
   const [disabled, setDisabled] = React.useState("normal");
-  const onestToThirtyOnest = [...Array(31)].map((_, i) => i + 1);
+  const onestToSixtyst = [...Array(60)].map((_, i) => i + 1);
 
   React.useEffect(() => {
     setState.getStatus();
@@ -30,16 +31,18 @@ const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
     }
   };
 
-  const onSelectDayClick = (e) => {
-    const day = e.target.innerText;
-    day < 10 ? setEndScheduleDay(0 + day) : setEndScheduleDay(day);
-    localStorage.setItem("endScheduleDay", JSON.stringify(day));
+  const onSelectSecondClick = (e) => {
+    const second = e.target.innerText;
+    second < 10
+      ? setEndScheduleSecond(0 + second)
+      : setEndScheduleSecond(second);
+    localStorage.setItem("EndScheduleSecond", JSON.stringify(second));
   };
 
   const getLocalStorage = JSON.parse(
-    localStorage.getItem("endScheduleDay") ||
+    localStorage.getItem("EndScheduleSecond") ||
       JSON.stringify(
-        !date.filter((date) => date.type === END_DATE)[0].date.slice(5, 7)
+        !date.filter((date) => date.type === END_DATE)[0].date.slice(17, 19)
       )
   );
 
@@ -50,31 +53,33 @@ const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
 
   React.useEffect(() => {
     localStorage.setItem(
-      "endScheduleDay",
+      "EndScheduleSecond",
       JSON.stringify(
         date
-          .filter((date) => date.type === END_DATE && date.date.slice(5, 7))[0]
-          .date.slice(5, 7)
+          .filter(
+            (date) => date.type === END_DATE && date.date.slice(17, 19)
+          )[0]
+          .date.slice(17, 19)
       )
     );
   }, []);
 
   return (
-    <S.Select disabled={disabled} onClick={onSelectClick}>
-      <S.SelectContent>
+    <S.SecondSelect disabled={disabled} onClick={onSelectClick}>
+      <S.SecondSelectContent>
         <p>{getLocalStorage}</p>
         {activeImg}
-      </S.SelectContent>
+      </S.SecondSelectContent>
       {active && (
-        <S.SubSelect>
+        <S.SecondSubSelect>
           <S.GrayLine width={52} />
-          {onestToThirtyOnest.map((day) => {
-            return <p onClick={onSelectDayClick}>{day}</p>;
+          {onestToSixtyst.map((second) => {
+            return <p onClick={onSelectSecondClick}>{second}</p>;
           })}
-        </S.SubSelect>
+        </S.SecondSubSelect>
       )}
-    </S.Select>
+    </S.SecondSelect>
   );
 };
 
-export default MonthSelect;
+export default SecondSelect;

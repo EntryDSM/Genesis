@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import UnSubmitted from "./unSubmitted";
 import Submitted from "./submitted";
 import {
@@ -35,30 +35,36 @@ const ApplicantInfo: FC<Props> = ({
   updateApplicantSubmitStatus,
   setIsContainerWidth,
 }) => {
-  const filterResponse = applicantsList.applicants.filter((i) => {
-    return i.name === currnetApplicantInfo?.common_information?.name;
-  });
-  if (currnetApplicantInfo.more_information) {
+  const filterResponse = useMemo(() => {
+    const response = applicantsList.applicants.filter((i) => {
+      return i.name === currnetApplicantInfo.common_information.name;
+    });
+    return response;
+  }, [currnetApplicantInfo.common_information.name]);
+  if (currnetApplicantInfo.more_information !== null) {
     return (
       <>
         {applicantsList.applicants &&
-          filterResponse.map((info) => (
-            <Submitted
-              isContainerWidth={isContainerWidth}
-              applicantCommonInformation={
-                currnetApplicantInfo.common_information
-              }
-              applicantMoreInformation={currnetApplicantInfo.more_information}
-              applicantEvaluation={currnetApplicantInfo.evaluation}
-              applicantStatus={currnetApplicantInfo.status}
-              applicantListItem={info}
-              updateApplicantStatusStatus={updateApplicantStatusStatus}
-              updateApplicantStatus={updateApplicantStatus}
-              updateApplicantPaidStatus={updateApplicantPaidStatus}
-              updateApplicantSubmitStatus={updateApplicantSubmitStatus}
-              setIsContainerWidth={setIsContainerWidth}
-            />
-          ))}
+          filterResponse.map((info) => {
+            return (
+              <Submitted
+                key={info.email}
+                isContainerWidth={isContainerWidth}
+                applicantCommonInformation={
+                  currnetApplicantInfo.common_information
+                }
+                applicantMoreInformation={currnetApplicantInfo.more_information}
+                applicantEvaluation={currnetApplicantInfo.evaluation}
+                applicantStatus={currnetApplicantInfo.status}
+                applicantListItem={info}
+                updateApplicantStatusStatus={updateApplicantStatusStatus}
+                updateApplicantStatus={updateApplicantStatus}
+                updateApplicantPaidStatus={updateApplicantPaidStatus}
+                updateApplicantSubmitStatus={updateApplicantSubmitStatus}
+                setIsContainerWidth={setIsContainerWidth}
+              />
+            );
+          })}
       </>
     );
   } else {

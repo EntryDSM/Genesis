@@ -2,19 +2,20 @@ import React, { FC } from "react";
 import * as S from "../../../style";
 import { select_off, select_on } from "src/assets/schedule";
 import { processTimeType } from "src/data/modules/redux/reducer/schedule/interface";
-import { END_DATE } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
+import { SECOND_ANNOUNCEMENT } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
 import { useSchedule } from "src/hooks/schedule";
 
 interface Props {
   date: Array<processTimeType>;
-  setEndScheduleDay: (payload: string) => void;
+  setSecondScheduleMinute: (payload: string) => void;
 }
 
-const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
+const MinuteSelect: FC<Props> = ({ date, setSecondScheduleMinute }) => {
   const { setState } = useSchedule();
+
   const [active, setActive] = React.useState(false);
   const [disabled, setDisabled] = React.useState("normal");
-  const onestToThirtyOnest = [...Array(31)].map((_, i) => i + 1);
+  const onestToSixtyst = [...Array(60)].map((_, i) => i + 1);
 
   React.useEffect(() => {
     setState.getStatus();
@@ -30,16 +31,20 @@ const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
     }
   };
 
-  const onSelectDayClick = (e) => {
-    const day = e.target.innerText;
-    day < 10 ? setEndScheduleDay(0 + day) : setEndScheduleDay(day);
-    localStorage.setItem("endScheduleDay", JSON.stringify(day));
+  const onSelectMinuteClick = (e) => {
+    const minute = e.target.innerText;
+    minute < 10
+      ? setSecondScheduleMinute(0 + minute)
+      : setSecondScheduleMinute(minute);
+    localStorage.setItem("secondScheduleMinute", JSON.stringify(minute));
   };
 
   const getLocalStorage = JSON.parse(
-    localStorage.getItem("endScheduleDay") ||
+    localStorage.getItem("secondScheduleMinute") ||
       JSON.stringify(
-        !date.filter((date) => date.type === END_DATE)[0].date.slice(5, 7)
+        !date
+          .filter((date) => date.type === SECOND_ANNOUNCEMENT)[0]
+          .date.slice(14, 16)
       )
   );
 
@@ -50,31 +55,34 @@ const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
 
   React.useEffect(() => {
     localStorage.setItem(
-      "endScheduleDay",
+      "secondScheduleMinute",
       JSON.stringify(
         date
-          .filter((date) => date.type === END_DATE && date.date.slice(5, 7))[0]
-          .date.slice(5, 7)
+          .filter(
+            (date) =>
+              date.type === SECOND_ANNOUNCEMENT && date.date.slice(14, 16)
+          )[0]
+          .date.slice(14, 16)
       )
     );
   }, []);
 
   return (
-    <S.Select disabled={disabled} onClick={onSelectClick}>
-      <S.SelectContent>
+    <S.MinuteSelect disabled={disabled} onClick={onSelectClick}>
+      <S.MinuteSelectContent>
         <p>{getLocalStorage}</p>
         {activeImg}
-      </S.SelectContent>
+      </S.MinuteSelectContent>
       {active && (
-        <S.SubSelect>
+        <S.MinuteSubSelect>
           <S.GrayLine width={52} />
-          {onestToThirtyOnest.map((day) => {
-            return <p onClick={onSelectDayClick}>{day}</p>;
+          {onestToSixtyst.map((minute) => {
+            return <p onClick={onSelectMinuteClick}>{minute}</p>;
           })}
-        </S.SubSelect>
+        </S.MinuteSubSelect>
       )}
-    </S.Select>
+    </S.MinuteSelect>
   );
 };
 
-export default MonthSelect;
+export default MinuteSelect;

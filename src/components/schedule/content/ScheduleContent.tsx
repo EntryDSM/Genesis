@@ -1,10 +1,40 @@
 import React, { FC } from "react";
 import * as S from "../style";
-import { StartMonthSelect, StartDaySelect } from "./Select/StartSelects";
-import { EndMonthSelect, EndDaySelect } from "./Select/EndSelects";
-import { FirstMonthSelect, FirstDaySelect } from "./Select/FirstSelects";
-import { InterMonthSelect, InterDaySelect } from "./Select/InterSelects";
-import { SecondMonthSelect, SecondDaySelect } from "./Select/SecondSelects";
+import {
+  StartMonthSelect,
+  StartDaySelect,
+  StartHourSelect,
+  StartMinuteSelect,
+  StartSecondSelect,
+} from "./Select/StartSelects";
+import {
+  EndMonthSelect,
+  EndDaySelect,
+  EndHourSelect,
+  EndMinuteSelect,
+  EndSecondSelect,
+} from "./Select/EndSelects";
+import {
+  FirstMonthSelect,
+  FirstDaySelect,
+  FirstHourSelect,
+  FirstMinuteSelect,
+  FirstSecondSelect,
+} from "./Select/FirstSelects";
+import {
+  InterMonthSelect,
+  InterDaySelect,
+  InterHourSelect,
+  InterMinuteSelect,
+  InterSecondSelect,
+} from "./Select/InterSelects";
+import {
+  SecondMonthSelect,
+  SecondDaySelect,
+  SecondHourSelect,
+  SecondMinuteSelect,
+  SecondSecondSelect,
+} from "./Select/SecondSelects";
 import {
   FIRST_ANNOUNCEMENT,
   INTERVIEW,
@@ -13,38 +43,54 @@ import {
   START_DATE,
 } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
 import { processTimeType } from "src/data/modules/redux/reducer/schedule/interface";
+import { useSchedule } from "src/hooks/schedule";
 
 interface Props {
   scheduleImg: string;
   scheduleImgAlt: string;
   scheduleName: string;
   nowStatus: scheduleType;
-  startScheduleMonth: number;
-  startScheduleDay: number;
-  endScheduleMonth: number;
-  endScheduleDay: number;
-  firstScheduleMonth: number;
-  firstScheduleDay: number;
-  interviewScheduleMonth: number;
-  interviewScheduleDay: number;
-  secondScheduleMonth: number;
-  secondScheduleDay: number;
+  startScheduleMonth: string;
+  startScheduleDay: string;
+  endScheduleMonth: string;
+  endScheduleDay: string;
+  firstScheduleMonth: string;
+  firstScheduleDay: string;
+  interviewScheduleMonth: string;
+  interviewScheduleDay: string;
+  secondScheduleMonth: string;
+  secondScheduleDay: string;
   date: Array<processTimeType>;
-  setStartScheduleMonth: (payload: number) => void;
-  setStartScheduleDay: (payload: number) => void;
-  setEndScheduleMonth: (payload: number) => void;
-  setEndScheduleDay: (payload: number) => void;
-  setFirstScheduleMonth: (payload: number) => void;
-  setFirstScheduleDay: (payload: number) => void;
-  setInterviewScheduleMonth: (payload: number) => void;
-  setInterviewScheduleDay: (payload: number) => void;
-  setSecondScheduleMonth: (payload: number) => void;
-  setSecondScheduleDay: (payload: number) => void;
+  setStartScheduleMonth: (payload: string) => void;
+  setStartScheduleDay: (payload: string) => void;
+  setEndScheduleMonth: (payload: string) => void;
+  setEndScheduleDay: (payload: string) => void;
+  setFirstScheduleMonth: (payload: string) => void;
+  setFirstScheduleDay: (payload: string) => void;
+  setInterviewScheduleMonth: (payload: string) => void;
+  setInterviewScheduleDay: (payload: string) => void;
+  setSecondScheduleMonth: (payload: string) => void;
+  setSecondScheduleDay: (payload: string) => void;
   setStartDate: (payload: string) => void;
   setEndDate: (payload: string) => void;
   setFirstDate: (payload: string) => void;
   setInterviewDate: (payload: string) => void;
   setSecondDate: (payload: string) => void;
+  setStartScheduleHour: (payload: string) => void;
+  setStartScheduleMinute: (payload: string) => void;
+  setStartScheduleSecond: (payload: string) => void;
+  setEndScheduleHour: (payload: string) => void;
+  setEndScheduleMinute: (payload: string) => void;
+  setEndScheduleSecond: (payload: string) => void;
+  setFirstScheduleHour: (payload: string) => void;
+  setFirstScheduleMinute: (payload: string) => void;
+  setFirstScheduleSecond: (payload: string) => void;
+  setInterviewScheduleHour: (payload: string) => void;
+  setInterviewScheduleMinute: (payload: string) => void;
+  setInterviewScheduleSecond: (payload: string) => void;
+  setSecondScheduleHour: (payload: string) => void;
+  setSecondScheduleMinute: (payload: string) => void;
+  setSecondScheduleSecond: (payload: string) => void;
 }
 
 const ScheduleContent: FC<Props> = ({
@@ -78,47 +124,84 @@ const ScheduleContent: FC<Props> = ({
   setFirstDate,
   setInterviewDate,
   setSecondDate,
+  setStartScheduleHour,
+  setStartScheduleMinute,
+  setStartScheduleSecond,
+  setEndScheduleHour,
+  setEndScheduleMinute,
+  setEndScheduleSecond,
+  setFirstScheduleHour,
+  setFirstScheduleMinute,
+  setFirstScheduleSecond,
+  setInterviewScheduleHour,
+  setInterviewScheduleMinute,
+  setInterviewScheduleSecond,
+  setSecondScheduleHour,
+  setSecondScheduleMinute,
+  setSecondScheduleSecond,
 }) => {
+  const { state } = useSchedule();
+
   React.useEffect(() => {
     setStartDate(
       "2022-" +
-        String(startScheduleMonth) +
+        startScheduleMonth +
         "-" +
-        String(startScheduleDay) +
+        startScheduleDay +
         "T" +
-        "12:05:05"
+        state.startScheduleHour +
+        ":" +
+        state.startScheduleMinute +
+        ":" +
+        state.startScheduleSecond
     );
     setEndDate(
       "2022-" +
-        String(endScheduleMonth) +
+        endScheduleMonth +
         "-" +
-        String(endScheduleDay) +
+        endScheduleDay +
         "T" +
-        "23:00:00"
+        state.endScheduleHour +
+        ":" +
+        state.endScheduleMinute +
+        ":" +
+        state.endScheduleSecond
     );
     setFirstDate(
       "2022-" +
-        String(firstScheduleMonth) +
+        firstScheduleMonth +
         "-" +
-        String(firstScheduleDay) +
+        firstScheduleDay +
         "T" +
-        "12:05:05"
+        state.firstScheduleHour +
+        ":" +
+        state.firstScheduleMinute +
+        ":" +
+        state.firstScheduleSecond
     );
     setInterviewDate(
       "2022-" +
-        String(interviewScheduleMonth) +
+        interviewScheduleMonth +
         "-" +
-        String(interviewScheduleDay) +
+        interviewScheduleDay +
         "T" +
-        "12:05:05"
+        state.interviewScheduleHour +
+        ":" +
+        state.interviewScheduleMinute +
+        ":" +
+        state.interviewScheduleSecond
     );
     setSecondDate(
       "2022-" +
-        String(secondScheduleMonth) +
+        secondScheduleMonth +
         "-" +
-        String(secondScheduleDay) +
+        secondScheduleDay +
         "T" +
-        "12:05:05"
+        state.secondScheduleHour +
+        ":" +
+        state.secondScheduleMinute +
+        ":" +
+        state.secondScheduleSecond
     );
   }, [
     startScheduleMonth,
@@ -131,6 +214,21 @@ const ScheduleContent: FC<Props> = ({
     interviewScheduleDay,
     secondScheduleMonth,
     secondScheduleDay,
+    state.startScheduleHour,
+    state.startScheduleMinute,
+    state.startScheduleSecond,
+    state.endScheduleHour,
+    state.endScheduleMinute,
+    state.endScheduleSecond,
+    state.firstScheduleHour,
+    state.firstScheduleMinute,
+    state.firstScheduleSecond,
+    state.interviewScheduleHour,
+    state.interviewScheduleMinute,
+    state.interviewScheduleSecond,
+    state.secondScheduleHour,
+    state.secondScheduleMinute,
+    state.secondScheduleSecond,
   ]);
 
   const selectDateType = () => {
@@ -150,6 +248,22 @@ const ScheduleContent: FC<Props> = ({
             />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
+          <S.ScheduleTimeSelectBox>
+            <StartHourSelect
+              date={date}
+              setStartScheduleHour={setStartScheduleHour}
+            />
+            <q />
+            <StartMinuteSelect
+              date={date}
+              setStartScheduleMinute={setStartScheduleMinute}
+            />
+            <q />
+            <StartSecondSelect
+              date={date}
+              setStartScheduleSecond={setStartScheduleSecond}
+            />
+          </S.ScheduleTimeSelectBox>
           <S.ScheduleDateTitle>마감일</S.ScheduleDateTitle>
           <S.ScheduleDateSelectBox>
             <EndMonthSelect
@@ -160,6 +274,22 @@ const ScheduleContent: FC<Props> = ({
             <EndDaySelect date={date} setEndScheduleDay={setEndScheduleDay} />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
+          <S.ScheduleTimeSelectBox>
+            <EndHourSelect
+              date={date}
+              setEndScheduleHour={setEndScheduleHour}
+            />
+            <q />
+            <EndMinuteSelect
+              date={date}
+              setEndScheduleMinute={setEndScheduleMinute}
+            />
+            <q />
+            <EndSecondSelect
+              date={date}
+              setEndScheduleSecond={setEndScheduleSecond}
+            />
+          </S.ScheduleTimeSelectBox>
         </>
       );
     if (nowStatus === FIRST_ANNOUNCEMENT)
@@ -178,6 +308,22 @@ const ScheduleContent: FC<Props> = ({
             />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
+          <S.ScheduleTimeSelectBox>
+            <FirstHourSelect
+              date={date}
+              setFirstScheduleHour={setFirstScheduleHour}
+            />
+            <q />
+            <FirstMinuteSelect
+              date={date}
+              setFirstScheduleMinute={setFirstScheduleMinute}
+            />
+            <q />
+            <FirstSecondSelect
+              date={date}
+              setFirstScheduleSecond={setFirstScheduleSecond}
+            />
+          </S.ScheduleTimeSelectBox>
         </>
       );
     if (nowStatus === INTERVIEW)
@@ -196,6 +342,22 @@ const ScheduleContent: FC<Props> = ({
             />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
+          <S.ScheduleTimeSelectBox>
+            <InterHourSelect
+              date={date}
+              setInterviewScheduleHour={setInterviewScheduleHour}
+            />
+            <q />
+            <InterMinuteSelect
+              date={date}
+              setInterviewScheduleMinute={setInterviewScheduleMinute}
+            />
+            <q />
+            <InterSecondSelect
+              date={date}
+              setInterviewScheduleSecond={setInterviewScheduleSecond}
+            />
+          </S.ScheduleTimeSelectBox>
         </>
       );
     if (nowStatus === SECOND_ANNOUNCEMENT)
@@ -214,6 +376,22 @@ const ScheduleContent: FC<Props> = ({
             />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
+          <S.ScheduleTimeSelectBox>
+            <SecondHourSelect
+              date={date}
+              setSecondScheduleHour={setSecondScheduleHour}
+            />
+            <q />
+            <SecondMinuteSelect
+              date={date}
+              setSecondScheduleMinute={setSecondScheduleMinute}
+            />
+            <q />
+            <SecondSecondSelect
+              date={date}
+              setSecondScheduleSecond={setSecondScheduleSecond}
+            />
+          </S.ScheduleTimeSelectBox>
         </>
       );
   };

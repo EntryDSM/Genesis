@@ -2,6 +2,7 @@ import {
     ERROR,
     ID,
     PASSWORD,
+    REFRESH_TOKEN_SUCCESS,
     REFRESH_TOKEN_FAILURE,
     signinActionType,
     SIGNIN_FAILURE,
@@ -47,6 +48,13 @@ import {
         };
       }
       case SIGNIN_SUCCESS: {
+        return {
+          ...state,
+        };
+      }
+      case REFRESH_TOKEN_SUCCESS: {
+        localStorage.setItem('access_token', action.payload.access_token);
+        localStorage.setItem('refresh_token', action.payload.refresh_token);
         return {
           ...state,
         };

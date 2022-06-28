@@ -1,5 +1,6 @@
 import React, { FC, Suspense } from "react";
 import { useLocation } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
 import { useAuth } from "src/hooks/auth";
 import { useSignIn } from "src/hooks/signin";
@@ -9,6 +10,7 @@ const Statistics = React.lazy(() => import("../../components/statistics"));
 
 const StatisticsContainer: FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const statisticsState = useStatistics();
   const authState = useAuth();
   const signinState = useSignIn();
@@ -31,6 +33,13 @@ const StatisticsContainer: FC = () => {
       localStorage.removeItem("refresh_token");
     }
   }, [signinState.state.error]);
+
+  React.useEffect(() => {
+    if (!authState.state.isLogin) {
+      window.alert("로그인 후에 접근할 수 있습니다.");
+      navigate("/login");
+    }
+  }, [!localStorage.getItem("access_token")]);
 
   React.useEffect(() => {
     const errorStatus = statisticsState.state.error.status;

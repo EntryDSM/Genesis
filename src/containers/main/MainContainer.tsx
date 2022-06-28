@@ -1,6 +1,6 @@
 import React, { FC, Suspense } from "react";
 import ScheduleDummyData from "src/utils/util/loadingDummyData/ScheduleDummyData";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useStatistics } from "src/hooks/statistics";
 import { useSchedule } from "src/hooks/schedule";
 import { useAuth } from "src/hooks/auth";
@@ -25,6 +25,7 @@ const Main = React.lazy(() => import("../../components/main"));
 
 const MainContainer: FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const Footer = useFooter();
   const scheduleState = useSchedule();
   const statisticsState = useStatistics();
@@ -75,6 +76,13 @@ const MainContainer: FC = () => {
       localStorage.removeItem("refresh_token");
     }
   }, [signinState.state.error]);
+
+  React.useEffect(() => {
+    if (!authState.state.isLogin) {
+      window.alert("로그인 후에 접근할 수 있습니다.");
+      navigate("/login");
+    }
+  }, [!localStorage.getItem("access_token")]);
 
   React.useEffect(() => {
     const errorStatus = scheduleState.state.error.status;

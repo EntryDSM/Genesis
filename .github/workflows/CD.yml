@@ -1,50 +1,59 @@
-name: React build
-on: 
-  push:                               # master Branch에서 push 이벤트가 일어났을 때만 실행
-    branches:
-      - main
-
-jobs:
-  build:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout source code.   # 레포지토리 체크아웃
-        uses: actions/checkout@master
-
-      - name: Cache node modules      # node modules 캐싱
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
-      - name: Install Dependencies    # 의존 파일 설치
-        run: npm install
-
-      - name: Build                   # React Build
-        run: yarn build
-        env:
-          CI: false
-          SKIP_PREFLIGHT_CHECK: true
-
-      - name: Deploy                  
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-        run: |
-          aws s3 cp \
-            --recursive \
-            --region ap-northeast-2 \
-            build s3://admin.entrydsm.hs.kr
-        
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+    name: Deploy to Production
+    
+    on:
+      push:
+        branches:
+          - main
+    
+    defaults: 
+        run: 
+            working-directory: ./genesis
+    jobs:
+      deploy:
+        name: Build, Deploy to S3 bucket
+        runs-on: [ubuntu-latest]
+    
+        strategy:
+          matrix:
+            node-version: [14.4.x]
+    
+        steps:
+          - uses: actions/checkout@v2
+    
+          - name: Use Node.js ${{ matrix.node-version }}
+            uses: actions/setup-node@v1
+            with:
+              node-version: ${{ matrix.node-version }}
             
-      - name : CloudFront Cache invalidation
-        run : aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_ID }} --paths "/*"
+          - name: Npm install
+            run: npm install
+    
+          - name: Build
+            run: DISABLE_ESLINT_PLUGIN=true npm run build
+            
+          - name: Cache node modules
+            uses: actions/cache@v2
+            with:
+              path: node_modules
+              key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+              restore-keys: |
+                ${{ runner.os }}-node-modules-
+          
+          - name: Deploy                  
+            env:
+                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_IAM_MANAGER_KEY_ID }}
+                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_IAM_MANAGER_SECRET_ACCESS_KEY }}
+            run: |
+              aws s3 cp \
+                --recursive \
+                --region ap-northeast-2 \
+                build s3://admin.entrydsm.hs.kr
+
+          - name: Invalidate Cloudfront
+            uses: chetan/invalidate-cloudfront-action@master
+            env:
+              DISTRIBUTION: ${{ secrets.CLOUD_FRONT_DISTRIBUTION_ID }}
+              PATHS: "/*"
+              AWS_REGION: ${{ secrets.AWS_REGION }}
+              AWS_ACCESS_KEY_ID: ${{ secrets.AWS_IAM_MANAGER_KEY_ID }}
+              AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_IAM_MANAGER_SECRET_ACCESS_KEY }}

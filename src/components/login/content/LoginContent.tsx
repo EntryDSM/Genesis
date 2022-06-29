@@ -23,6 +23,7 @@ const LoginContent: FC = () => {
   React.useEffect(() => {
     if (authState.state.isLogin) {
       navigate("/");
+      window.location.reload();
     }
   }, [authState.state.isLogin]);
 

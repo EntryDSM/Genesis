@@ -7,7 +7,7 @@
     
     defaults: 
         run: 
-            working-directory: ./genesis
+            working-directory: ./
     jobs:
       deploy:
         name: Build, Deploy to S3 bucket

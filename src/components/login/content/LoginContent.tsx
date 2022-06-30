@@ -65,7 +65,7 @@ const LoginContent: FC = () => {
         </S.LoginContentTitle>
         <S.LoginContentSign>
           <S.LoginContentSignLogo>
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="entryLogo" />
             {state.error.type === SIGNIN ? (
               <span>아이디 또는 비밀번호가 잘못되었습니다!</span>
             ) : (

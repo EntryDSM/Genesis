@@ -88,12 +88,13 @@ const ApplicantStatuses: FC<Props> = ({
         >
           최종제출 취소
         </Button>
-        <Button
-          className="applicant-info__fee-btn"
-          onClick={() => handleClickUpdatePaid(receipt_code)}
-        >
-          원서료 지불 수정
-        </Button>
+        {/*원서료 지불할 일 생기면 다시 쓰세요 ㅎㅎ*/}
+        {/*<Button*/}
+        {/*  className="applicant-info__fee-btn"*/}
+        {/*  onClick={() => handleClickUpdatePaid(receipt_code)}*/}
+        {/*>*/}
+        {/*  원서료 지불 수정*/}
+        {/*</Button>*/}
       </S.ButtonContainer>
     </S.Wrapper>
   );

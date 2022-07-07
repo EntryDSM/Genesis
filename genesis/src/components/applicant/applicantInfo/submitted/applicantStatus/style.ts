@@ -42,6 +42,10 @@ export const CheckboxContainer = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  //justify-content: space-evenly;
   width: 55%;
+  margin-left: auto;
+  >button{
+    margin-left: auto;
+  }
 `;

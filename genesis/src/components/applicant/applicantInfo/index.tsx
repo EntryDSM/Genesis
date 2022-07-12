@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, useEffect, useMemo } from "react";
 import UnSubmitted from "./unSubmitted";
 import Submitted from "./submitted";
 import {
@@ -40,7 +40,10 @@ const ApplicantInfo: FC<Props> = ({
       return i.name === currnetApplicantInfo.common_information.name;
     });
     return response;
-  }, [currnetApplicantInfo.common_information.name]);
+  }, [currnetApplicantInfo.common_information.name, applicantsList]);
+  useEffect(() => {
+    setIsContainerWidth(filterResponse.length !== 0);
+  }, [filterResponse]);
   if (currnetApplicantInfo.more_information !== null) {
     return (
       <>

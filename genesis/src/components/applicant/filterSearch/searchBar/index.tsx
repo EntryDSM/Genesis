@@ -3,6 +3,7 @@ import * as S from "./style";
 import { GetApplicantsListPayload } from "src/data/api/apiTypes";
 
 interface Props {
+    applicantCount : number
   isContainerWidth: boolean;
   searchProgressImg: string;
   searchIcon: string;
@@ -16,6 +17,7 @@ const categoryList = [
 ];
 
 const SearchBar: FC<Props> = ({
+                                  applicantCount,
   isContainerWidth,
   searchProgressImg,
   searchIcon,
@@ -82,6 +84,9 @@ const SearchBar: FC<Props> = ({
         />
         <img src={searchIcon} alt={"searchIcon"} />
       </S.SearchInputContainer>
+      <S.TotalApplicantCount>
+          검색 결과 :&nbsp;<p>{applicantCount}</p>명
+      </S.TotalApplicantCount>
     </S.SearchBarWrapper>
   );
 };

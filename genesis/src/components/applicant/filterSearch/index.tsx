@@ -4,6 +4,7 @@ import SearchBar from "./searchBar";
 import Filter from "./filter";
 import FilterSearchWrapper from "./style";
 import { GetApplicantsListPayload } from "src/data/api/apiTypes";
+import {useSelectState} from "../../../hooks/default";
 
 interface Props {
   filters: GetApplicantsListPayload;
@@ -22,9 +23,11 @@ const FilterSearch: FC<Props> = ({
   getApplicantsList,
   setIsDeleteTableModalSwitch,
 }) => {
+    const applicant = useSelectState().applicant
   return (
     <FilterSearchWrapper isContainerWidth={isContainerWidth}>
       <SearchBar
+          applicantCount={applicant.applicantsList.total_elements}
         isContainerWidth={isContainerWidth}
         searchProgressImg={list_progressbar}
         searchIcon={search_icon}

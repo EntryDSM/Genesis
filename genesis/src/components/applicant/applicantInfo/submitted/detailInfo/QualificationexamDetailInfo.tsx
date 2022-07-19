@@ -41,7 +41,7 @@ const DetailInfo: FC<Props> = ({
           <td>{setContactForm(applicantCommonInformation.telephone_number)}</td>
         </tr>
         <tr>
-          <th>부모님 연락처</th>
+          <th>학부모 연락처</th>
           <td>{setContactForm(applicantCommonInformation.parent_tel)}</td>
         </tr>
         <tr>

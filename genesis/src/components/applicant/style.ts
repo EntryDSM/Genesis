@@ -24,7 +24,7 @@ export const Applicant = styled.div<{ isContainerWidth?: boolean }>`
           box-sizing: border-box;
           padding-top: 75px;
           margin: 0 auto;
-          transition: all ease 0.5s;
+          transition: all ease-out 0.8s;
           overflow: hidden;
         `}
 `;
@@ -36,11 +36,11 @@ export const ApplicantContainer = styled.div<{ isContainerWidth?: boolean }>`
     isContainerWidth
       ? css`
           width: 60%;
-          transition: all ease 0.5s;
+          transition: all ease-out 0.8s;
         `
       : css`
           width: 100%;
-          transition: all ease 0.5s;
+          transition: all ease-out 0.8s;
         `};
 `;
 
@@ -63,11 +63,11 @@ export const ApplicantInfoWrap = styled.div<{
     isContainerWidth
       ? css`
           width: 40%;
-          transition: all ease 0.5s;
+          transition: all ease-out 0.8s;
         `
       : css`
           width: 0%;
-          transition: all ease 0.5s;
+          transition: all ease-out 0.8s;
         `};
   height: 100%;
 `;

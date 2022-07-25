@@ -109,3 +109,14 @@ export const SearchInputContainer = styled.div`
     display: inline-block;
   }
 `;
+export const TotalApplicantCount = styled.p`
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  font-family: "Noto Sans KR-Bold", sans-serif !important;
+  margin-left: auto;
+  > p{
+    font-weight: 700;
+    color: ${color.primaryColor};
+  }
+`

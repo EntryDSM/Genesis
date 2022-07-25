@@ -62,16 +62,15 @@ const Unsubmitted: FC<Props> = ({
             <td>{setContactForm(telephone_number)}</td>
           </S.BasicInfoTableTR>
           <S.BasicInfoTableTR>
-            <th>부모님 연락처</th>
+            <th>학부모 연락처</th>
             <td>{setContactForm(parent_tel)}</td>
           </S.BasicInfoTableTR>
-          {
-            school_tel &&
+          {school_tel && (
             <S.BasicInfoTableTR>
               <th>학교 연락처</th>
               <td>{setContactForm(school_tel)}</td>
             </S.BasicInfoTableTR>
-          }
+          )}
         </tbody>
       </table>
     </S.Wrapper>

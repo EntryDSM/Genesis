@@ -6,7 +6,6 @@ import {
 } from "../../action/statistics/interface";
 
 const initialState: IStatisticsState = {
-  getStatisticsStatus: 0,
   statistics: {
     count: {
       0: {

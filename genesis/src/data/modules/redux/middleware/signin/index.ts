@@ -3,13 +3,15 @@ import { SIGNIN } from 'src/data/modules/redux/action/signin';
 import { refreshTokenApi, signinApi } from 'src/data/api/signin/signinApi';
 import { IS_LOGIN } from 'src/data/modules/redux/action/auth';
 import { REFRESH_TOKEN } from 'src/data/modules/redux/action/signin/interface';
+import { signinResponse } from 'src/models/dto/response/signinResponse';
+import { responseGenerator } from 'src/data/api/apiTypes';
 
 export const refreshTokenSaga = function* (action: any) {
   const FAILURE = `${REFRESH_TOKEN}_FAILURE`;
   const SUCCESS = `${REFRESH_TOKEN}_SUCCESS`;
   const callback = action.payload.callback;
   try {
-    const response: { access_token: string } = yield call(refreshTokenApi);
+    const response: signinResponse = yield call(refreshTokenApi);
     yield put({
       type: SUCCESS,
       payload: response ? response : '',
@@ -39,7 +41,7 @@ export const siginRequestSaga = function* (action: any) {
   const FAILURE = `${SIGNIN}_FAILURE`;
 
   try {
-    const response = yield call(signinApi, action.payload);
+    const response: responseGenerator = yield call(signinApi, action.payload);
     yield put({
       type: SUCCESS,
       payload: response ? response.data : null,

@@ -1,4 +1,5 @@
 import { error } from 'src/models/error';
+import { createAction } from 'typesafe-actions';
 import { 
   GET_STATISTICS, 
   GET_STATISTICS_SUCCESS, 
@@ -9,22 +10,13 @@ import {
   GetScoreStatisticsResponse, 
 } from "src/data/api/apiTypes";
 
-export const getStatisticsSuccess = (payload: {
-  score:GetScoreStatisticsResponse,
-  count:GetCountStatisticsResponse
-}) => ({
-  type: GET_STATISTICS_SUCCESS,
-  payload,
-})
+export const getStatistics = createAction(GET_STATISTICS)();
+export const getStatisticsSuccess = createAction(GET_STATISTICS_SUCCESS)<{
+  score: GetScoreStatisticsResponse, 
+  count: GetCountStatisticsResponse
+}>();
+export const getStatisticsFailure = createAction(GET_STATISTICS_FAILURE)<error>();
 
-export const getStatisticsFailure = (payload: error) => ({
-  type: GET_STATISTICS_FAILURE,
-  payload,
-})
-
-export const getStatistics = () => ({
-  type: GET_STATISTICS,
-})
 
 export type statisticsActionType = 
   | ReturnType<typeof getStatisticsSuccess>

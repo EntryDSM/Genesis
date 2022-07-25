@@ -54,7 +54,7 @@ const MonthSelect: FC<Props> = ({ date, setEndScheduleDay }) => {
       JSON.stringify(
         date
           .filter((date) => date.type === END_DATE && date.date.slice(5, 7))[0]
-          .date.slice(5, 7)
+          .date.slice(8, 10)
       )
     );
   }, []);

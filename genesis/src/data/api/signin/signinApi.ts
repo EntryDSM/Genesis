@@ -18,7 +18,7 @@ export const signinApi = async (body: signinRequest) => {
   export const refreshTokenApi = async () => {
     try {
       const request = getRequest();
-      const { data } = await request.put<refreshResponse>(
+      const response: any = await request.put<refreshResponse>(
         uri.signin,
         {},
         {
@@ -27,8 +27,8 @@ export const signinApi = async (body: signinRequest) => {
           },
         },
       );
-      localStorage.setItem('access_token', data.access_token);
-      return data;
+      // localStorage.setItem('access_token', data.access_token);
+      return response.data;
     } catch (error) {
       throw error;
     }

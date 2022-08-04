@@ -1,17 +1,18 @@
-import styled, { css } from 'styled-components';
-import { color, heightRatio ,pxToRem, widthRatio } from '../../styles';
-import { background } from '../../assets/login';
+import styled, { css } from "styled-components";
+import { color, pxToRem } from "../../styles";
+import { background } from "../../assets/login";
 
 export const Main = styled.div`
-  width: 100%;  
+  width: 100%;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
   min-width: ${pxToRem(1320)}rem;
   box-sizing: border-box;
 `;
 
 export const MainBackground = styled.div`
+  @media (max-width: 1320px) {
+    width: ${pxToRem(1320)}rem;
+  }
   width: 100%;
   height: 100%;
   position: absolute;
@@ -23,20 +24,16 @@ export const MainBackground = styled.div`
   background-position: center;
   background-size: 110%;
   z-index: -100;
-  @media (max-width: 1320px) {
-    width: ${pxToRem(1320)}rem;
-  }
 `;
 
 export const MainWrapper = styled.div`
-  padding: 0px ${pxToRem(250)}rem;
-  padding-top: ${pxToRem(72)}rem;
+  padding: 10rem 15.625rem 0px;
   box-sizing: border-box;
-  justify-content: center;
   display: flex;
+  -webkit-box-pack: justify;
   justify-content: space-between;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 `;
 
 export const MainContentWrapper = styled.div`
@@ -66,7 +63,7 @@ export const MainDescription = styled.p`
     > span {
       color: ${color.main};
       font-weight: bold;
-      font-family: 'Noto Sans KR-Bold', sans-serif !important;
+      font-family: "Noto Sans KR-Bold", sans-serif !important;
       font-size: ${pxToRem(34)}rem;
     }
   }
@@ -98,13 +95,13 @@ export const MainButton = styled.button`
       height: ${pxToRem(3)}rem;
       border-radius: ${pxToRem(15)}rem;
       background-color: white;
-      content: '';
+      content: "";
       transform: rotate(90deg) translate(7px, -7px);
     }
   }
   > p {
     color: white;
-    font-family: 'Noto Sans KR-Bold', sans-serif !important;
+    font-family: "Noto Sans KR-Bold", sans-serif !important;
     font-size: ${pxToRem(30)}rem;
     padding-right: 2rem;
   }
@@ -113,9 +110,10 @@ export const MainButton = styled.button`
 export const Progress = styled.div``;
 
 export const ProgressText = styled.p<{ isNow: boolean; isPassed: boolean }>`
-  color: ${({ isNow, isPassed }) => (isNow ? color.main : isPassed ? 'black' : color.fail)};
+  color: ${({ isNow, isPassed }) =>
+    isNow ? color.main : isPassed ? "black" : color.fail};
   font-size: ${pxToRem(23)}rem;
-  font-family: 'Noto Sans KR-Bold', sans-serif !important;
+  font-family: "Noto Sans KR-Bold", sans-serif !important;
   font-weight: bold;
 `;
 
@@ -143,7 +141,7 @@ export const ProgressIcon = styled.div<{ isPassed: boolean }>`
   position: relative;
   > .background {
     width: 100%;
-    height: ${props => (props.isPassed ? '100%' : '0%')};
+    height: ${(props) => (props.isPassed ? "100%" : "0%")};
     transition: all 0.5s;
     position: absolute;
     background-color: ${color.main};
@@ -154,7 +152,7 @@ export const ProgressIcon = styled.div<{ isPassed: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
-    ${props =>
+    ${(props) =>
       props.isPassed
         ? css`
             > .icon {

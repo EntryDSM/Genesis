@@ -64,7 +64,6 @@ const DeleteTable: FC<Props> = ({
     }
     return false;
   };
-
   return (
     <S.ModalWrapper onClick={handleClickOffModal}>
       <S.ModalDeleteTabel onClick={modalClickHandler}>
@@ -80,10 +79,8 @@ const DeleteTable: FC<Props> = ({
           삭제하면 다시 수정할 수 없으니 다시 한번 확인해 주세요
         </S.ModalSubTitle>
         <S.FormBox>
-          {password && !disable ? (
+          {password && !disable && (
             <span>비밀번호가 일치하지 않습니다</span>
-          ) : (
-            ""
           )}
           <S.InputBox>
             <S.Input

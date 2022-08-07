@@ -23,7 +23,6 @@ export const TH = styled.th`
   color: ${color.darkBorderColor};
   border-top: 1.5px solid #303030;
   border-bottom: 0.8px solid #d3d3d3;
-
   &:first-child {
     width: 16%;
   }
@@ -45,6 +44,11 @@ export const TD = styled.td`
   color: #3f3f3f;
   font-size: 16px;
   font-weight: bold;
+  > span {
+    color : #f57278;
+    font-size: 16px;
+    font-weight: 700
+  }
 `;
 
 export const CheckboxWrapper = styled.div`

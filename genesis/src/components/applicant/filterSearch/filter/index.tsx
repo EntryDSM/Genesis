@@ -36,9 +36,10 @@ const Filter: FC<Props> = ({
     { content: "일반 전형", value: "isCommon" },
     { content: "마이스터 전형", value: "isMeister" },
     { content: "사회통합 전형", value: "isSocial" },
-    { content: "정원 내", value: "inOfHeadcount" },
-    { content: "정원 외", value: "outOfHeadcount" },
-  ];
+    // { content: "정원 내", value: "inOfHeadcount" }, 정원 내 필요해지면 다시 쓰세요 ㅎㅎ
+    { content: '정원 외', value: "outOfHeadcount" },
+  ]
+
   const { state } = useSchedule();
 
   React.useEffect(() => {
@@ -77,7 +78,7 @@ const Filter: FC<Props> = ({
       !filters[value] &&
       filters["outOfHeadcount"]
     ) {
-      newFilter["inOfHeadcount"] = true;
+      // newFilter["inOfHeadcount"] = true;
       newFilter["outOfHeadcount"] = false;
     } else if (
       value === "outOfHeadcount" &&
@@ -85,7 +86,7 @@ const Filter: FC<Props> = ({
       filters["inOfHeadcount"]
     ) {
       newFilter["outOfHeadcount"] = true;
-      newFilter["inOfHeadcount"] = false;
+      // newFilter["inOfHeadcount"] = false;
     } else {
       newFilter[value] = !filters[value] || false;
     }
@@ -129,7 +130,7 @@ const Filter: FC<Props> = ({
             onClick={() => handleChangeFilter(item.value)}
           >
             <Checkbox isChecked={checkIsChecked(item.value)} />
-            <p>{item.content}</p>
+            <p>{item.content}<strong>{item.value === "outOfHeadcount" && "*"}</strong></p>
           </S.FilterItemContainer>
         ))}
       </S.FilterSelectBox>

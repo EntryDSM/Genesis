@@ -37,7 +37,7 @@ const InitialState: ApplicantState = {
     isCommon: false,
     isMeister: false,
     isSocial: false,
-    inOfHeadcount: false,
+    // inOfHeadcount: false,
     outOfHeadcount: false,
     receiptCode: null,
     schoolName: null,

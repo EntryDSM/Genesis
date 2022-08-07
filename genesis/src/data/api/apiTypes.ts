@@ -121,7 +121,7 @@ export interface GetApplicantsListPayload {
   isCommon?: boolean;
   isMeister?: boolean;
   isSocial?: boolean;
-  inOfHeadcount?: boolean;
+  // inOfHeadcount?: boolean;
   outOfHeadcount?: boolean;
   receiptCode?: number;
   schoolName?: number;
@@ -137,6 +137,7 @@ export interface ApplicantListItem {
   is_prints_arrived: boolean;
   is_submitted: boolean;
   headcount: string;
+  is_out_of_headcount : boolean;
 }
 
 export interface GetApplicantsListResponse {

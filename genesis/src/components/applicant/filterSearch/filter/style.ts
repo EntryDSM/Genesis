@@ -76,5 +76,8 @@ export const FilterItemContainer = styled.span`
     &:hover {
       cursor: pointer;
     }
+  > strong {
+    color : #f57278;
+  }
   }
 `;

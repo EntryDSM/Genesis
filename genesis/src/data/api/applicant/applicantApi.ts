@@ -4,15 +4,13 @@ import { getRequest, authorization } from "../default/default";
 import uri from "../uri";
 
 export const getApplicantsListApi = async (access_token: string, payload: T.GetApplicantsListPayload) => {
-  const response = await getRequest().get<T.GetApplicantsListResponse>(
+  return await getRequest().get<T.GetApplicantsListResponse>(
    uri.applicants,
     {
       headers: authorization(getAccessToken()),
       params: payload,
     },
   );
-
-  return response;
 };
 
 export const getApplicantInfoApi = async (access_token: string, payload: T.GetApplicantInfoPayload) => {

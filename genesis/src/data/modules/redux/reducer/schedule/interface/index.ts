@@ -42,12 +42,12 @@ export interface IScheduleState {
 }
 
 export interface processTimeType {
-  type: string;
+  type: "END_DATE" | "FIRST_ANNOUNCEMENT" | "INTERVIEW" | "SECOND_ANNOUNCEMENT" | "START_DATE";
   date: string;
 }
 
 export interface scheduleUpdateTypes {
-  type: string;
+  type: "END_DATE" | "FIRST_ANNOUNCEMENT" | "INTERVIEW" | "SECOND_ANNOUNCEMENT" | "START_DATE";
   date: string;
 }
 

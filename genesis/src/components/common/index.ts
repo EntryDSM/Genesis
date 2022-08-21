@@ -78,7 +78,7 @@ export const Button = styled.button`
     height: 34px;
     border-radius: 12px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 700;
     color: #ffffff;
   }
 `;

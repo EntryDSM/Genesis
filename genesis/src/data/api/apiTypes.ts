@@ -1,3 +1,5 @@
+import { ScheduleType } from "../../components/schedule/Schedule";
+
 export interface responseGenerator {
   config?: any;
   data?: any;
@@ -14,7 +16,7 @@ export interface GetSchedulesPayload {
 }
 
 export interface UpdateSchedulesPayload {
-  type: string;
+  type: ScheduleType;
   date: string;
 }
 
@@ -61,7 +63,7 @@ export interface SpecialScoreDistribution {
 
 export interface CommonCountDistribution {
   //일반전형 숫자
-  count: number,
+  count: number;
   application_type: "COMMON";
   daejeon: boolean;
   /* common_count: number;
@@ -70,7 +72,7 @@ export interface CommonCountDistribution {
 
 export interface SpecialCountDistribution {
   //특별전형 숫자
-  count: number,
+  count: number;
   application_type: "MEISTER" | "SOCIAL";
   daejeon: boolean;
   /* special_count: number,
@@ -88,26 +90,26 @@ export interface SpecialCountDistribution {
 
 export interface GetScoreStatisticsResponse {
   //응답받는 형식..? 점수
-  0: CommonScoreDistribution,
-  1: CommonScoreDistribution,
-  2: SpecialScoreDistribution,
-  3: SpecialScoreDistribution,
-  4: SpecialScoreDistribution,
-  5: SpecialScoreDistribution,
+  0: CommonScoreDistribution;
+  1: CommonScoreDistribution;
+  2: SpecialScoreDistribution;
+  3: SpecialScoreDistribution;
+  4: SpecialScoreDistribution;
+  5: SpecialScoreDistribution;
 }
 
 export interface GetCountStatisticsResponse {
   //응답받는 형식..? 숫자
-  0: CommonCountDistribution,
-  1: CommonCountDistribution,
-  2: SpecialCountDistribution,
-  3: SpecialCountDistribution,
-  4: SpecialCountDistribution,
-  5: SpecialCountDistribution,
+  0: CommonCountDistribution;
+  1: CommonCountDistribution;
+  2: SpecialCountDistribution;
+  3: SpecialCountDistribution;
+  4: SpecialCountDistribution;
+  5: SpecialCountDistribution;
 }
 
 export interface StaticDistribution {
-  count: GetCountStatisticsResponse,
+  count: GetCountStatisticsResponse;
   score: GetScoreStatisticsResponse;
 }
 
@@ -137,7 +139,7 @@ export interface ApplicantListItem {
   is_prints_arrived: boolean;
   is_submitted: boolean;
   headcount: string;
-  is_out_of_headcount : boolean;
+  is_out_of_headcount: boolean;
 }
 
 export interface GetApplicantsListResponse {
@@ -154,7 +156,7 @@ export interface GetApplicantInfoResponse {
   status?: {
     is_prints_arrived: boolean;
     is_submit: boolean;
-  },
+  };
   common_information?: {
     name: string;
     school_name: string;
@@ -162,7 +164,7 @@ export interface GetApplicantInfoResponse {
     telephone_number: string;
     school_tel?: string;
     parent_tel: string;
-  },
+  };
   more_information?: {
     photo_url: string;
     birthday: string;
@@ -171,8 +173,8 @@ export interface GetApplicantInfoResponse {
     application_remark: string;
     address: string;
     detail_address: string;
-    head_count: string
-  },
+    head_count: string;
+  };
   evaluation?: {
     volunteer_time: number;
     conversion_score: number;
@@ -183,7 +185,7 @@ export interface GetApplicantInfoResponse {
     self_introduce: string;
     study_plan: string;
     average_score: number;
-  }
+  };
 }
 
 export interface UpdateApplicantStatusPayload {

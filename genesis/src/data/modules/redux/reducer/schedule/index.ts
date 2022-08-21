@@ -126,10 +126,10 @@ const InitialState: IScheduleState = {
       type: "START_DATE",
       date: "2022-10-04T12:05:55",
     },
-    {
-      type: "NOT_APPLICATION_PERIOD",
-      date: "2022-10-20",
-    },
+    // {
+    //   type: "NOT_APPLICATION_PERIOD",
+    //   date: "2022-10-20",
+    // },
   ],
   error: {
     status: 0,

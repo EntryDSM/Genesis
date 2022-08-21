@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 import { useAuth } from "src/hooks/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSignIn } from "src/hooks/signin";
 import { useSchedule } from "src/hooks/schedule";
 import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
@@ -48,7 +48,7 @@ const ScheduleContainer = () => {
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>
-      <Schedule {...scheduleState.state} {...scheduleState.setState} />;
+      <Schedule date={scheduleState.state.date} />;
     </Suspense>
   );
 };

@@ -1,11 +1,11 @@
 import {
-    createGlobalStyle,
-    GlobalStyleComponent,
-    DefaultTheme,
-  } from 'styled-components';
-  import { color } from './index';
-  
-  const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
+  createGlobalStyle,
+  GlobalStyleComponent,
+  DefaultTheme,
+} from "styled-components";
+import { color } from "./index";
+
+const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
     html, body {
       width: 100%;
@@ -24,11 +24,20 @@ import {
 	      background: none;
 	    }
     }
+    * {
+      //font-family: 'Noto Sans KR-Bold', sans-serif;
+    }
     input {
       border: none;
       border-radius: 5px;
       &:focus {
         outline: none;
+      }
+      :-webkit-autofill,
+      :-webkit-autofill:hover, 
+      :-webkit-autofill:focus, 
+      :-webkit-autofill:active{
+          background-color: white;
       }
     }
     html, body, div, span, applet, object, iframe,
@@ -87,6 +96,5 @@ import {
       user-select: none;
     }
   `;
-  
-  export default GlobalStyle;
-  
+
+export default GlobalStyle;

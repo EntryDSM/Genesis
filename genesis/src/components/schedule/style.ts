@@ -86,6 +86,7 @@ export const ScheduleDateTitle = styled.div`
 
 export const ScheduleDateBody = styled.div`
   width: 100%;
+  margin-bottom: 16px;
 `;
 
 export const ScheduleDateSelectBox = styled.div`

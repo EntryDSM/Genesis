@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useApplicant } from "src/hooks/applicant";
 import { useSignIn } from "src/hooks/signin";
 import { useAuth } from "src/hooks/auth";
@@ -8,6 +8,8 @@ import {
   REFRESH_TOKEN,
   REFRESH_TOKEN_SUCCESS,
 } from "src/data/modules/redux/action/signin";
+import useDebounce from "src/hooks/useDebounce";
+import { checkPasswordApi } from "src/data/api/applicant/applicantApi";
 
 const Applicant = React.lazy(() => import("../../components/applicant"));
 
@@ -25,7 +27,19 @@ const ApplicantContainer = () => {
   useEffect(() => {
     applicantState.setState.getApplicantsList(applicantState.state.filters);
   }, []);
-
+  const { debounce } = useDebounce();
+  const [password, setPassword] = useState("");
+  const [postPassword, setPostPassword] = useState(password);
+  const [disable, setDisalbe] = useState(false);
+  const debouncePasswordInput = (value: string) => {
+    setPassword(value);
+    debounce(() => setPostPassword(value), 500);
+  };
+  useEffect(() => {
+    checkPasswordApi("", { password: postPassword })
+      .then(() => setDisalbe(true))
+      .catch(() => setDisalbe(false));
+  }, [postPassword]);
   useEffect(() => {
     const errorStatus = applicantState.state.error.status;
     if (errorStatus === 401 || errorStatus === 403) {
@@ -53,7 +67,14 @@ const ApplicantContainer = () => {
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>
-      <Applicant {...applicantState.state} {...applicantState.setState} />;
+      <Applicant
+        {...applicantState.state}
+        password={password}
+        disable={disable}
+        {...applicantState.setState}
+        setPassword={debouncePasswordInput}
+      />
+      ;
     </Suspense>
   );
 };

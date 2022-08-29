@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router";
 import { error } from "src/models/error";
@@ -50,7 +50,7 @@ const DeleteTable: FC<Props> = ({
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setPassword(e.target.value);
     },
-    []
+    [password]
   );
 
   const togglePasswordVisiblity = () => {
@@ -64,6 +64,7 @@ const DeleteTable: FC<Props> = ({
     }
     return false;
   };
+
   return (
     <S.ModalWrapper onClick={handleClickOffModal}>
       <S.ModalDeleteTabel onClick={modalClickHandler}>
@@ -79,9 +80,7 @@ const DeleteTable: FC<Props> = ({
           삭제하면 다시 수정할 수 없으니 다시 한번 확인해 주세요
         </S.ModalSubTitle>
         <S.FormBox>
-          {password && !disable && (
-            <span>비밀번호가 일치하지 않습니다</span>
-          )}
+          {password && !disable && <span>비밀번호가 일치하지 않습니다</span>}
           <S.InputBox>
             <S.Input
               type={isPasswordShown ? "text" : "password"}

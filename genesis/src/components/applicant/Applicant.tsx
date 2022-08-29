@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import * as S from "./style";
 import { error } from "../../models/error";
 import ApplicantInfo from "./applicantInfo";
@@ -24,6 +24,7 @@ interface Props {
   updateApplicantStatusStatus: number;
   password: string;
   error: error;
+  disable: boolean;
   setFilter: (payload: GetApplicantsListPayload) => void;
   updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
   updateApplicantPaidStatus: (
@@ -34,7 +35,7 @@ interface Props {
   ) => void;
   getApplicantsList: (payload: GetApplicantsListPayload) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
-  setPassword: (payload: string) => void;
+  setPassword: Dispatch<SetStateAction<string>>;
   checkPassword: (payload: CheckPasswordRequest) => void;
   deleteApplicantTable: () => void;
 }
@@ -46,6 +47,7 @@ const Applicant: FC<Props> = ({
   updateApplicantStatusStatus,
   password,
   error,
+  disable,
   setFilter,
   updateApplicantStatus,
   updateApplicantPaidStatus,
@@ -69,13 +71,6 @@ const Applicant: FC<Props> = ({
     setCheckModalOn(false);
   };
 
-  const checkPasswordDisable = () => {
-    if (password === "testpassword") {
-      return true;
-    }
-    return false;
-  };
-
   return (
     <>
       {isDeleteTableModalSwitch && (
@@ -83,7 +78,7 @@ const Applicant: FC<Props> = ({
           password={password}
           applicantsList={applicantsList}
           error={error}
-          disable={checkPasswordDisable()}
+          disable={disable}
           setPassword={setPassword}
           checkPassword={checkPassword}
           deleteApplicantTable={deleteApplicantTable}

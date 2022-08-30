@@ -1,8 +1,8 @@
-import { error } from 'src/models/error';
+import { error } from "src/models/error";
 import {
-    GetCountStatisticsResponse, 
-    GetScoreStatisticsResponse, 
-} from '../../../../../api/apiTypes';
+  GetCountStatisticsResponse,
+  GetScoreStatisticsResponse,
+} from "../../../../../api/apiTypes";
 
 export interface IStatisticsState {
   statistics: statisticsType;
@@ -10,6 +10,6 @@ export interface IStatisticsState {
 }
 
 export interface statisticsType {
-  count:GetCountStatisticsResponse,
-  score:GetScoreStatisticsResponse
+  count: GetCountStatisticsResponse;
+  score: GetScoreStatisticsResponse;
 }

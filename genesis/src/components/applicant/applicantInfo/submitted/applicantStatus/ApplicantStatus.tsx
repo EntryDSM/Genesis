@@ -8,6 +8,7 @@ import {
   UpdateApplicantPaidStatusPayload,
   UpdateApplicantSubmitStatusPayload,
 } from "src/data/api/apiTypes";
+import useModal from "src/hooks/modal";
 
 interface Props {
   isContainerWidth: boolean;
@@ -38,35 +39,25 @@ const ApplicantStatuses: FC<Props> = ({
   const handleClickDetailArrow = () => {
     setIsContainerWidth(!isContainerWidth);
   };
-
+  const { onChangeModal } = useModal();
   const handleClickNotArrived = async (
     receipt_code: number,
     is_prints_arrived: boolean
   ) => {
-    if (window.confirm("지원자의 원서 도착 여부를 수정하시겠습니까?")) {
-      await updateApplicantStatus({ receipt_code, is_prints_arrived });
-    }
-    if (updateApplicantStatus) {
-      setTimeout(() => navigate(0), 300);
-    }
+    onChangeModal("APPLICATION_ARRIVED", receipt_code);
   };
-
-  const handleClickUpdatePaid = async (receipt_code: number) => {
-    if (window.confirm("지원자의 원서료 지불 여부를 수정하시겠습니까?")) {
-      await updateApplicantPaidStatus({ receipt_code });
-    }
-    if (updateApplicantStatus) {
-      setTimeout(() => navigate(0), 300);
-    }
-  };
+  // 필요해지면 써요
+  // const handleClickUpdatePaid = async (receipt_code: number) => {
+  //   if (window.confirm("지원자의 원서료 지불 여부를 수정하시겠습니까?")) {
+  //     await updateApplicantPaidStatus({ receipt_code });
+  //   }
+  //   if (updateApplicantStatus) {
+  //     setTimeout(() => navigate(0), 300);
+  //   }
+  // };
 
   const handleClickCancelSubmitted = async (receipt_code: number) => {
-    if (window.confirm("지원자의 최종 제출 상태를 수정하시겠습니까?")) {
-      await updateApplicantSubmitStatus({ receipt_code });
-    }
-    if (updateApplicantSubmitStatus) {
-      setTimeout(() => navigate(0), 300);
-    }
+    onChangeModal("CANCLE_FINAL_SUBMIT", receipt_code);
   };
 
   return (

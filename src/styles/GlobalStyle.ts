@@ -7,6 +7,7 @@ import {
   
   const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
     html, body {
       width: 100%;
       min-width: 1024px;

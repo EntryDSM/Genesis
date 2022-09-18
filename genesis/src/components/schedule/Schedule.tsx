@@ -97,6 +97,10 @@ const Schedule: FC<Props> = ({ date }) => {
             date: dateObjectToString(schedule.START_DATE),
           },
           {
+            type: "END_DATE",
+            date: dateObjectToString(schedule.END_DATE),
+          },
+          {
             type: "FIRST_ANNOUNCEMENT",
             date: dateObjectToString(schedule.FIRST_ANNOUNCEMENT),
           },
@@ -107,10 +111,6 @@ const Schedule: FC<Props> = ({ date }) => {
           {
             type: "SECOND_ANNOUNCEMENT",
             date: dateObjectToString(schedule.SECOND_ANNOUNCEMENT),
-          },
-          {
-            type: "END_DATE",
-            date: dateObjectToString(schedule.END_DATE),
           },
         ],
       }).then(() => alert("일정 수정 성공!"));

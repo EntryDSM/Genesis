@@ -90,9 +90,8 @@ const Filter: FC<Props> = ({
     } else {
       newFilter[value] = !filters[value] || false;
     }
-
-    await setFilter(newFilter);
-    getApplicantsList(filters);
+    
+    setFilter(newFilter);
   };
 
   const checkIsChecked = React.useCallback(

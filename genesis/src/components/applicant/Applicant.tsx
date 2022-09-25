@@ -94,6 +94,7 @@ const Applicant: FC<Props> = ({
             setFilter={setFilter}
             getApplicantsList={getApplicantsList}
             setIsDeleteTableModalSwitch={setIsDeleteTableModalSwitch}
+            setIsContainerWidth={setIsContainerWidth}
           />
           <ApplicantsList
             isContainerWidth={isContainerWidth}

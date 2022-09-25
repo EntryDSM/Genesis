@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import * as S from "./style";
 import { Button } from "src/components/common";
 import { Checkbox } from "src/components/common";
@@ -18,6 +18,7 @@ interface Props {
   setFilter: (payload: GetApplicantsListPayload) => void;
   getApplicantsList: (payload: GetApplicantsListPayload) => void;
   setIsDeleteTableModalSwitch: (payload: boolean) => void;
+  setIsContainerWidth: Dispatch<SetStateAction<boolean>>;
 }
 
 const Filter: FC<Props> = ({
@@ -27,6 +28,7 @@ const Filter: FC<Props> = ({
   setFilter,
   getApplicantsList,
   setIsDeleteTableModalSwitch,
+  setIsContainerWidth,
 }) => {
   const checkLists = [
     { content: "대전", value: "isDaejeon" },
@@ -126,10 +128,16 @@ const Filter: FC<Props> = ({
         {checkLists.map((item) => (
           <S.FilterItemContainer
             key={item.value}
-            onClick={() => handleChangeFilter(item.value)}
+            onClick={() => {
+              handleChangeFilter(item.value);
+              setIsContainerWidth(false);
+            }}
           >
             <Checkbox isChecked={checkIsChecked(item.value)} />
-            <p>{item.content}<strong>{item.value === "outOfHeadcount" && "*"}</strong></p>
+            <p>
+              {item.content}
+              <strong>{item.value === "outOfHeadcount" && "*"}</strong>
+            </p>
           </S.FilterItemContainer>
         ))}
       </S.FilterSelectBox>

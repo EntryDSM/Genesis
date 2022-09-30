@@ -25,7 +25,9 @@ const Statistics: FC<Props> = ({ score, count }) => {
     return result;
   };
 
-  const totalCompetition = (getTotalCount() / 72).toFixed(1);
+  const TotalStudentCnt = 64;
+
+  const totalCompetition = (getTotalCount() / TotalStudentCnt).toFixed(1);
   return (
     <S.StatisticsPageContainer>
       <S.StatisticsContainer>

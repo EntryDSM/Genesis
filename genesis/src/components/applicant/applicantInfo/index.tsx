@@ -41,9 +41,7 @@ const ApplicantInfo: FC<Props> = ({
     });
     return response;
   }, [currnetApplicantInfo.common_information.name, applicantsList]);
-  useEffect(() => {
-    setIsContainerWidth(filterResponse.length !== 0);
-  }, [filterResponse]);
+
   if (currnetApplicantInfo.more_information !== null) {
     return (
       <>

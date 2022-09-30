@@ -11,6 +11,10 @@ const CompetitionView: FC<Props> = ({ count }) => {
   const daejeon = [count[0], count[2], count[4]];
   const common = [count[1], count[3], count[5]];
 
+  const daejeonHalfCnt: number = 15;
+  const meisterHalfCnt: number = 6;
+  const socialHalfCnt: number = 1;
+
   return (
     <S.CompetitionViewWrapper className="no-select">
       <table className="competition-table">
@@ -33,37 +37,37 @@ const CompetitionView: FC<Props> = ({ count }) => {
           <tr className="competition-table-bottom">
             <td>
               {daejeon[0].count
-                ? decimalLimit((daejeon[0].count / 20).toFixed(1))
+                ? decimalLimit((daejeon[0].count / daejeonHalfCnt).toFixed(1))
                 : 0}{" "}
               : 1
             </td>
             <td>
               {daejeon[1].count
-                ? decimalLimit((daejeon[1].count / 9).toFixed(1))
+                ? decimalLimit((daejeon[1].count / meisterHalfCnt).toFixed(1))
                 : 0}{" "}
               : 1
             </td>
             <td>
               {daejeon[2].count
-                ? decimalLimit((daejeon[2].count / 1).toFixed(1))
+                ? decimalLimit((daejeon[2].count / socialHalfCnt).toFixed(1))
                 : 0}{" "}
               : 1
             </td>
             <td>
               {common[0].count
-                ? decimalLimit((common[0].count / 20).toFixed(1))
+                ? decimalLimit((common[0].count / daejeonHalfCnt).toFixed(1))
                 : 0}{" "}
               : 1
             </td>
             <td>
               {common[1].count
-                ? decimalLimit((common[1].count / 9).toFixed(1))
+                ? decimalLimit((common[1].count / meisterHalfCnt).toFixed(1))
                 : 0}{" "}
               : 1
             </td>
             <td>
               {common[2].count
-                ? decimalLimit((common[2].count / 1).toFixed(1))
+                ? decimalLimit((common[2].count / socialHalfCnt).toFixed(1))
                 : 0}{" "}
               : 1
             </td>

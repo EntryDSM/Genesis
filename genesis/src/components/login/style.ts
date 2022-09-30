@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import { background } from "../../assets/login";
-import { color, pxToRem } from '../../styles/index';
+import { color, pxToRem } from "../../styles/index";
 
 export const LoginContent = styled.div`
   width: 100%;
@@ -84,7 +84,7 @@ export const LoginContentTitleHead = styled.div`
   h1 {
     font-size: 64px;
     font-weight: bold;
-    font-family: 'Noto Sans KR-Bold', sans-serif !important;
+    font-family: "Noto Sans KR-Bold", sans-serif !important;
   }
 `;
 
@@ -97,13 +97,13 @@ export const LoginContentTitleBody = styled.div`
   p {
     margin-top: 8px;
     font-weight: bold;
-    color: ${color.darkBorderColor}
+    color: ${color.darkBorderColor};
   }
 `;
 
 export const LoginContentSign = styled.div`
-    width: 40%;
-    padding-top: 10px;
+  width: 40%;
+  padding-top: 10px;
 `;
 
 export const LoginContentSignLogo = styled.div`
@@ -121,13 +121,12 @@ export const LoginContentSignLogo = styled.div`
     margin-left: 10px;
     font-size: 15px;
     font-weight: bold;
-    font-family: 'Noto Sans KR-Bold', sans-serif !important;
-    color: ${color.loginFailedText}
+    font-family: "Noto Sans KR-Bold", sans-serif !important;
+    color: ${color.loginFailedText};
   }
 
   > span:hover {
     cursor: default;
-    
   }
 `;
 
@@ -151,7 +150,7 @@ export const LoginInputId = styled.input`
 `;
 
 export const LoginInputPassword = styled.input`
-  width: 72%;
+  width: 100%;
   height: 54px;
   box-sizing: border-box;
   padding: 0 28px;
@@ -168,18 +167,20 @@ export const LoginPasswordBox = styled.div`
   border: 1.4px solid #606060;
   background-color: ${color.backgorund};
   margin-bottom: 20px;
+  position: relative;
 `;
 
 export const LoginPasswordDisplayIcon = styled.div`
-  margin-right: 18px;
+  position: absolute;
+  right: 18px;
   &:hover {
     cursor: pointer;
   }
 
   > img {
+    top: 49%;
     width: 20px;
     height: 20px;
-    top: 49%;
     right: 19.4%;
   }
 `;
@@ -191,7 +192,7 @@ export const LoginBtn = styled.button`
   background-color: ${color.primaryColor};
   font-size: 22px;
   font-weight: bold;
-  font-family: 'Noto Sans KR-Bold', sans-serif !important;
+  font-family: "Noto Sans KR-Bold", sans-serif !important;
   color: #ffffff;
   margin-top: 40px;
 `;

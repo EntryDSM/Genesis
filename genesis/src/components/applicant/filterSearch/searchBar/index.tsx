@@ -1,9 +1,10 @@
 import React, { FC } from "react";
 import * as S from "./style";
 import { GetApplicantsListPayload } from "src/data/api/apiTypes";
+import useDebounce from "src/hooks/useDebounce";
 
 interface Props {
-    applicantCount : number
+  applicantCount: number;
   isContainerWidth: boolean;
   searchProgressImg: string;
   searchIcon: string;
@@ -17,13 +18,12 @@ const categoryList = [
 ];
 
 const SearchBar: FC<Props> = ({
-                                  applicantCount,
+  applicantCount,
   isContainerWidth,
   searchProgressImg,
   searchIcon,
   setFilter,
 }) => {
-
   const [keyword, setKeyword] = React.useState("");
   const [selectedCategory, setSelectedCategory] = React.useState(
     categoryList[0]
@@ -45,12 +45,18 @@ const SearchBar: FC<Props> = ({
     [selectedCategory, keyword]
   );
 
+  const { debounce } = useDebounce();
+
   const handleChangeKeyword = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword(e.target.value);
-      setFilter({
-        [selectedCategory.id]: e.currentTarget.value || null,
-      });
+      debounce(
+        () =>
+          setFilter({
+            [selectedCategory.id]: e.target.value || null,
+          }),
+        300
+      );
     },
     [selectedCategory, keyword]
   );
@@ -85,7 +91,7 @@ const SearchBar: FC<Props> = ({
         <img src={searchIcon} alt={"searchIcon"} />
       </S.SearchInputContainer>
       <S.TotalApplicantCount>
-          검색 결과 :&nbsp;<p>{applicantCount}</p>명
+        검색 결과 :&nbsp;<p>{applicantCount}</p>명
       </S.TotalApplicantCount>
     </S.SearchBarWrapper>
   );

@@ -23,7 +23,7 @@ const ApplicantsListItem: FC<Props> = ({
     application_type,
     is_prints_arrived,
     is_submitted,
-      is_out_of_headcount
+    is_out_of_headcount,
   },
   handleClick,
 }) => {
@@ -46,7 +46,10 @@ const ApplicantsListItem: FC<Props> = ({
         <S.TD>{receipt_code}</S.TD>
         <S.TD>{name}</S.TD>
         <S.TD>{checkRegion()}</S.TD>
-        <S.TD>{checkApplyType()}<span>{is_out_of_headcount && "*"}</span></S.TD>
+        <S.TD>
+          {checkApplyType()}
+          <span>{is_out_of_headcount && "*"}</span>
+        </S.TD>
         <S.TD>
           <S.CheckboxWrapper>
             <Checkbox isChecked={is_prints_arrived} />

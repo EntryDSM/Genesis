@@ -38,7 +38,7 @@ export const updateApplicantStatusApi = async (
       uri.applicant_arrived +
         `/${
           payload.receipt_code
-        }?is_prints_arrived=${!payload.is_prints_arrived}}`,
+        }?is_prints_arrived=${!payload.is_prints_arrived}`,
       null,
       {
         headers: authorization(getAccessToken()),

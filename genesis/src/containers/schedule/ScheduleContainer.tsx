@@ -48,7 +48,7 @@ const ScheduleContainer = () => {
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>
-      <Schedule date={scheduleState.state.date} />;
+      <Schedule date={scheduleState.state.date} />
     </Suspense>
   );
 };

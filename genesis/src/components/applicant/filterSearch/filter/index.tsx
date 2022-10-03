@@ -39,8 +39,8 @@ const Filter: FC<Props> = ({
     { content: "마이스터 전형", value: "isMeister" },
     { content: "사회통합 전형", value: "isSocial" },
     // { content: "정원 내", value: "inOfHeadcount" }, 정원 내 필요해지면 다시 쓰세요 ㅎㅎ
-    { content: '정원 외', value: "outOfHeadcount" },
-  ]
+    { content: "정원 외", value: "outOfHeadcount" },
+  ];
 
   const { state } = useSchedule();
 
@@ -92,7 +92,7 @@ const Filter: FC<Props> = ({
     } else {
       newFilter[value] = !filters[value] || false;
     }
-    
+
     setFilter(newFilter);
   };
 
@@ -146,7 +146,7 @@ const Filter: FC<Props> = ({
           className="applicant-list__excel-btn"
           onClick={handleDownloadExcel}
         >
-          Excel 출력
+          1차 검증
         </Button>
         <Button
           className="admission-ticket__download-btn"

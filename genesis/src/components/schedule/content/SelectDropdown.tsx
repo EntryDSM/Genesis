@@ -31,17 +31,21 @@ const SelectDropdown: React.FC<Props> = ({
           {Array(itemCount)
             .fill(void 0)
             .map((_, index) => {
-              const value = type === "second" || type === "minute" ? index : index + 1;
-              return(
-              <S.Item
-                onClick={() => {
-                  onClickDropdownValue(type, String(value));
-                  setIsOpened(!isOpened);
-                }}
-              >
-                {value}
-              </S.Item>
-            )})}
+              const value =
+                type === "second" || type === "minute" || type === "hour"
+                  ? index
+                  : index + 1;
+              return (
+                <S.Item
+                  onClick={() => {
+                    onClickDropdownValue(type, String(value));
+                    setIsOpened(!isOpened);
+                  }}
+                >
+                  {value}
+                </S.Item>
+              );
+            })}
         </S.ItemWrapper>
       )}
     </div>

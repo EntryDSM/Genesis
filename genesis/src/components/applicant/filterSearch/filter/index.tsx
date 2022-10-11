@@ -149,13 +149,13 @@ const Filter: FC<Props> = ({
       <S.FilterButtonContainer isContainerWidth={isContainerWidth}>
         <Button
           className="applicant-list__excel-btn"
-          onClick={handleDownloadNewExcel}
+          onClick={handleDownloadExcel}
         >
           Excel 출력
         </Button>
         <Button
           className="applicant-list__excel-btn"
-          onClick={handleDownloadExcel}
+          onClick={handleDownloadNewExcel}
         >
           1차 검증
         </Button>

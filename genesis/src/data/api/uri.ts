@@ -11,7 +11,8 @@ enum uri {
   schedule = "/schedule",
   delete_table = "/admin/data",
   ticket_print = "/admin/excel/admission-ticket",
-  applicants_print = "/admin/excel/applicants/new",
+  applicants_print = "/admin/excel/applicants",
+  applicants_print_new = "/admin/excel/applicants/new",
 }
 
 export default uri;

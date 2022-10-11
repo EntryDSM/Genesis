@@ -8,6 +8,7 @@ import { downloadExcel } from "src/utils/download";
 import {
   downloadApplicantsListExcel,
   downloadAdmissionExcel,
+  downloadApplicantsListNewExcel,
 } from "src/data/api/excel/excelApi";
 import { GetApplicantsListPayload } from "src/data/api/apiTypes";
 
@@ -111,6 +112,10 @@ const Filter: FC<Props> = ({
     await downloadExcel(downloadApplicantsListExcel, "지원자목록");
   }, []);
 
+  const handleDownloadNewExcel = React.useCallback(async () => {
+    await downloadExcel(downloadApplicantsListNewExcel, "새목록");
+  }, []);
+
   const handleDownloadAdmission = React.useCallback(async () => {
     if (state.status === APPLICATION_PERIOD) {
       alert("원서 접수기간이 끝나지 않았습니다.");
@@ -142,6 +147,12 @@ const Filter: FC<Props> = ({
         ))}
       </S.FilterSelectBox>
       <S.FilterButtonContainer isContainerWidth={isContainerWidth}>
+        <Button
+          className="applicant-list__excel-btn"
+          onClick={handleDownloadNewExcel}
+        >
+          Excel 출력
+        </Button>
         <Button
           className="applicant-list__excel-btn"
           onClick={handleDownloadExcel}

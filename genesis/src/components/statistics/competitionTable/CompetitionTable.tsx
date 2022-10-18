@@ -16,7 +16,6 @@ interface Props {
 }
 
 const CompetitionTable: FC<Props> = ({ score }) => {
-
   const CommonScoreList = ({ type, score1, score2 }) => {
     return (
       <tr>
@@ -93,9 +92,32 @@ const CompetitionTable: FC<Props> = ({ score }) => {
             score2={score[1]["80-92"]}
           />
           <CommonScoreList
-            type="79점 이하"
+            type="79 이하"
             score1={score[0]["-79"]}
             score2={score[1]["-79"]}
+          />
+          <CommonScoreList
+            type="총 합"
+            score1={
+              score[0]["158-170"] +
+              score[0]["145-157"] +
+              score[0]["132-144"] +
+              score[0]["119-131"] +
+              score[0]["106-118"] +
+              score[0]["93-105"] +
+              score[0]["80-92"] +
+              score[0]["-79"]
+            }
+            score2={
+              score[1]["158-170"] +
+              score[1]["145-157"] +
+              score[1]["132-144"] +
+              score[1]["119-131"] +
+              score[1]["106-118"] +
+              score[1]["93-105"] +
+              score[1]["80-92"] +
+              score[1]["-79"]
+            }
           />
           <tr className="table-edge"></tr>
         </tbody>
@@ -162,11 +184,54 @@ const CompetitionTable: FC<Props> = ({ score }) => {
             score4={score[5]["20-32"]}
           />
           <MeisterScoreList
-            type="19점 이하"
+            type="19 이하"
             score1={score[2]["-19"]}
             score2={score[3]["-19"]}
             score3={score[4]["-19"]}
             score4={score[5]["-19"]}
+          />
+          <MeisterScoreList
+            type="총 합"
+            score1={
+              score[2]["98-110"] +
+              score[2]["85-97"] +
+              score[2]["72-84"] +
+              score[2]["59-71"] +
+              score[2]["46-58"] +
+              score[2]["33-45"] +
+              score[2]["20-32"] +
+              score[2]["-19"]
+            }
+            score2={
+              score[3]["98-110"] +
+              score[3]["85-97"] +
+              score[3]["72-84"] +
+              score[3]["59-71"] +
+              score[3]["46-58"] +
+              score[3]["33-45"] +
+              score[3]["20-32"] +
+              score[3]["-19"]
+            }
+            score3={
+              score[4]["98-110"] +
+              score[4]["85-97"] +
+              score[4]["72-84"] +
+              score[4]["59-71"] +
+              score[4]["46-58"] +
+              score[4]["33-45"] +
+              score[4]["20-32"] +
+              score[4]["-19"]
+            }
+            score4={
+              score[5]["98-110"] +
+              score[5]["85-97"] +
+              score[5]["72-84"] +
+              score[5]["59-71"] +
+              score[5]["46-58"] +
+              score[5]["33-45"] +
+              score[5]["20-32"] +
+              score[5]["-19"]
+            }
           />
           <tr className="table-edge"></tr>
         </tbody>

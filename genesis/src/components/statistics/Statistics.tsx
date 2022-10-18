@@ -52,7 +52,6 @@ const Statistics: FC<Props> = ({ score, count }) => {
           </S.StatisticsSubjectWrapper>
           <S.CompetitionTableTitle>
             2022년 신입생 지원률
-            
           </S.CompetitionTableTitle>
           <CompetitionTotalGraph
             /* commonScore={commonScore}

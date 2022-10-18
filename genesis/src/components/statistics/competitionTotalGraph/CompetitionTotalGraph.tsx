@@ -12,7 +12,7 @@ const CompetitionTotalGraph: FC<Props> = ({ count }) => {
   const daejeonTotalCnt = 50;
   const meisterTotalCnt = 12;
   const socialTotalCnt = 2;
-
+  console.log(count);
   return (
     <S.CompetitionTotalGraphWrapper>
       <S.CompetitionGraphContainer>
@@ -30,7 +30,12 @@ const CompetitionTotalGraph: FC<Props> = ({ count }) => {
           <div className="graph-rate-wrapper">
             <p>
               {count[0].count + count[1].count
-                ? decimalLimit((count[0].count / daejeonTotalCnt).toFixed(1)) //
+                ? decimalLimit(
+                    (
+                      (count[0].count + count[1].count) /
+                      daejeonTotalCnt
+                    ).toFixed(1)
+                  ) //
                 : 0}
             </p>
             <p className="rate-end">: 1</p>
@@ -38,7 +43,12 @@ const CompetitionTotalGraph: FC<Props> = ({ count }) => {
           <div className="graph-rate-wrapper">
             <p>
               {count[2].count + count[3].count
-                ? decimalLimit((count[0].count / meisterTotalCnt).toFixed(1))
+                ? decimalLimit(
+                    (
+                      (count[2].count + count[3].count) /
+                      meisterTotalCnt
+                    ).toFixed(1)
+                  )
                 : 0}
             </p>
             <p className="rate-end">: 1</p>
@@ -46,7 +56,11 @@ const CompetitionTotalGraph: FC<Props> = ({ count }) => {
           <div className="graph-rate-wrapper">
             <p>
               {count[4].count + count[5].count
-                ? decimalLimit((count[0].count / socialTotalCnt).toFixed(1))
+                ? decimalLimit(
+                    (count[4].count + count[5].count / socialTotalCnt).toFixed(
+                      1
+                    )
+                  )
                 : 0}
             </p>
             <p className="rate-end">: 1</p>

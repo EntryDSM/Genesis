@@ -46,6 +46,7 @@ const Filter: FC<Props> = ({
   const { state } = useSchedule();
 
   React.useEffect(() => {
+    console.log(filters);
     getApplicantsList(filters);
   }, [filters]);
 

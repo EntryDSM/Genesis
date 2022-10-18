@@ -43,7 +43,7 @@ const Pagination: FC<Props> = ({
     setFilter({
       page: carcPage(),
     });
-    getApplicantsList(filters);
+    // getApplicantsList(filters);
   }, [currentIndex]);
 
   React.useEffect(() => {

@@ -1,4 +1,4 @@
-import { takeLatest } from "redux-saga/effects";
+import { debounce, takeLatest } from "redux-saga/effects";
 import createRequestSaga from "src/utils/saga/createRequestSaga";
 import {
   getApplicantsListApi,
@@ -45,7 +45,7 @@ export const deleteApplicantTableSaga = createRequestSaga(
 );
 
 function* applicantSaga() {
-  yield takeLatest(GET_APPLICANTS_LIST, getApplicantListSaga);
+  yield debounce(100, GET_APPLICANTS_LIST, getApplicantListSaga);
   yield takeLatest(GET_APPLICANT_INFO, getApplicantInfoSaga);
   yield takeLatest(UPDATE_APPLICANT_STATUS, updateApplicantStatusSaga);
   yield takeLatest(UPDATE_APPLICANT_PAID_STATUS, updateApplicantPaidStatusSaga);

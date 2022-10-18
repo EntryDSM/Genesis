@@ -11,7 +11,7 @@ const CompetitionView: FC<Props> = ({ count }) => {
   const daejeon = [count[0], count[2], count[4]];
   const common = [count[1], count[3], count[5]];
 
-  const daejeonHalfCnt: number = 15;
+  const daejeonHalfCnt: number = 25;
   const meisterHalfCnt: number = 6;
   const socialHalfCnt: number = 1;
 

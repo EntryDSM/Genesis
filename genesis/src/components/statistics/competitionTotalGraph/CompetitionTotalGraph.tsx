@@ -12,7 +12,7 @@ const CompetitionTotalGraph: FC<Props> = ({ count }) => {
   const daejeonTotalCnt = 50;
   const meisterTotalCnt = 12;
   const socialTotalCnt = 2;
-  console.log(count);
+
   return (
     <S.CompetitionTotalGraphWrapper>
       <S.CompetitionGraphContainer>
@@ -57,9 +57,10 @@ const CompetitionTotalGraph: FC<Props> = ({ count }) => {
             <p>
               {count[4].count + count[5].count
                 ? decimalLimit(
-                    (count[4].count + count[5].count / socialTotalCnt).toFixed(
-                      1
-                    )
+                    (
+                      (count[4].count + count[5].count) /
+                      socialTotalCnt
+                    ).toFixed(1)
                   )
                 : 0}
             </p>

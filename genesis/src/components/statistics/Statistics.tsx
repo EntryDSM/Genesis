@@ -51,7 +51,7 @@ const Statistics: FC<Props> = ({ score, count }) => {
             </S.EachStatisticsSubjectWrapper>
           </S.StatisticsSubjectWrapper>
           <S.CompetitionTableTitle>
-            2022년 신입생 지원률
+            2023학년도 신입생 지원률
           </S.CompetitionTableTitle>
           <CompetitionTotalGraph
             /* commonScore={commonScore}
@@ -62,7 +62,7 @@ const Statistics: FC<Props> = ({ score, count }) => {
             count={count}
           />
           <S.CompetitionTableTitle>
-            2022년 신입생 환산점수
+            2023학년도 신입생 환산점수
           </S.CompetitionTableTitle>
           <CompetitionTable
             /* commonScore={commonScore}
@@ -72,7 +72,7 @@ const Statistics: FC<Props> = ({ score, count }) => {
             score={score}
           />
           <S.CompetitionTableTitle>
-            2022년 신입생 경쟁률
+            2023학년도 신입생 경쟁률
           </S.CompetitionTableTitle>
           <CompetitionView
             /* totalApplicantCount={totalApplicantCount}

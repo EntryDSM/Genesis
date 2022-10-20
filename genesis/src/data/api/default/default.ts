@@ -7,7 +7,7 @@ export const authorization = (token: string) => ({
 
 export const getRequest = () => {
   const request = axios.create({
-    timeout: 10000,
+    timeout: 250000,
     baseURL: 'https://rolls.entrydsm.hs.kr/',
   });
   return request;
@@ -18,7 +18,7 @@ export const getRequestWithAccessToken = (
   type: 'json' | 'blob' | 'text' = 'json',
 ) => {
   const request = axios.create({
-    timeout: 10000,
+    timeout: 250000,
     baseURL: 'https://rolls.entrydsm.hs.kr/',
     headers: {
       Authorization: `Bearer ${token}`,

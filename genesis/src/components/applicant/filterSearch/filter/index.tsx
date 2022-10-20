@@ -121,7 +121,7 @@ const Filter: FC<Props> = ({
     if (state.status === APPLICATION_PERIOD) {
       alert("원서 접수기간이 끝나지 않았습니다.");
     } else {
-      alert("수험표을 다운로드하는데 약 30초가 소요됩니다.");
+      alert("수험표을 다운로드하는데 확인버튼 클릭 후 약 30초가 소요됩니다.");
       await downloadExcel(downloadAdmissionExcel, "수험표");
     }
   }, []);

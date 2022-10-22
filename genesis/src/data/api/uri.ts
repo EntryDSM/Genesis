@@ -10,7 +10,7 @@ enum uri {
   checkPassword = "/admin/auth/check",
   schedule = "/schedule",
   delete_table = "/admin/data",
-  ticket_print = "/admin/excel/admission-ticket",
+  ticket_print = "/admin/excel/admission-ticket?format=xlxs",
   applicants_print = "/admin/excel/applicants",
   applicants_print_new = "/admin/excel/applicants/new",
 }
